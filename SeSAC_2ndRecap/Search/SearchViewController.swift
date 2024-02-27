@@ -29,9 +29,8 @@ class SearchViewController: BaseViewController {
     }
     
     lazy var tableView = UITableView().then {
-//        $0.delegate = self
-//        $0.dataSource = self
-        $0.backgroundColor = .orange
+        $0.delegate = self
+        $0.dataSource = self
     }
 
     override func viewDidLoad() {
@@ -77,13 +76,13 @@ class SearchViewController: BaseViewController {
 
 }
 
-//extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
-//    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 1
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
-//}
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+}
