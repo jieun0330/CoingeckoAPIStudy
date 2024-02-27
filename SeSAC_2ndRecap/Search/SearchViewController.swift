@@ -13,13 +13,13 @@ class SearchViewController: BaseViewController {
 
     let profileImage = UIImageView().then {
         $0.image = .tabUser
-        $0.layer.borderColor = DesignSystemColor.purple.value.cgColor
+        $0.layer.borderColor = DesignSystemColor.purple.color.cgColor
         $0.layer.borderWidth = 2
     }
     
     let mainTitle = UILabel().then {
         $0.text = "Search"
-        $0.font = UIFont.boldSystemFont(ofSize: 30)
+        $0.font = DesignSystemFont.main.font
     }
     
     let searchBar = UISearchBar().then {
@@ -29,8 +29,11 @@ class SearchViewController: BaseViewController {
     }
     
     lazy var tableView = UITableView().then {
+        $0.backgroundColor = DesignSystemColor.white.color
         $0.delegate = self
         $0.dataSource = self
+        $0.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
+        $0.rowHeight = 50
     }
 
     override func viewDidLoad() {
@@ -71,7 +74,7 @@ class SearchViewController: BaseViewController {
     }
     
     override func configureView() {
-        view.backgroundColor = .white
+        view.backgroundColor = DesignSystemColor.white.color
     }
 
 }
