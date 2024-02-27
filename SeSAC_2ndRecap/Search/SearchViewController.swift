@@ -10,6 +10,9 @@ import Then
 import SnapKit
 
 class SearchViewController: BaseViewController {
+    
+    let viewModel = SearchViewModel()
+    let list: [Coin] = []
 
     let profileImage = UIImageView().then {
         $0.image = .tabUser
@@ -22,10 +25,11 @@ class SearchViewController: BaseViewController {
         $0.font = DesignSystemFont.main.font
     }
     
-    let searchBar = UISearchBar().then {
+    lazy var searchBar = UISearchBar().then {
         $0.placeholder = "코인명 검색"
         $0.backgroundImage = UIImage()
         $0.layer.cornerRadius = 10
+        $0.delegate = self
     }
     
     lazy var tableView = UITableView().then {
@@ -38,6 +42,8 @@ class SearchViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        APIManager.shared.fetchCoinAPI(query: "Bitcoin")
 
     }
     
@@ -86,8 +92,21 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier)!
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
+        
+//        cell.icon = uiima
         
         return cell
     }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    
+    
+    
+//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//        
+//        guard let text = searchBar.text else { return }
+//        viewModel.inputSearchBarTapped.value = text
+//    }
 }

@@ -11,7 +11,7 @@ import SnapKit
 
 class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    let icon = UIImageView().then {
+    var icon = UIImageView().then {
         $0.image = UIImage(systemName: "circle")
     }
     
@@ -20,8 +20,6 @@ class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         $0.alignment = .center
         $0.distribution = .equalSpacing
         $0.spacing = 5
-        $0.layer.borderColor = UIColor.red.cgColor
-        $0.layer.borderWidth = 1
     }
     
     let name = UILabel().then {
@@ -84,8 +82,6 @@ class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     override func configureView() {
         contentView.backgroundColor = DesignSystemColor.white.color
-        contentView.layer.borderColor = UIColor.blue.cgColor
-        contentView.layer.borderWidth = 1
     }
     
     required init?(coder: NSCoder) {

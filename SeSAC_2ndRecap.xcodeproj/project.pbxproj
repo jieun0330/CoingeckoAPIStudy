@@ -26,6 +26,9 @@
 		C2F4F3872B8DC42300E65588 /* Coingecko.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3862B8DC42300E65588 /* Coingecko.swift */; };
 		C2F4F38A2B8DC68700E65588 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3892B8DC68700E65588 /* Protocol.swift */; };
 		C2F4F38E2B8DDCC200E65588 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F38D2B8DDCC200E65588 /* Fonts.swift */; };
+		C2F4F3902B8DE50C00E65588 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F38F2B8DE50C00E65588 /* SearchViewModel.swift */; };
+		C2F4F3932B8DE58000E65588 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3922B8DE58000E65588 /* Observable.swift */; };
+		C2F4F3962B8DEAC700E65588 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F3952B8DEAC700E65588 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,8 @@
 		C2F4F3862B8DC42300E65588 /* Coingecko.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coingecko.swift; sourceTree = "<group>"; };
 		C2F4F3892B8DC68700E65588 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		C2F4F38D2B8DDCC200E65588 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		C2F4F38F2B8DE50C00E65588 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		C2F4F3922B8DE58000E65588 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +62,7 @@
 				C2F4F3852B8DC37100E65588 /* Alamofire in Frameworks */,
 				C2F4F3762B8DB83F00E65588 /* SnapKit in Frameworks */,
 				C2F4F3782B8DB83F00E65588 /* SnapKit-Dynamic in Frameworks */,
+				C2F4F3962B8DEAC700E65588 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +88,7 @@
 		C2F4F3512B8DB0C800E65588 /* SeSAC_2ndRecap */ = {
 			isa = PBXGroup;
 			children = (
+				C2F4F3912B8DE57900E65588 /* Observable */,
 				C2F4F3882B8DC68200E65588 /* Protocol */,
 				C2F4F3802B8DC34D00E65588 /* Network */,
 				C2F4F36F2B8DB59000E65588 /* DesignSystem */,
@@ -103,6 +110,7 @@
 			children = (
 				C2F4F3672B8DB27400E65588 /* SearchViewController.swift */,
 				C2F4F37C2B8DC05700E65588 /* SearchTableViewCell.swift */,
+				C2F4F38F2B8DE50C00E65588 /* SearchViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -142,6 +150,14 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		C2F4F3912B8DE57900E65588 /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				C2F4F3922B8DE58000E65588 /* Observable.swift */,
+			);
+			path = Observable;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -163,6 +179,7 @@
 				C2F4F3752B8DB83F00E65588 /* SnapKit */,
 				C2F4F3772B8DB83F00E65588 /* SnapKit-Dynamic */,
 				C2F4F3842B8DC37100E65588 /* Alamofire */,
+				C2F4F3952B8DEAC700E65588 /* Kingfisher */,
 			);
 			productName = SeSAC_2ndRecap;
 			productReference = C2F4F34F2B8DB0C800E65588 /* SeSAC_2ndRecap.app */;
@@ -196,6 +213,7 @@
 				C2F4F36C2B8DB3D100E65588 /* XCRemoteSwiftPackageReference "Then" */,
 				C2F4F3742B8DB83E00E65588 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				C2F4F3832B8DC37100E65588 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C2F4F3942B8DEAC700E65588 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = C2F4F3502B8DB0C800E65588 /* Products */;
 			projectDirPath = "";
@@ -229,10 +247,12 @@
 				C2F4F3872B8DC42300E65588 /* Coingecko.swift in Sources */,
 				C2F4F3572B8DB0C800E65588 /* ViewController.swift in Sources */,
 				C2F4F3822B8DC35C00E65588 /* APIManager.swift in Sources */,
+				C2F4F3902B8DE50C00E65588 /* SearchViewModel.swift in Sources */,
 				C2F4F3532B8DB0C800E65588 /* AppDelegate.swift in Sources */,
 				C2F4F38A2B8DC68700E65588 /* Protocol.swift in Sources */,
 				C2F4F3682B8DB27400E65588 /* SearchViewController.swift in Sources */,
 				C2F4F38E2B8DDCC200E65588 /* Fonts.swift in Sources */,
+				C2F4F3932B8DE58000E65588 /* Observable.swift in Sources */,
 				C2F4F3552B8DB0C800E65588 /* SceneDelegate.swift in Sources */,
 				C2F4F37B2B8DB98200E65588 /* Colors.swift in Sources */,
 				C2F4F37D2B8DC05700E65588 /* SearchTableViewCell.swift in Sources */,
@@ -484,6 +504,14 @@
 				minimumVersion = 5.8.1;
 			};
 		};
+		C2F4F3942B8DEAC700E65588 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -506,6 +534,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C2F4F3832B8DC37100E65588 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		C2F4F3952B8DEAC700E65588 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2F4F3942B8DEAC700E65588 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
