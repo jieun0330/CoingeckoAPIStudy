@@ -23,6 +23,8 @@
 		C2F4F37F2B8DC09000E65588 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F37E2B8DC09000E65588 /* BaseTableViewCell.swift */; };
 		C2F4F3822B8DC35C00E65588 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3812B8DC35C00E65588 /* APIManager.swift */; };
 		C2F4F3852B8DC37100E65588 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F3842B8DC37100E65588 /* Alamofire */; };
+		C2F4F3872B8DC42300E65588 /* Coingecko.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3862B8DC42300E65588 /* Coingecko.swift */; };
+		C2F4F38A2B8DC68700E65588 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3892B8DC68700E65588 /* Protocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		C2F4F37C2B8DC05700E65588 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		C2F4F37E2B8DC09000E65588 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C2F4F3812B8DC35C00E65588 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		C2F4F3862B8DC42300E65588 /* Coingecko.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coingecko.swift; sourceTree = "<group>"; };
+		C2F4F3892B8DC68700E65588 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 		C2F4F3512B8DB0C800E65588 /* SeSAC_2ndRecap */ = {
 			isa = PBXGroup;
 			children = (
+				C2F4F3882B8DC68200E65588 /* Protocol */,
 				C2F4F3802B8DC34D00E65588 /* Network */,
 				C2F4F36F2B8DB59000E65588 /* DesignSystem */,
 				C2F4F3692B8DB27F00E65588 /* Base */,
@@ -129,8 +134,17 @@
 			isa = PBXGroup;
 			children = (
 				C2F4F3812B8DC35C00E65588 /* APIManager.swift */,
+				C2F4F3862B8DC42300E65588 /* Coingecko.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		C2F4F3882B8DC68200E65588 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				C2F4F3892B8DC68700E65588 /* Protocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,9 +231,11 @@
 			files = (
 				C2F4F37F2B8DC09000E65588 /* BaseTableViewCell.swift in Sources */,
 				C2F4F36B2B8DB28500E65588 /* BaseViewController.swift in Sources */,
+				C2F4F3872B8DC42300E65588 /* Coingecko.swift in Sources */,
 				C2F4F3572B8DB0C800E65588 /* ViewController.swift in Sources */,
 				C2F4F3822B8DC35C00E65588 /* APIManager.swift in Sources */,
 				C2F4F3532B8DB0C800E65588 /* AppDelegate.swift in Sources */,
+				C2F4F38A2B8DC68700E65588 /* Protocol.swift in Sources */,
 				C2F4F3682B8DB27400E65588 /* SearchViewController.swift in Sources */,
 				C2F4F3552B8DB0C800E65588 /* SceneDelegate.swift in Sources */,
 				C2F4F37B2B8DB98200E65588 /* Color.swift in Sources */,

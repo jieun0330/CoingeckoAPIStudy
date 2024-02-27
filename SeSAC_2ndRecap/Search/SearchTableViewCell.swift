@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Then
+import SnapKit
 
-class SearchTableViewCell: BaseTableViewCell {
+class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    let icon = UIImageView().then { <#UIImageView#> in
-        <#code#>
+    let icon = UIImageView().then {
+        $0.image = UIImage(systemName: "heart")
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -24,7 +26,9 @@ class SearchTableViewCell: BaseTableViewCell {
     }
     
     override func configureConstraints() {
-        <#code#>
+        icon.snp.makeConstraints {
+//            $0.leading.top.
+        }
     }
     
     override func configureView() {
