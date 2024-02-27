@@ -9,5 +9,15 @@ import Foundation
 
 class SearchViewModel {
     
+    var inputSearchBarTapped = Observable("")
 
+    var outputCoinData: Observable<[Coin]> = Observable([])
+    
+    init() {
+        inputSearchBarTapped.bind { string in
+            APIManager.shared.fetchCoinAPI(completionHandler: { value in
+                self.outputCoinData.value = value.coins
+            }, query: string)
+        }
+    }
 }

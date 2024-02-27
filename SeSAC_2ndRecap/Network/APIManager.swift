@@ -14,10 +14,10 @@ class APIManager {
     
     private init() { }
     
-    func fetchCoinAPI(completionHandler: @escaping (Search) -> Void) {
-        let url = "https://api.coingecko.com/api/v3/search?query=bitcoin"
+    func fetchCoinAPI(completionHandler: @escaping (SearchAPI) -> Void, query: String) {
+        let url = "https://api.coingecko.com/api/v3/search?query=\(query)"
         
-        AF.request(url).responseDecodable(of: Search.self) { response in
+        AF.request(url).responseDecodable(of: SearchAPI.self) { response in
             switch response.result {
             case .success(let success):
                 print(success)

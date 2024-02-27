@@ -40,15 +40,15 @@ class SearchViewController: BaseViewController {
         $0.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
         $0.rowHeight = 60
         $0.separatorStyle = .none
-    
-    } {
-        didSet {
-            tableView.reloadData()
-        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.outputCoinData.bind { data in
+            self.list = data
+            self.tableView.reloadData()
+        }
  
     }
     
@@ -87,40 +87,34 @@ class SearchViewController: BaseViewController {
     override func configureView() {
         view.backgroundColor = DesignSystemColor.white.color
     }
+    
 
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print(list.count)
         return list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
         
+        let row = list[indexPath.row]
         
-        print(list[indexPath.row].name)
-        cell.icon.kf.setImage(with: URL(string: list[indexPath.row].thumb))
-        cell.name.text = list[indexPath.row].name
-
+        cell.icon.kf.setImage(with: URL(string: row.thumb))
+        cell.name.text = row.name
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-    }
-    
 }
 
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        APIManager.shared.fetchCoinAPI { value in
-            self.list = value.coins
-            self.tableView.reloadData()
-        }
+        
+        guard let searchBarText = searchBar.text else { return }
+        viewModel.inputSearchBarTapped.value = searchBarText
+        
     }
 }
