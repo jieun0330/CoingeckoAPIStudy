@@ -9,18 +9,5 @@ import Foundation
 
 class SearchViewModel {
     
-//    var inputSearchBarTapped = Observable("")
-    
-//    init() {
-//        
-//        inputSearchBarTapped.bind { value in
-//            APIManager.shared.fetchCoinAPI(query: value)
-//        }
-//        
-//    }
-        
-//    private func callRequest() {
-//        APIManager.shared.fetchCoinAPI(query: <#T##String#>)
-//    }
-    
+
 }

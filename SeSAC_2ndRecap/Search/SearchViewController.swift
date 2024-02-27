@@ -8,11 +8,12 @@
 import UIKit
 import Then
 import SnapKit
+import Kingfisher
 
 class SearchViewController: BaseViewController {
     
     let viewModel = SearchViewModel()
-    let list: [Coin] = []
+    var list: [Coin] = []
 
     let profileImage = UIImageView().then {
         $0.image = .tabUser
@@ -38,13 +39,15 @@ class SearchViewController: BaseViewController {
         $0.dataSource = self
         $0.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
         $0.rowHeight = 50
+    } {
+        didSet {
+            tableView.reloadData()
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        APIManager.shared.fetchCoinAPI(query: "Bitcoin")
-
+ 
     }
     
     override func configureHierarchy() {
@@ -88,13 +91,17 @@ class SearchViewController: BaseViewController {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+//        print(list.count)
+        return list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
         
-//        cell.icon = uiima
+        print(list[indexPath.row].name)
+        cell.icon.kf.setImage(with: URL(string: list[indexPath.row].thumb))
+        cell.name.text = list[indexPath.row].name
+
         
         return cell
     }
@@ -102,11 +109,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SearchViewController: UISearchBarDelegate {
     
-    
-    
-//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-//        
-//        guard let text = searchBar.text else { return }
-//        viewModel.inputSearchBarTapped.value = text
-//    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        APIManager.shared.fetchCoinAPI { value in
+            self.list = value.coins
+            self.tableView.reloadData()
+        }
+    }
 }

@@ -8,9 +8,9 @@
 import Foundation
 
 struct Search: Decodable {
-    let coins: [Coin]
+    var coins: [Coin]
 }
 
 struct Coin: Decodable {
-    let id, name, symbol, thumb: String
+    var id, name, symbol, thumb: String
 }
