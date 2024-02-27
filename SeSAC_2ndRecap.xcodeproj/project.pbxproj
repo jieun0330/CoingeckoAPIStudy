@@ -102,16 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				C2F4F3792B8DB91600E65588 /* Colors */,
-				C2F4F3722B8DB5D500E65588 /* Images */,
 			);
 			path = DesignSystem;
-			sourceTree = "<group>";
-		};
-		C2F4F3722B8DB5D500E65588 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 		C2F4F3792B8DB91600E65588 /* Colors */ = {
