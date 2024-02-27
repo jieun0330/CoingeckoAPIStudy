@@ -19,7 +19,7 @@ class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         $0.axis = .vertical
         $0.alignment = .center
         $0.distribution = .equalSpacing
-        $0.spacing = 5
+        $0.spacing = 0
     }
     
     let name = UILabel().then {
@@ -55,17 +55,17 @@ class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         icon.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().offset(10)
-            $0.size.equalTo(40)
+            $0.size.equalTo(35)
         }
         
         stackView.snp.makeConstraints {
-            $0.leading.equalTo(icon.snp.trailing).offset(10)
-            $0.trailing.equalTo(favorites.snp.leading).offset(-10)
-            $0.verticalEdges.equalToSuperview().inset(5)
+            $0.leading.equalTo(icon.snp.trailing).offset(15)
+            $0.trailing.equalTo(favorites.snp.leading).offset(-15)
+            $0.verticalEdges.equalToSuperview().inset(10)
         }
         
         name.snp.makeConstraints {
-            $0.leading.top.equalToSuperview()
+            $0.horizontalEdges.top.equalToSuperview()
         }
         
         symbol.snp.makeConstraints {

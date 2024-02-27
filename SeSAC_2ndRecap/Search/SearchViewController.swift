@@ -38,7 +38,9 @@ class SearchViewController: BaseViewController {
         $0.delegate = self
         $0.dataSource = self
         $0.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
-        $0.rowHeight = 50
+        $0.rowHeight = 60
+        $0.separatorStyle = .none
+    
     } {
         didSet {
             tableView.reloadData()
@@ -98,6 +100,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
         
+        
         print(list[indexPath.row].name)
         cell.icon.kf.setImage(with: URL(string: list[indexPath.row].thumb))
         cell.name.text = list[indexPath.row].name
@@ -105,6 +108,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+    
 }
 
 extension SearchViewController: UISearchBarDelegate {
