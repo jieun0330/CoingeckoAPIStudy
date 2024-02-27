@@ -10,7 +10,9 @@ import Then
 
 class SearchViewController: BaseViewController {
     
-    let profileImage = UIImageView()
+    let profileImage = UIImageView().then { <#UIImageView#> in
+        <#code#>
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
