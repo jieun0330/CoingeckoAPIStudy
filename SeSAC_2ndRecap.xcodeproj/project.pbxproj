@@ -15,6 +15,7 @@
 		C2F4F35F2B8DB0CA00E65588 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F4F35D2B8DB0CA00E65588 /* LaunchScreen.storyboard */; };
 		C2F4F3682B8DB27400E65588 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3672B8DB27400E65588 /* SearchViewController.swift */; };
 		C2F4F36B2B8DB28500E65588 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F36A2B8DB28500E65588 /* BaseViewController.swift */; };
+		C2F4F36E2B8DB3D100E65588 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F36D2B8DB3D100E65588 /* Then */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2F4F36E2B8DB3D100E65588 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +107,9 @@
 			dependencies = (
 			);
 			name = SeSAC_2ndRecap;
+			packageProductDependencies = (
+				C2F4F36D2B8DB3D100E65588 /* Then */,
+			);
 			productName = SeSAC_2ndRecap;
 			productReference = C2F4F34F2B8DB0C800E65588 /* SeSAC_2ndRecap.app */;
 			productType = "com.apple.product-type.application";
@@ -133,6 +138,9 @@
 				Base,
 			);
 			mainGroup = C2F4F3462B8DB0C800E65588;
+			packageReferences = (
+				C2F4F36C2B8DB3D100E65588 /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = C2F4F3502B8DB0C800E65588 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -387,6 +395,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C2F4F36C2B8DB3D100E65588 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C2F4F36D2B8DB3D100E65588 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2F4F36C2B8DB3D100E65588 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C2F4F3472B8DB0C800E65588 /* Project object */;
 }
