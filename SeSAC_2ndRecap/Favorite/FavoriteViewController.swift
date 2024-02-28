@@ -9,8 +9,12 @@ import UIKit
 import Then
 import SnapKit
 import Kingfisher
+import RealmSwift
 
 class FavoriteViewController: BaseViewController {
+    
+    var list: Results<CoinRealmModel>!
+    let repository = CoinRepository()
 
     let profileImage = UIImageView().then {
         $0.image = .tabUser
@@ -33,6 +37,10 @@ class FavoriteViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        list = repository.favoriteItemsFilter()
+        print(list.count)
+//        list = repository.favoriteItemFilter(item: <#T##CoinModel#>)
 
     }
     
@@ -86,7 +94,7 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCollectionViewCell.identifier, for: indexPath) as! FavoriteCollectionViewCell
         
-//        cell.icon.image =
+//        cell.icon.image = list[indexPath.row].
         
         return cell
     }

@@ -9,12 +9,14 @@ import UIKit
 import Then
 import SnapKit
 import Kingfisher
+import RealmSwift
 
 class SearchViewController: BaseViewController {
     
     let viewModel = SearchViewModel()
-    var list: [Coin] = []
+    var apiResultList: [CoinAPI] = []
     let repository = CoinRepository()
+    var realmList: Results<CoinRealmModel>!
 
     let profileImage = UIImageView().then {
         $0.image = .tabUser
@@ -46,8 +48,9 @@ class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 검색결과 API 호출
         viewModel.outputCoinData.bind { data in
-            self.list = data
+            self.apiResultList = data
             self.tableView.reloadData()
         }
     }
@@ -93,12 +96,13 @@ class SearchViewController: BaseViewController {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        // API 검색 결과 수
+        return apiResultList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
-        let row = list[indexPath.row]
+        let row = apiResultList[indexPath.row]
         
         cell.icon.kf.setImage(with: URL(string: row.thumb))
         cell.name.text = row.name
@@ -111,7 +115,18 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func favoritesButtonClicked(_ sender: UIButton) {
-        repository.createItem(name: list[sender.tag].id)
+        
+        sender.setImage(.btnStarFill, for: .normal)
+        
+        
+        // repository에 포함 안되어있으면 create를 하고
+//        if realmList[sender.tag].favorites == false {
+//            repository.createFavoriteItem(name: apiResultList[sender.tag].name)
+//        } else {
+//            repository.updateFavoriteItem(item: realmList[sender.tag])
+//        }
+        // repository에 포함이 되어있으면 updateFavorite만 하고
+        
     }
 }
 

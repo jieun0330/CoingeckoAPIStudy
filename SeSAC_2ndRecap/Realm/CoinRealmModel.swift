@@ -8,12 +8,14 @@
 import Foundation
 import RealmSwift
 
-class CoinModel: Object {
+class CoinRealmModel: Object {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var name: String
+    @Persisted var favorites: Bool
     
     convenience init(name: String) {
         self.init()
         self.name = name
+        self.favorites = false
     }
 }

@@ -14,7 +14,7 @@ class SearchViewModel {
     var inputSearchBarTapped = Observable("")
     var inputFavoritesButtonTapped: Observable<Void?> = Observable(nil)
 
-    var outputCoinData: Observable<[Coin]> = Observable([])
+    var outputCoinData: Observable<[CoinAPI]> = Observable([])
     
     init() {
         inputSearchBarTapped.bind { string in
@@ -22,10 +22,5 @@ class SearchViewModel {
                 self.outputCoinData.value = value.coins
             }, query: string)
         }
-        
-//        inputFavoritesButtonTapped.bind { <#Void?#> in
-//            repository.createItem(name: <#T##String#>)
-//        }
-        
     }
 }

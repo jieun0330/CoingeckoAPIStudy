@@ -12,18 +12,52 @@ class CoinRepository {
     
     private let realm = try! Realm()
     
-    func createItem(name: String) {
+    func createFavoriteItem(name: String) {
         
-        let item = CoinModel(name: name)
+        let item = CoinRealmModel(name: name)
         
         do {
             try realm.write {
                 realm.add(item)
-                print(realm.configuration.fileURL)
+//                item.favorites.toggle()
+//                print(realm.configuration.fileURL)
             }
         } catch {
             print(error)
         }
     }
+    
+    func updateFavoriteItem(item: CoinRealmModel) {
+        do {
+            try realm.write {
+                item.favorites.toggle()
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    
+//    func updateFavoriteItem(_ item: CoinRealmModel) {
+//        do {
+//            try realm.write {
+//                item.favorites.toggle()
+//            }
+//        } catch {
+//            print(error)
+//        }
+//    }
+    
+    func favoriteItemsFilter() -> Results<CoinRealmModel> {
+        return realm.objects(CoinRealmModel.self).where {
+            $0.favorites == true
+        }
+    }
+    
+//    func favoriteItemFilter(item: CoinModel) -> Results<CoinModel>{
+//        return realm.objects(CoinModel.self).where {
+//            $0.name.contains(item.name, options: .caseInsensitive)
+//        }
+//    }
     
 }

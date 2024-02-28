@@ -30,11 +30,11 @@ extension DesignSystemFont {
         case .symbol:
             return .systemFont(ofSize: 15) // dd
         case .price:
-            return .boldSystemFont(ofSize: 17)
+            return .boldSystemFont(ofSize: 18) // ㅇㅇ
         case .priceBold:
             return .boldSystemFont(ofSize: 17)
         case .percentage:
-            return .boldSystemFont(ofSize: 17)
+            return .boldSystemFont(ofSize: 15) //dd
         case .percentageBold:
             return .boldSystemFont(ofSize: 17)
         }

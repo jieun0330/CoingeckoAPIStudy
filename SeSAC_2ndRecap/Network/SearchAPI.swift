@@ -8,9 +8,9 @@
 import Foundation
 
 struct SearchAPI: Decodable {
-    var coins: [Coin]
+    var coins: [CoinAPI]
 }
 
-struct Coin: Decodable {
+struct CoinAPI: Decodable {
     var id, name, symbol, thumb: String
 }

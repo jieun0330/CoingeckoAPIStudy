@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Then
 
 class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
@@ -13,7 +14,7 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         $0.image = UIImage(systemName: "circle")
     }
     
-    let stackView = UIStackView().then {
+    let namestackView = UIStackView().then {
         $0.axis = .vertical
         $0.alignment = .center
         $0.distribution = .equalSpacing
@@ -31,17 +32,48 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         $0.text = "BTC"
     }
     
+    let priceStackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.alignment = .center
+        $0.distribution = .equalSpacing
+        $0.spacing = 0
+    }
+    
+    let price = UILabel().then {
+        $0.text = "$69,234,245"
+        $0.font = DesignSystemFont.percentageBold.font
+    }
+    
+    let percentageBox = UIView().then {
+        $0.backgroundColor = .orange
+        $0.layer.cornerRadius = 8
+    }
+    
+    let percentage = UILabel().then {
+        $0.text = "+0.64%"
+        $0.textColor = .red
+        $0.font = DesignSystemFont.percentage.font
+    }
+    
     override init(frame: CGRect) {
         super .init(frame: frame)
     }
     
     override func configureHierarchy() {
-        [icon, stackView].forEach {
+        [icon, namestackView, priceStackView].forEach {
             contentView.addSubview($0)
         }
         
         [name, symbol].forEach {
-            stackView.addSubview($0)
+            namestackView.addSubview($0)
+        }
+        
+        [price, percentageBox].forEach {
+            priceStackView.addSubview($0)
+        }
+        
+        [percentage].forEach {
+            percentageBox.addSubview($0)
         }
     }
     
@@ -51,7 +83,7 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
             $0.size.equalTo(35)
         }
         
-        stackView.snp.makeConstraints {
+        namestackView.snp.makeConstraints {
             $0.leading.equalTo(icon.snp.trailing).offset(5)
             $0.trailing.equalToSuperview().offset(-5)
             $0.verticalEdges.equalTo(icon)
@@ -63,7 +95,27 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         
         symbol.snp.makeConstraints {
             $0.leading.bottom.equalToSuperview()
-            $0.bottom.equalToSuperview()
+        }
+        
+        priceStackView.snp.makeConstraints {
+            $0.trailing.bottom.equalToSuperview().offset(-10)
+            $0.height.equalTo(50)
+            $0.leading.equalTo(icon.snp.leading)
+        }
+        
+        price.snp.makeConstraints {
+            $0.top.trailing.equalToSuperview()
+        }
+        
+        percentageBox.snp.makeConstraints {
+            $0.bottom.trailing.equalToSuperview()
+            $0.height.equalTo(25)
+            $0.width.equalTo(70)
+        }
+        
+        percentage.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.edges.equalToSuperview().inset(5)
         }
     }
     
