@@ -65,7 +65,7 @@ class FavoriteViewController: BaseViewController {
         navigationItem.rightBarButtonItem = profileTabBarItem
     }
     
-    static func configureCollectionViewLayout() -> UICollectionViewFlowLayout {
+    static func configureCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
         let cellWidth = UIScreen.main.bounds.width - (spacing * 3)

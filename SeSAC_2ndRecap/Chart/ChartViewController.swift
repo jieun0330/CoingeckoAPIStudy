@@ -10,7 +10,7 @@ import Then
 import SnapKit
 
 class ChartViewController: BaseViewController {
-    
+
     lazy var rightFavoriteButton = UIBarButtonItem(image: .btnStar,
                                                    style: .plain,
                                                    target: self,
@@ -43,8 +43,10 @@ class ChartViewController: BaseViewController {
         $0.font = DesignSystemFont.percentage.font
     }
     
-    let collectionView = UICollectionView().then { <#UICollectionView#> in
-        <#code#>
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: ChartViewController.configureCollectionViewLayout()).then {
+        $0.delegate = self
+        $0.dataSource = self
+        $0.register(PriceCollectionViewCell.self, forCellWithReuseIdentifier: PriceCollectionViewCell.identifier)
     }
 
     override func viewDidLoad() {
@@ -53,7 +55,7 @@ class ChartViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        [icon, name, price, percentage, today].forEach {
+        [icon, name, price, percentage, today, collectionView].forEach {
             view.addSubview($0)
         }
     }
@@ -87,6 +89,12 @@ class ChartViewController: BaseViewController {
             $0.top.equalTo(percentage.snp.top)
             $0.leading.equalTo(percentage.snp.trailing)
         }
+        
+        collectionView.snp.makeConstraints {
+            $0.top.equalTo(percentage.snp.bottom).offset(30)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
+            $0.height.equalTo(150)
+        }
     }
     
     override func configureView() {
@@ -98,4 +106,29 @@ class ChartViewController: BaseViewController {
         
     }
     
+    static func configureCollectionViewLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        let spacing: CGFloat = 10
+        let cellWidth = UIScreen.main.bounds.width - (spacing * 3)
+        layout.itemSize = CGSize(width: cellWidth / 2.4, height: cellWidth / 5.7)
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = spacing
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        
+        return layout
+    }
+    
+}
+
+extension ChartViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PriceCollectionViewCell.identifier, for: indexPath) as! PriceCollectionViewCell
+        
+        return cell
+    }
 }
