@@ -15,12 +15,11 @@ class FavoriteViewController: BaseViewController {
     
     var list: Results<CoinRealmModel>!
     let repository = CoinRepository()
-
-    let profileImage = UIImageView().then {
-        $0.image = .tabUser
-        $0.layer.borderColor = DesignSystemColor.purple.color.cgColor
-        $0.layer.borderWidth = 2
-    }
+    
+    lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser,
+                                                 style: .plain,
+                                                 target: self,
+                                                 action: #selector(profileTabBarItemClicked))
     
     let mainTitle = UILabel().then {
         $0.text = "Favorite Coin"
@@ -39,25 +38,17 @@ class FavoriteViewController: BaseViewController {
         super.viewDidLoad()
         
         list = repository.favoriteItemsFilter()
-        print(list.count)
-//        list = repository.favoriteItemFilter(item: <#T##CoinModel#>)
-
     }
     
     override func configureHierarchy() {
-        [profileImage, mainTitle, collectionView].forEach {
+        [mainTitle, collectionView].forEach {
             view.addSubview($0)
         }    }
     
     override func configureConstraints() {
-        profileImage.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.trailing.equalToSuperview().inset(20)
-            $0.size.equalTo(35)
-        }
         
         mainTitle.snp.makeConstraints {
-            $0.top.equalTo(profileImage.snp.bottom).offset(10)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(30)
         }
@@ -71,6 +62,7 @@ class FavoriteViewController: BaseViewController {
     
     override func configureView() {
         view.backgroundColor = DesignSystemColor.white.color
+        navigationItem.rightBarButtonItem = profileTabBarItem
     }
     
     static func configureCollectionViewLayout() -> UICollectionViewFlowLayout {
@@ -83,6 +75,10 @@ class FavoriteViewController: BaseViewController {
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: spacing, left: 0, bottom: 0, right: spacing)
         return layout
+    }
+    
+    @objc func profileTabBarItemClicked() {
+        
     }
 }
 
@@ -98,4 +94,15 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = ChartViewController()
+//        self.present(vc, animated: true)
+//        vc.modalPresentationStyle = .fullScreen
+//        present(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
+//        print(#function)
+//        navigationController?.popViewController(animated: <#T##Bool#>)
+    }
+    
 }

@@ -18,11 +18,10 @@ class SearchViewController: BaseViewController {
     let repository = CoinRepository()
     var realmList: Results<CoinRealmModel>!
 
-    let profileImage = UIImageView().then {
-        $0.image = .tabUser
-        $0.layer.borderColor = DesignSystemColor.purple.color.cgColor
-        $0.layer.borderWidth = 2
-    }
+    lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser,
+                                                 style: .plain,
+                                                 target: self,
+                                                 action: #selector(profileTabBarItemClicked))
     
     let mainTitle = UILabel().then {
         $0.text = "Search"
@@ -56,20 +55,15 @@ class SearchViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        [profileImage, mainTitle, searchBar, tableView].forEach {
+        [mainTitle, searchBar, tableView].forEach {
             view.addSubview($0)
         }
     }
     
     override func configureConstraints() {
-        profileImage.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.trailing.equalToSuperview().inset(20)
-            $0.size.equalTo(35)
-        }
-        
+
         mainTitle.snp.makeConstraints {
-            $0.top.equalTo(profileImage.snp.bottom).offset(10)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(30)
         }
@@ -89,6 +83,11 @@ class SearchViewController: BaseViewController {
     
     override func configureView() {
         view.backgroundColor = DesignSystemColor.white.color
+        navigationItem.rightBarButtonItem = profileTabBarItem
+    }
+    
+    @objc func profileTabBarItemClicked() {
+        
     }
 
 }

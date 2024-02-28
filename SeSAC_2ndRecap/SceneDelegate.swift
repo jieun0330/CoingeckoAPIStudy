@@ -17,14 +17,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarController = UITabBarController()
         
 //        let trendingView =
-        let searchView = SearchViewController()
-        let favoritesView = FavoriteViewController()
+        let searchView = UINavigationController(rootViewController: SearchViewController())
+        let favoritesView = UINavigationController(rootViewController: FavoriteViewController())
 //        let chartView =
         
         window?.rootViewController = tabBarController
         tabBarController.setViewControllers([searchView, favoritesView], animated: false)
         
-        searchView.tabBarItem = UITabBarItem(title: "", image: .tabSearch, tag: 1)
+        searchView.tabBarItem = UITabBarItem(title: "", image: .tabSearchInactive, selectedImage: .tabSearch.withRenderingMode(.alwaysOriginal))
         favoritesView.tabBarItem = UITabBarItem(title: "", image: .tabPortfolio, tag: 2)
         
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
