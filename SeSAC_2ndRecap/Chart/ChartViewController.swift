@@ -42,6 +42,10 @@ class ChartViewController: BaseViewController {
         $0.text = "Today"
         $0.font = DesignSystemFont.percentage.font
     }
+    
+    let collectionView = UICollectionView().then { <#UICollectionView#> in
+        <#code#>
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,27 +60,27 @@ class ChartViewController: BaseViewController {
     
     override func configureConstraints() {
         icon.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.leading.equalToSuperview().offset(10)
+            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            $0.leading.equalToSuperview().offset(20)
             $0.size.equalTo(35)
         }
         
         name.snp.makeConstraints {
-            $0.leading.equalTo(icon.snp.trailing)
+            $0.leading.equalTo(icon.snp.trailing).offset(10)
             $0.top.equalTo(icon.snp.top)
             $0.trailing.equalToSuperview().inset(10)
         }
         
         price.snp.makeConstraints {
-            $0.leading.equalTo(icon.snp.leading)
+            $0.leading.equalTo(icon.snp.leading).offset(5)
             $0.top.equalTo(icon.snp.bottom).offset(10)
             $0.trailing.equalToSuperview().inset(10)
         }
         
         percentage.snp.makeConstraints {
-            $0.leading.equalTo(icon.snp.leading)
+            $0.leading.equalTo(price.snp.leading)
             $0.top.equalTo(price.snp.bottom).offset(10)
-            $0.size.equalTo(30)
+            $0.width.equalTo(70)
         }
         
         today.snp.makeConstraints {
