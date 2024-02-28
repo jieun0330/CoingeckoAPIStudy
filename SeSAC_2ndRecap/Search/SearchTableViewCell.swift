@@ -11,6 +11,8 @@ import SnapKit
 
 class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     
+    let repository = CoinRepository()
+    
     let icon = UIImageView().then { _ in
         
     }
@@ -31,8 +33,8 @@ class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         $0.textColor = UIColor.gray
     }
     
-    let favorites = UIButton().then { _ in
-
+    lazy var favorites = UIButton().then {
+        $0.addTarget(self, action: #selector(favoritesButtonClicked), for: .touchUpInside)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -79,6 +81,10 @@ class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     override func configureView() {
         contentView.backgroundColor = DesignSystemColor.white.color
+    }
+    
+    @objc func favoritesButtonClicked() {
+//        repository.createItem(name: <#T##String#>)
     }
     
     required init?(coder: NSCoder) {

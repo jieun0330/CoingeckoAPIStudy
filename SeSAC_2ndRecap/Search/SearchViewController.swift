@@ -14,6 +14,7 @@ class SearchViewController: BaseViewController {
     
     let viewModel = SearchViewModel()
     var list: [Coin] = []
+    let repository = CoinRepository()
 
     let profileImage = UIImageView().then {
         $0.image = .tabUser
@@ -86,6 +87,7 @@ class SearchViewController: BaseViewController {
     override func configureView() {
         view.backgroundColor = DesignSystemColor.white.color
     }
+
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
@@ -100,14 +102,17 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.icon.kf.setImage(with: URL(string: row.thumb))
         cell.name.text = row.name
+        cell.symbol.text = row.symbol
+        cell.favorites.setImage(.btnStar, for: .normal)
+        cell.favorites.addTarget(self, action: #selector(favoritesButtonClicked), for: .touchUpInside)
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+    @objc func favoritesButtonClicked(_ sender: UIButton) {
+        print(#function)
+//        repository.createItem(name: list[sender.tag].id)
     }
-    
 }
 
 extension SearchViewController: UISearchBarDelegate {

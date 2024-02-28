@@ -9,7 +9,10 @@ import Foundation
 
 class SearchViewModel {
     
+    let repository = CoinRepository()
+    
     var inputSearchBarTapped = Observable("")
+    var inputFavoritesButtonTapped: Observable<Void?> = Observable(nil)
 
     var outputCoinData: Observable<[Coin]> = Observable([])
     
@@ -19,5 +22,10 @@ class SearchViewModel {
                 self.outputCoinData.value = value.coins
             }, query: string)
         }
+        
+//        inputFavoritesButtonTapped.bind { <#Void?#> in
+//            repository.createItem(name: <#T##String#>)
+//        }
+        
     }
 }
