@@ -39,6 +39,8 @@
 		C2F4F3C82B8F06FD00E65588 /* CoinRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3C72B8F06FD00E65588 /* CoinRepository.swift */; };
 		C2F4F3CD2B8F2CE600E65588 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3CC2B8F2CE600E65588 /* ChartViewController.swift */; };
 		C2F4F3CF2B8F3D7600E65588 /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3CE2B8F3D7600E65588 /* PriceCollectionViewCell.swift */; };
+		C2F4F3D22B8F445500E65588 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F3D12B8F445500E65588 /* DGCharts */; };
+		C2F4F3D42B8F445500E65588 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F3D32B8F445500E65588 /* DGChartsDynamic */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,12 +78,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2F4F3D22B8F445500E65588 /* DGCharts in Frameworks */,
 				C2F4F3C12B8F033400E65588 /* Realm in Frameworks */,
 				C2F4F36E2B8DB3D100E65588 /* Then in Frameworks */,
 				C2F4F3C32B8F033400E65588 /* RealmSwift in Frameworks */,
 				C2F4F3852B8DC37100E65588 /* Alamofire in Frameworks */,
 				C2F4F3762B8DB83F00E65588 /* SnapKit in Frameworks */,
 				C2F4F3782B8DB83F00E65588 /* SnapKit-Dynamic in Frameworks */,
+				C2F4F3D42B8F445500E65588 /* DGChartsDynamic in Frameworks */,
 				C2F4F3962B8DEAC700E65588 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,6 +238,8 @@
 				C2F4F3952B8DEAC700E65588 /* Kingfisher */,
 				C2F4F3C02B8F033400E65588 /* Realm */,
 				C2F4F3C22B8F033400E65588 /* RealmSwift */,
+				C2F4F3D12B8F445500E65588 /* DGCharts */,
+				C2F4F3D32B8F445500E65588 /* DGChartsDynamic */,
 			);
 			productName = SeSAC_2ndRecap;
 			productReference = C2F4F34F2B8DB0C800E65588 /* SeSAC_2ndRecap.app */;
@@ -269,6 +275,7 @@
 				C2F4F3832B8DC37100E65588 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				C2F4F3942B8DEAC700E65588 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				C2F4F3BF2B8F033400E65588 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				C2F4F3D02B8F445500E65588 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = C2F4F3502B8DB0C800E65588 /* Products */;
 			projectDirPath = "";
@@ -583,6 +590,14 @@
 				kind = branch;
 			};
 		};
+		C2F4F3D02B8F445500E65588 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -620,6 +635,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C2F4F3BF2B8F033400E65588 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		C2F4F3D12B8F445500E65588 /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2F4F3D02B8F445500E65588 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
+		};
+		C2F4F3D32B8F445500E65588 /* DGChartsDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2F4F3D02B8F445500E65588 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGChartsDynamic;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
