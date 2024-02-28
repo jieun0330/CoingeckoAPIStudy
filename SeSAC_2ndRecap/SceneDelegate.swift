@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let chartView =
         
         window?.rootViewController = tabBarController
-        tabBarController.setViewControllers([searchView, favoritesView], animated: true)
+        tabBarController.setViewControllers([searchView, favoritesView], animated: false)
         
         searchView.tabBarItem = UITabBarItem(title: "", image: .tabSearch, tag: 1)
         favoritesView.tabBarItem = UITabBarItem(title: "", image: .tabPortfolio, tag: 2)

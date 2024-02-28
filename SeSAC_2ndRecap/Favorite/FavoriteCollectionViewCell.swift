@@ -10,7 +10,7 @@ import UIKit
 class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let icon = UIImageView().then {
-        $0.image = UIImage(systemName: "heart")
+        $0.image = UIImage(systemName: "circle")
     }
     
     let stackView = UIStackView().then {
@@ -68,7 +68,14 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     override func configureView() {
+        // cell shadow + cornerRadis 같이 주는 방법 https://roniruny.tistory.com/184
         contentView.backgroundColor = DesignSystemColor.white.color
+        contentView.layer.cornerRadius = 15
+        contentView.layer.shadowColor = DesignSystemColor.black.color.cgColor
+        layer.shadowOpacity = 0.1
+        layer.shadowRadius = 2
+        layer.shadowOffset = CGSize(width: 3, height: 3)
+        layer.masksToBounds = false
     }
     
     required init?(coder: NSCoder) {
