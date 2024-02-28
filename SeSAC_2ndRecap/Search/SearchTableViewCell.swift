@@ -11,7 +11,7 @@ import SnapKit
 
 class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    var icon = UIImageView().then { _ in
+    let icon = UIImageView().then { _ in
         
     }
     
@@ -67,8 +67,7 @@ class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         }
         
         symbol.snp.makeConstraints {
-            $0.leading.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.leading.bottom.equalToSuperview()
         }
         
         favorites.snp.makeConstraints {
