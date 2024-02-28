@@ -7,7 +7,6 @@
 
 import Foundation
 
-// Coingecko.coins로 접근을 해야 Coin 배열안을 접근할 수 있다 ?
 struct SearchAPI: Decodable {
     var coins: [Coin]
 }

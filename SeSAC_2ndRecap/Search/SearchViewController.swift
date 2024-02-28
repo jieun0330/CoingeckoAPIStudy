@@ -49,7 +49,6 @@ class SearchViewController: BaseViewController {
             self.list = data
             self.tableView.reloadData()
         }
- 
     }
     
     override func configureHierarchy() {
@@ -87,8 +86,6 @@ class SearchViewController: BaseViewController {
     override func configureView() {
         view.backgroundColor = DesignSystemColor.white.color
     }
-    
-
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
@@ -99,7 +96,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
-        
         let row = list[indexPath.row]
         
         cell.icon.kf.setImage(with: URL(string: row.thumb))
@@ -115,6 +111,5 @@ extension SearchViewController: UISearchBarDelegate {
         
         guard let searchBarText = searchBar.text else { return }
         viewModel.inputSearchBarTapped.value = searchBarText
-        
     }
 }

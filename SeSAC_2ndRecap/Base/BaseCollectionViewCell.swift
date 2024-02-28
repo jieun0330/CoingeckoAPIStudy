@@ -1,16 +1,15 @@
 //
-//  BaseTableViewCell.swift
+//  BaseCollectionViewCell.swift
 //  SeSAC_2ndRecap
 //
-//  Created by 박지은 on 2/27/24.
+//  Created by 박지은 on 2/28/24.
 //
 
 import UIKit
 
-class BaseTableViewCell: UITableViewCell {
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super .init(style: style, reuseIdentifier: reuseIdentifier)
+class BaseCollectionViewCell: UICollectionViewCell {
+    override init(frame: CGRect) {
+        super .init(frame: frame)
         
         configureHierarchy()
         configureConstraints()

@@ -11,8 +11,8 @@ import SnapKit
 
 class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    var icon = UIImageView().then {
-        $0.image = UIImage(systemName: "circle")
+    var icon = UIImageView().then { _ in
+        
     }
     
     let stackView = UIStackView().then {
@@ -23,18 +23,16 @@ class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     let name = UILabel().then {
-        $0.text = "Bitcoin"
         $0.font = DesignSystemFont.coinName.font
     }
     
     let symbol = UILabel().then {
-        $0.text = "BTC"
         $0.font = DesignSystemFont.symbol.font
         $0.textColor = UIColor.gray
     }
     
-    let favorites = UIButton().then {
-        $0.setImage(UIImage(named: "btn_star"), for: .normal)
+    let favorites = UIButton().then { _ in
+
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
