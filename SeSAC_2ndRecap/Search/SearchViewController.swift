@@ -103,6 +103,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.icon.kf.setImage(with: URL(string: row.thumb))
         cell.name.text = row.name
         cell.symbol.text = row.symbol
+        cell.favorites.tag = indexPath.row
         cell.favorites.setImage(.btnStar, for: .normal)
         cell.favorites.addTarget(self, action: #selector(favoritesButtonClicked), for: .touchUpInside)
         
@@ -110,8 +111,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func favoritesButtonClicked(_ sender: UIButton) {
-        print(#function)
-//        repository.createItem(name: list[sender.tag].id)
+        repository.createItem(name: list[sender.tag].id)
     }
 }
 
