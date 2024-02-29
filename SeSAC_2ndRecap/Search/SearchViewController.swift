@@ -10,6 +10,7 @@ import Then
 import SnapKit
 import Kingfisher
 import RealmSwift
+import Toast
 
 class SearchViewController: BaseViewController {
     
@@ -139,6 +140,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             print("중복")
         } else {
             repository.createFavoriteItem(name: apiResultList[sender.tag].name)
+            self.view.makeToast("즐겨찾기에 추가되었습니다")
         }
     }
 }
