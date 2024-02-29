@@ -175,11 +175,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         }) {
             print("중복")
             self.view.makeToast("즐겨찾기에서 삭제되었습니다")
+            tableView.reloadData()
         } else {
             // repository에 저장하기
             repository.createFavoriteItem(saveToRealm)
             // toast 메세지 띄워주기
             self.view.makeToast("즐겨찾기에 추가되었습니다")
+            tableView.reloadData()
         }
     }
 }
