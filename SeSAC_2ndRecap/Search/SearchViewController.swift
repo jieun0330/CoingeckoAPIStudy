@@ -62,18 +62,18 @@ class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 4. inputViewDidLoadTrigger
         viewModel.inputViewDidLoadTrigger.value = ()
-        viewModel.outputCoinData.bind { data in
-            self.apiResultList = data
+        
+        viewModel.outputList.bind { data in
+            self.realmList = data
             self.tableView.reloadData()
         }
         
         // 검색결과 API 호출
-//        viewModel.outputCoinData.bind { data in
-//            self.apiResultList = data
-//            self.tableView.reloadData()
-//        }
+        viewModel.outputCoinData.bind { data in
+            self.apiResultList = data
+            self.tableView.reloadData()
+        }
         
     }
     
@@ -139,9 +139,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func favoritesButtonClicked(_ sender: UIButton) {
+        
+//        print("count", realmList.count)
 
         if repository.itemFilter(name: apiResultList[sender.tag].name).first?.name == apiResultList[sender.tag].name {
-            print("중복")
+            repository.deleteItem(realmList[sender.tag])
         } else {
             repository.createFavoriteItem(name: apiResultList[sender.tag].name)
             sender.setImage(.btnStarFill, for: .normal)

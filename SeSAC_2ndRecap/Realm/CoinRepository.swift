@@ -12,6 +12,7 @@ class CoinRepository {
     
     private let realm = try! Realm()
     
+    // Crate
     func createFavoriteItem(name: String) {
         let item = CoinRealmModel(name: name)
         
@@ -35,6 +36,10 @@ class CoinRepository {
 //    }
     
     // Read
+    func fetchAllItem() -> [CoinRealmModel] {
+        let result = realm.objects(CoinRealmModel.self)
+        return Array(result)
+    }
     
     func itemFilter(name: String) -> Results<CoinRealmModel> {
         return realm.objects(CoinRealmModel.self).where {
@@ -42,10 +47,19 @@ class CoinRepository {
         }
     }
     
-//    func fetchAllItem(name: String) -> [CoinRealmModel] {
-//        let result = realm.objects(CoinRealmModel.self)
-//        return Array(result)
-//    }
+    // Delete
+    func deleteItem(_ item: CoinRealmModel) {
+        do {
+            try realm.write {
+                realm.delete(item)
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    
+
     
 //    func fetchSearchedItem() -> [CoinRealmModel] {
 //        let result = realm.objects(CoinRealmModel.self)

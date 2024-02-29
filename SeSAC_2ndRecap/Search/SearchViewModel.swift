@@ -35,16 +35,16 @@ class SearchViewModel {
 //    var outputList: Observable<Results<CoinRealmModel>>!
     
     // 빈 배열에 담아서 보여줄거니까
-//    var outputList: Observable<[CoinRealmModel]> = Observable([])
+    var outputList: Observable<[CoinRealmModel]> = Observable([])
     
     init() {
         
         // 6. CoinRealmModel 초기화를 위해 만든거니까 CoinRealmModel을 fetch(?)할 수 있는 repository를 만든다
         
-//        inputViewDidLoadTrigger.bind { _ in
-//            let data = self.repository.fetchAllItem()
-//            self.outputList.value = data
-//        }
+        inputViewDidLoadTrigger.bind { _ in
+            let data = self.repository.fetchAllItem()
+            self.outputList.value = data
+        }
         
         inputSearchBarTapped.bind { string in
             APIManager.shared.fetchCoinAPI(completionHandler: { value in
