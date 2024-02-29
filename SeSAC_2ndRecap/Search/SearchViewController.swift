@@ -15,7 +15,9 @@ import Toast
 class SearchViewController: BaseViewController {
     
     let viewModel = SearchViewModel()
-    var apiResultList: [CoinAPI] = []
+    var coinInfoAPIResultList: [InfoAPI] = []
+//    var coinPriceAPIResultList: PriceAPI = []
+    
     let repository = CoinRepository()
     // 3. 처음에는
     // var realmList: Results<CoinRealmModel>!
@@ -27,7 +29,8 @@ class SearchViewController: BaseViewController {
     // 추측: CoinRealmModel의 개수가 필요할때는 Results가 필요한데 지금은 favorites의 true, false 여부인 친구들만 알면 되니까 배열?
     // Results<CoinRealmModel>에서도 충분히 가져올 수 있는거 아닌가?
     var realmList: [CoinRealmModel] = []
-//    var realmList: Results<CoinRealmModel>!
+    
+
 
     lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser,
                                                  style: .plain,
@@ -53,27 +56,37 @@ class SearchViewController: BaseViewController {
         $0.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
         $0.rowHeight = 60
         $0.separatorStyle = .none
-    } {
-        didSet {
-            tableView.reloadData()
-        }
     }
+//    {
+//        didSet {
+//            tableView.reloadData()
+//        }
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         viewModel.inputViewDidLoadTrigger.value = ()
         
-        viewModel.outputList.bind { data in
-            self.realmList = data
+//        viewModel.outputList.bind { data in
+//            self.realmList = data
+//            self.tableView.reloadData()
+//        }
+        
+        // 검색결과 API 호출
+        viewModel.outputCoinInfoData.bind { data in
+            self.coinInfoAPIResultList = data
             self.tableView.reloadData()
         }
         
-        // 검색결과 API 호출
-        viewModel.outputCoinData.bind { data in
-            self.apiResultList = data
-            self.tableView.reloadData()
-        }
+//        viewModel.outputCoinPriceData.bind { data in
+//            self.coinPriceAPIResultList = data
+//
+//        }
+        
+//        viewModel.outputCoinPriceData.bind { data in
+//            self.coinPriceAPIResultList = data
+//        }
         
     }
     
@@ -118,12 +131,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // API 검색 결과 수
-        return apiResultList.count
+        return coinInfoAPIResultList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
-        let row = apiResultList[indexPath.row]
+        let row = coinInfoAPIResultList[indexPath.row]
         
         cell.icon.kf.setImage(with: URL(string: row.large))
         cell.name.text = row.name
@@ -151,10 +164,36 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = ChartViewController()
         self.navigationController?.pushViewController(vc, animated: true)
         
-        let row = apiResultList[indexPath.row]
+        let coinInfo = coinInfoAPIResultList[indexPath.row]
+//        let coinPrice = coinPriceAPIResultList
         
-        vc.name.text = row.name
-        vc.icon.kf.setImage(with: URL(string: row.large))
+
+        
+        vc.name.text = coinInfo.name
+        vc.icon.kf.setImage(with: URL(string: coinInfo.large))
+        viewModel.inputDidSelectRow.value = coinInfo.id
+//        vc.price.text = "여기"
+        
+        
+//        vc.price.text = coinPrice[0].id
+//        print("coinPrice", coinPrice)
+        
+//        print("1", coinInfo.id)
+//        print("여기에도 보여야될텐데", coinPriceAPIResultList)
+        
+//        APIManager.shared.fetchCoinPriceAPI()
+        
+//        print("coinInfo.name", coinInfo.name) // 1.
+//        print("coinInfo.id", coinInfo.id) // 1.
+        
+        
+        
+        
+//        vc.price.text = "\(vc.coinPriceAPIResult[indexPath.row].currentPrice)"
+//            print(vc.coinPriceAPIResult[indexPath.row].currentPrice)
+        
+//        print("row.name", row.name)
+//        coinPriceAPIResultList
         
     }
     
@@ -191,6 +230,12 @@ extension SearchViewController: UISearchBarDelegate {
         
         guard let searchBarText = searchBar.text else { return }
         viewModel.inputSearchBarTapped.value = searchBarText
+        
+        
 //        tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        tableView.
     }
 }

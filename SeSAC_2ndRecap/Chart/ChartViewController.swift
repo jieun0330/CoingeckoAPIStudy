@@ -9,10 +9,12 @@ import UIKit
 import Then
 import SnapKit
 import DGCharts
+import RealmSwift
 
 class ChartViewController: BaseViewController {
     
-    
+    let viewModel = SearchViewModel()
+    var coinPriceAPIResult: [PriceAPI] = []
     
     lazy var rightFavoriteButton = UIBarButtonItem(image: .btnStar,
                                                    style: .plain,
@@ -32,7 +34,7 @@ class ChartViewController: BaseViewController {
     }
     
     let price = UILabel().then {
-        $0.text = "$69,234,245"
+//        $0.text = "$69,234,245"
         $0.font = DesignSystemFont.main.font
     }
     
@@ -55,6 +57,10 @@ class ChartViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        viewModel.outputCoinPriceData.bind { data in
+//            self.coinPriceAPIResult = data
+//        }
 
     }
     
@@ -104,6 +110,8 @@ class ChartViewController: BaseViewController {
     override func configureView() {
         view.backgroundColor = .white
         navigationItem.title = ""
+        
+//        name.text = coinPriceAPIResult
     }
     
     @objc func rightFavoriteButtonClicked() {

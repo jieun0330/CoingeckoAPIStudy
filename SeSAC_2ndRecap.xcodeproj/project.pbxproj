@@ -42,6 +42,7 @@
 		C2F4F3D22B8F445500E65588 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F3D12B8F445500E65588 /* DGCharts */; };
 		C2F4F3D42B8F445500E65588 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F3D32B8F445500E65588 /* DGChartsDynamic */; };
 		C2F4F4062B90567C00E65588 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F4052B90567C00E65588 /* Toast */; };
+		C2F4F4082B909F9100E65588 /* PriceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F4072B909F9100E65588 /* PriceAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		C2F4F3C72B8F06FD00E65588 /* CoinRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRepository.swift; sourceTree = "<group>"; };
 		C2F4F3CC2B8F2CE600E65588 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		C2F4F3CE2B8F3D7600E65588 /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
+		C2F4F4072B909F9100E65588 /* PriceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 			children = (
 				C2F4F3812B8DC35C00E65588 /* APIManager.swift */,
 				C2F4F3862B8DC42300E65588 /* SearchAPI.swift */,
+				C2F4F4072B909F9100E65588 /* PriceAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				C2F4F3822B8DC35C00E65588 /* APIManager.swift in Sources */,
 				C2F4F3902B8DE50C00E65588 /* SearchViewModel.swift in Sources */,
 				C2F4F3CD2B8F2CE600E65588 /* ChartViewController.swift in Sources */,
+				C2F4F4082B909F9100E65588 /* PriceAPI.swift in Sources */,
 				C2F4F39E2B8EB2DD00E65588 /* FavoriteCollectionViewCell.swift in Sources */,
 				C2F4F3532B8DB0C800E65588 /* AppDelegate.swift in Sources */,
 				C2F4F38A2B8DC68700E65588 /* Protocol.swift in Sources */,
