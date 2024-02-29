@@ -30,18 +30,18 @@ class FavoriteViewController: BaseViewController {
         $0.delegate = self
         $0.dataSource = self
         $0.register(FavoriteCollectionViewCell.self, forCellWithReuseIdentifier: FavoriteCollectionViewCell.identifier)
-
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func configureHierarchy() {
         [mainTitle, collectionView].forEach {
             view.addSubview($0)
-        }    }
+        }
+    }
     
     override func configureConstraints() {
         
@@ -87,7 +87,7 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCollectionViewCell.identifier, for: indexPath) as! FavoriteCollectionViewCell
-            
+        
         return cell
     }
     

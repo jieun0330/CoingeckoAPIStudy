@@ -29,12 +29,9 @@ class ChartViewController: BaseViewController {
     
     var name = UILabel().then {
         $0.font = DesignSystemFont.main.font
-//        $0.text = "Solona"
-//        $0.text = APIManager.shared.
     }
     
     let price = UILabel().then {
-//        $0.text = "$69,234,245"
         $0.font = DesignSystemFont.main.font
     }
     
@@ -54,14 +51,10 @@ class ChartViewController: BaseViewController {
         $0.dataSource = self
         $0.register(PriceCollectionViewCell.self, forCellWithReuseIdentifier: PriceCollectionViewCell.identifier)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        viewModel.outputCoinPriceData.bind { data in
-//            self.coinPriceAPIResult = data
-//        }
-
     }
     
     override func configureHierarchy() {
@@ -110,8 +103,6 @@ class ChartViewController: BaseViewController {
     override func configureView() {
         view.backgroundColor = .white
         navigationItem.title = ""
-        
-//        name.text = coinPriceAPIResult
     }
     
     @objc func rightFavoriteButtonClicked() {
@@ -129,7 +120,6 @@ class ChartViewController: BaseViewController {
         
         return layout
     }
-    
 }
 
 extension ChartViewController: UICollectionViewDelegate, UICollectionViewDataSource {

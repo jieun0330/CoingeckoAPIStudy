@@ -84,7 +84,7 @@ class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     @objc func favoritesButtonClicked() {
-
+        
     }
     
     required init?(coder: NSCoder) {

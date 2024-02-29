@@ -30,7 +30,6 @@
 		C2F4F3932B8DE58000E65588 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3922B8DE58000E65588 /* Observable.swift */; };
 		C2F4F3962B8DEAC700E65588 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F3952B8DEAC700E65588 /* Kingfisher */; };
 		C2F4F39A2B8EAEC200E65588 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3992B8EAEC200E65588 /* FavoriteViewController.swift */; };
-		C2F4F39C2B8EAEF900E65588 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F39B2B8EAEF900E65588 /* Images.swift */; };
 		C2F4F39E2B8EB2DD00E65588 /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F39D2B8EB2DD00E65588 /* FavoriteCollectionViewCell.swift */; };
 		C2F4F3A02B8EB2EA00E65588 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F39F2B8EB2EA00E65588 /* BaseCollectionViewCell.swift */; };
 		C2F4F3C12B8F033400E65588 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F3C02B8F033400E65588 /* Realm */; };
@@ -66,7 +65,6 @@
 		C2F4F38F2B8DE50C00E65588 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		C2F4F3922B8DE58000E65588 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		C2F4F3992B8EAEC200E65588 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
-		C2F4F39B2B8EAEF900E65588 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		C2F4F39D2B8EB2DD00E65588 /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		C2F4F39F2B8EB2EA00E65588 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C2F4F3C52B8F036400E65588 /* CoinRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRealmModel.swift; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 			children = (
 				C2F4F37A2B8DB98200E65588 /* Colors.swift */,
 				C2F4F38D2B8DDCC200E65588 /* Fonts.swift */,
-				C2F4F39B2B8EAEF900E65588 /* Images.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -325,7 +322,6 @@
 				C2F4F39E2B8EB2DD00E65588 /* FavoriteCollectionViewCell.swift in Sources */,
 				C2F4F3532B8DB0C800E65588 /* AppDelegate.swift in Sources */,
 				C2F4F38A2B8DC68700E65588 /* Protocol.swift in Sources */,
-				C2F4F39C2B8EAEF900E65588 /* Images.swift in Sources */,
 				C2F4F3C82B8F06FD00E65588 /* CoinRepository.swift in Sources */,
 				C2F4F3A02B8EB2EA00E65588 /* BaseCollectionViewCell.swift in Sources */,
 				C2F4F3682B8DB27400E65588 /* SearchViewController.swift in Sources */,
