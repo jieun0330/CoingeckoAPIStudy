@@ -26,11 +26,11 @@ class SearchViewModel {
     
     init() {
         
-        inputViewDidLoadTrigger.bind { _ in
-            let data = self.repository.fetchAllItem()
-            self.outputList.value = data
-            print("1")
-        }
+//        inputViewDidLoadTrigger.bind { _ in
+//            let data = self.repository.fetchAllItem()
+//            self.outputList.value = data
+//            print("data", data)
+//        }
         
         // 검색했을 때
         inputSearchBarTapped.bind { string in

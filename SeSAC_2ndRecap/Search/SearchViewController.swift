@@ -48,7 +48,7 @@ class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.inputViewDidLoadTrigger.value = ()
+//        viewModel.inputViewDidLoadTrigger.value = ()
         
         // 검색결과 API 호출
         viewModel.outputCoinInfoData.bind { data in
@@ -110,7 +110,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.symbol.text = row.symbol
         cell.favorites.tag = indexPath.row
         
-        if repository.itemFilter(item: row.name).first?.name == row.name {
+        // Realm에 api 결과가 속해있으면
+        if repository.readItemName(item: row.name).first?.name == row.name {
+            // ⭐️ 표시
             cell.favorites.setImage(.btnStarFill, for: .normal)
         } else {
             cell.favorites.setImage(.btnStar, for: .normal)
@@ -133,10 +135,52 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     @objc func favoritesButtonClicked(_ sender: UIButton) {
         
-        let data = CoinRealmModel(name: coinInfoAPIResultList[sender.tag].name)
-        repository.createFavoriteItem(data)
+        // 즐겨찾기 버튼을 눌렀을 때 해당 셀의 name을
+        // 형식에 맞게 저장해주기 위한 data
+        let saveToRealm = CoinRealmModel(name: coinInfoAPIResultList[sender.tag].name)
+//        print("saveToRealm", saveToRealm)
+        /*
+         data CoinRealmModel {
+             id = 65e0b314dd97ec12c15af07e;
+             name = WhiteBIT Coin;
+             favorites = 0;
+         }
+         */
         
-        self.view.makeToast("즐겨찾기에 추가되었습니다") // toast
+        // 실제 Realm에 저장되어있는 data
+        let realmDatas = repository.readItemName(item: coinInfoAPIResultList[sender.tag].name)
+//        print("realmDatas", realmDatas)
+        /*
+         item Results<CoinRealmModel> <0x109a46550> (
+             [0] CoinRealmModel {
+                 id = 65e0aa1d2831eeee2da3c033;
+                 name = WhiteBIT Coin;
+                 favorites = 0;
+             },
+         */
+        
+//        if saveToRealm.name == realmDatas[0].name { // item[0] -> repo에 아무것도 없을 수 있으니까 오류
+        // 그리고 item[0]일 수가 없지, 계속 쌓이니까
+        if realmDatas.contains(where: { data in
+            print("data", data)
+            repository.deleteItem(item: data)
+            /*
+             data CoinRealmModel {
+                 id = 65e0ad3a6a116db69771a768;
+                 name = Whiteheart;
+                 favorites = 0;
+             }
+             */
+            return true
+        }) {
+            print("중복")
+            self.view.makeToast("즐겨찾기에서 삭제되었습니다")
+        } else {
+            // repository에 저장하기
+            repository.createFavoriteItem(saveToRealm)
+            // toast 메세지 띄워주기
+            self.view.makeToast("즐겨찾기에 추가되었습니다")
+        }
     }
 }
 
