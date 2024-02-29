@@ -17,6 +17,7 @@ class SearchViewController: BaseViewController {
     let viewModel = SearchViewModel()
     let repository = CoinRepository()
     var coinInfoAPIResultList: [InfoAPI] = []
+    var coinPriceAPIResultList: [PriceAPI] = []
     var realmList: [CoinRealmModel] = []
     
     lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser,
@@ -34,6 +35,9 @@ class SearchViewController: BaseViewController {
         $0.backgroundImage = UIImage()
         $0.layer.cornerRadius = 10
         $0.delegate = self
+        // [UIKeyboardTaskQueue lockWhenReadyForMainThread] timeout waiting for task on queue 뜨는 오류로 키보드가 등장할 때 앱 동작에 문제가 발생, '수정 제안'이 등장할 때 문제가 있어서 '수정 제안' 자체를 숨기는 두가지 코드
+        $0.autocorrectionType = .no
+        $0.spellCheckingType = .no
     }
     
     lazy var tableView = UITableView().then {
@@ -55,6 +59,16 @@ class SearchViewController: BaseViewController {
             self.coinInfoAPIResultList = data
             self.tableView.reloadData()
         }
+        
+        //
+        viewModel.outputCoinPriceData.bind { data in
+            print("data", data)
+//            self.coinPriceAPIResultList[0] = data
+            /*
+             data [SeSAC_2ndRecap.Price(id: "whiteheart", symbol: "white", name: "Whiteheart", image: "https://assets.coingecko.com/coins/images/13484/large/whiteheart.png?1696513245", currentPrice: 7774341, high24H: 7937170, low24H: 7346073, priceChangePercentage24H: 4.88268, ath: 7937170, athDate: "2024-02-29T16:45:38.733Z", roi: nil, lastUpdated: "2024-02-29T18:28:39.829Z")]
+             */
+        }
+        
     }
     
     override func configureHierarchy() {
@@ -124,6 +138,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        
         let vc = ChartViewController()
         self.navigationController?.pushViewController(vc, animated: true)
         
@@ -134,15 +151,23 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         vc.icon.kf.setImage(with: URL(string: coinInfo.large))
         // api 결과 id -> 가격 불러오기 위한 PriceAPI 호출
         viewModel.inputDidSelectRow.value = coinInfo.id
+        print("coinInfo.id", coinInfo.id)
         
-        // 위에랑 똑같이 함, repo에 포함되어있으면
+        // ChartView 오른쪽 즐겨찾기 버튼
         if repository.readItemName(item: coinInfo.name).first?.name == coinInfo.name {
-            vc.rightFavoriteButton.image = .btnStarFill
+            vc.rightFavoriteButton.image = .btnStarFill.withRenderingMode(.alwaysOriginal)
         } else{
-            vc.rightFavoriteButton.image = .btnStar
+            vc.rightFavoriteButton.image = .btnStar.withRenderingMode(.alwaysOriginal)
         }
         
+        
+        
     }
+    
+//    @objc func chartViewRightBarButtonItemClicked() {
+//        
+//        print(#function)
+//    }
     
     @objc func favoritesButtonClicked(_ sender: UIButton) {
         
@@ -195,6 +220,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.reloadData()
         }
     }
+    
+
+    
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -203,6 +231,7 @@ extension SearchViewController: UISearchBarDelegate {
         
         guard let searchBarText = searchBar.text else { return }
         viewModel.inputSearchBarTapped.value = searchBarText
+        
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

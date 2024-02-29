@@ -13,9 +13,9 @@ import RealmSwift
 
 class ChartViewController: BaseViewController {
     
-    let viewModel = SearchViewModel()
+    let viewModel = ChartViewModel()
     var coinPriceAPIResult: [PriceAPI] = []
-    let repository = CoinRepository()
+//    let repository = CoinRepository()
     
     lazy var rightFavoriteButton = UIBarButtonItem(title: "",
                                                    style: .plain,
@@ -55,6 +55,8 @@ class ChartViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.inputViewDidLoadTrigger.value = ()
         
     }
     
@@ -107,7 +109,17 @@ class ChartViewController: BaseViewController {
         navigationItem.rightBarButtonItem = rightFavoriteButton
     }
     
-    @objc func rightFavoriteButtonClicked() {
+    @objc func rightFavoriteButtonClicked(_ sender: UIButton) {
+        
+//        if name.text == coinPriceAPIResult[sender.tag]
+        
+//        sender.setImage(UIImage(systemName: "pencil"), for: .normal)
+        
+//        UIBarButtonItem.image
+//        UIBarButtonItem(image: .btnStarFill, style: .plain, target: <#T##Any?#>, action: <#T##Selector?#>)
+//        print(#function)
+        
+//        if repository.readItemName(item: <#T##String#>)
         
     }
     

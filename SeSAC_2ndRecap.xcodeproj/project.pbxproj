@@ -42,6 +42,7 @@
 		C2F4F3D42B8F445500E65588 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F3D32B8F445500E65588 /* DGChartsDynamic */; };
 		C2F4F4062B90567C00E65588 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F4052B90567C00E65588 /* Toast */; };
 		C2F4F4082B909F9100E65588 /* PriceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F4072B909F9100E65588 /* PriceAPI.swift */; };
+		C2F4F40A2B90FB0C00E65588 /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F4092B90FB0C00E65588 /* ChartViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		C2F4F3CC2B8F2CE600E65588 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		C2F4F3CE2B8F3D7600E65588 /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
 		C2F4F4072B909F9100E65588 /* PriceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAPI.swift; sourceTree = "<group>"; };
+		C2F4F4092B90FB0C00E65588 /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 			children = (
 				C2F4F3CC2B8F2CE600E65588 /* ChartViewController.swift */,
 				C2F4F3CE2B8F3D7600E65588 /* PriceCollectionViewCell.swift */,
+				C2F4F4092B90FB0C00E65588 /* ChartViewModel.swift */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				C2F4F39A2B8EAEC200E65588 /* FavoriteViewController.swift in Sources */,
 				C2F4F3CF2B8F3D7600E65588 /* PriceCollectionViewCell.swift in Sources */,
 				C2F4F3822B8DC35C00E65588 /* APIManager.swift in Sources */,
+				C2F4F40A2B90FB0C00E65588 /* ChartViewModel.swift in Sources */,
 				C2F4F3902B8DE50C00E65588 /* SearchViewModel.swift in Sources */,
 				C2F4F3CD2B8F2CE600E65588 /* ChartViewController.swift in Sources */,
 				C2F4F4082B909F9100E65588 /* PriceAPI.swift in Sources */,

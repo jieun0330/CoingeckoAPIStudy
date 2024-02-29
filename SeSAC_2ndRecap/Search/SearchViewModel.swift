@@ -41,7 +41,6 @@ class SearchViewModel {
         }
         
         inputDidSelectRow.bind { value in
-            print("2", value)
             APIManager.shared.fetchCoinPriceAPI(completionHandler: { data in
                 self.outputCoinPriceData.value = data
             }, query: value)
