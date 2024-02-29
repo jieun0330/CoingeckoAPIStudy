@@ -15,12 +15,13 @@ class ChartViewController: BaseViewController {
     
     let viewModel = SearchViewModel()
     var coinPriceAPIResult: [PriceAPI] = []
+    let repository = CoinRepository()
     
-    lazy var rightFavoriteButton = UIBarButtonItem(image: .btnStar,
+    lazy var rightFavoriteButton = UIBarButtonItem(title: "",
                                                    style: .plain,
                                                    target: self,
                                                    action: #selector(rightFavoriteButtonClicked)).then { _ in
-        
+                
     }
     
     let icon = UIImageView().then {
@@ -103,6 +104,7 @@ class ChartViewController: BaseViewController {
     override func configureView() {
         view.backgroundColor = .white
         navigationItem.title = ""
+        navigationItem.rightBarButtonItem = rightFavoriteButton
     }
     
     @objc func rightFavoriteButtonClicked() {

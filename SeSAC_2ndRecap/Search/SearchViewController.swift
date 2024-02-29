@@ -128,9 +128,20 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.pushViewController(vc, animated: true)
         
         let coinInfo = coinInfoAPIResultList[indexPath.row]
+        // api 결과 이름 -> 차트화면 이름
         vc.name.text = coinInfo.name
+        // api 결과 아이콘 -> 차트화면 아아이콘
         vc.icon.kf.setImage(with: URL(string: coinInfo.large))
+        // api 결과 id -> 가격 불러오기 위한 PriceAPI 호출
         viewModel.inputDidSelectRow.value = coinInfo.id
+        
+        // 위에랑 똑같이 함, repo에 포함되어있으면
+        if repository.readItemName(item: coinInfo.name).first?.name == coinInfo.name {
+            vc.rightFavoriteButton.image = .btnStarFill
+        } else{
+            vc.rightFavoriteButton.image = .btnStar
+        }
+        
     }
     
     @objc func favoritesButtonClicked(_ sender: UIButton) {
