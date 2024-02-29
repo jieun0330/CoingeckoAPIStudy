@@ -53,6 +53,10 @@ class SearchViewController: BaseViewController {
         $0.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
         $0.rowHeight = 60
         $0.separatorStyle = .none
+    } {
+        didSet {
+            tableView.reloadData()
+        }
     }
 
     override func viewDidLoad() {
@@ -140,6 +144,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             print("중복")
         } else {
             repository.createFavoriteItem(name: apiResultList[sender.tag].name)
+            sender.setImage(.btnStarFill, for: .normal)
             self.view.makeToast("즐겨찾기에 추가되었습니다")
         }
     }
