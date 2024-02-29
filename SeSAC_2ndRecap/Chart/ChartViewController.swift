@@ -12,8 +12,8 @@ import DGCharts
 
 class ChartViewController: BaseViewController {
     
-//    let charView =
-
+    
+    
     lazy var rightFavoriteButton = UIBarButtonItem(image: .btnStar,
                                                    style: .plain,
                                                    target: self,
@@ -25,9 +25,10 @@ class ChartViewController: BaseViewController {
         $0.image = UIImage(systemName: "circle")
     }
     
-    let name = UILabel().then {
+    var name = UILabel().then {
         $0.font = DesignSystemFont.main.font
-        $0.text = "Solona"
+//        $0.text = "Solona"
+//        $0.text = APIManager.shared.
     }
     
     let price = UILabel().then {

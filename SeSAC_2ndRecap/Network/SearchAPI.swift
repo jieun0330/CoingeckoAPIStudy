@@ -12,5 +12,5 @@ struct SearchAPI: Decodable {
 }
 
 struct CoinAPI: Decodable {
-    var id, name, symbol, thumb: String
+    var id, name, symbol, thumb, large: String
 }

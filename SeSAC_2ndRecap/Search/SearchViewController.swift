@@ -125,30 +125,63 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
         let row = apiResultList[indexPath.row]
         
-        cell.icon.kf.setImage(with: URL(string: row.thumb))
+        cell.icon.kf.setImage(with: URL(string: row.large))
         cell.name.text = row.name
         cell.symbol.text = row.symbol
         cell.favorites.tag = indexPath.row
         
         // 1. cell의 favorite이 true, false 여부로 -> 이미지를 다르게 세팅하고싶음
         // 2. 그러면 CoinRealmModel의 favorites의 true, false 여부를 받아와야함
-        cell.favorites.setImage(.btnStar, for: .normal)
+        
+        if repository.itemFilter(item: row.name).first?.name == row.name {
+            cell.favorites.setImage(.btnStarFill, for: .normal)
+        } else {
+            cell.favorites.setImage(.btnStar, for: .normal)
+        }
+//        
+  
+        
+//        cell.favorites.setImage(.btnStar, for: .normal)
         cell.favorites.addTarget(self, action: #selector(favoritesButtonClicked), for: .touchUpInside)
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = ChartViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+        let row = apiResultList[indexPath.row]
+        
+        vc.name.text = row.name
+        vc.icon.kf.setImage(with: URL(string: row.large))
+        
+    }
+    
     @objc func favoritesButtonClicked(_ sender: UIButton) {
         
-//        print("count", realmList.count)
+//        repository.createFavoriteItem(realmList)
+        
+//        if repository.itemFilter(item: apiResultList[sender.tag].name).first?.name != apiResultList[sender.tag].name {
+//            
+//        }
+        
+//        repository.updateFavoriteItem(item: realmList[sender.tag])
+//        print("realmList", realmList[sender.tag])
+        
+//        tableView.reloadData()
+        
+//        if repository.itemFilter(item: apiResultList[sender.tag].name).first?.name == apiResultList[sender.tag].name {
+//            print("눌린건가")
+//            print(realmList[sender.tag])
+//            realmList.remove(at: sender.tag)
+//            tableView.reloadData()
+//        } else {
+//            repository.createFavoriteItem(name: apiResultList[sender.tag].name) // 저장하면서 false로 저장되니까
+//            self.view.makeToast("즐겨찾기에 추가되었습니다") // toast
+//            tableView.reloadData()
+//        }
 
-        if repository.itemFilter(name: apiResultList[sender.tag].name).first?.name == apiResultList[sender.tag].name {
-            repository.deleteItem(realmList[sender.tag])
-        } else {
-            repository.createFavoriteItem(name: apiResultList[sender.tag].name)
-            sender.setImage(.btnStarFill, for: .normal)
-            self.view.makeToast("즐겨찾기에 추가되었습니다")
-        }
     }
 }
 
