@@ -220,9 +220,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.reloadData()
         }
     }
-    
-
-    
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -231,10 +228,6 @@ extension SearchViewController: UISearchBarDelegate {
         
         guard let searchBarText = searchBar.text else { return }
         viewModel.inputSearchBarTapped.value = searchBarText
-        
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
+        view.endEditing(true)
     }
 }
