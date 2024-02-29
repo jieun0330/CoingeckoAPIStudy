@@ -13,29 +13,44 @@ class CoinRepository {
     private let realm = try! Realm()
     
     func createFavoriteItem(name: String) {
-        
         let item = CoinRealmModel(name: name)
         
         do {
             try realm.write {
                 realm.add(item)
-//                item.favorites.toggle()
-//                print(realm.configuration.fileURL)
             }
         } catch {
             print(error)
         }
     }
     
-    func updateFavoriteItem(item: CoinRealmModel) {
-        do {
-            try realm.write {
-                item.favorites.toggle()
-            }
-        } catch {
-            print(error)
+//    func updateFavoriteItem(item: CoinRealmModel) {
+//        do {
+//            try realm.write {
+//                item.favorites.toggle()
+//            }
+//        } catch {
+//            print(error)
+//        }
+//    }
+    
+    // Read
+    
+    func itemFilter(name: String) -> Results<CoinRealmModel> {
+        return realm.objects(CoinRealmModel.self).where {
+            $0.name == name
         }
     }
+    
+//    func fetchAllItem(name: String) -> [CoinRealmModel] {
+//        let result = realm.objects(CoinRealmModel.self)
+//        return Array(result)
+//    }
+    
+//    func fetchSearchedItem() -> [CoinRealmModel] {
+//        let result = realm.objects(CoinRealmModel.self)
+//        return Array(result)
+//    }
     
     
 //    func updateFavoriteItem(_ item: CoinRealmModel) {
@@ -48,16 +63,10 @@ class CoinRepository {
 //        }
 //    }
     
-    func favoriteItemsFilter() -> Results<CoinRealmModel> {
-        return realm.objects(CoinRealmModel.self).where {
-            $0.favorites == true
-        }
-    }
-    
-//    func favoriteItemFilter(item: CoinModel) -> Results<CoinModel>{
-//        return realm.objects(CoinModel.self).where {
-//            $0.name.contains(item.name, options: .caseInsensitive)
+//    func favoriteItemsFilter() -> Results<CoinRealmModel> {
+//        return realm.objects(CoinRealmModel.self).where {
+//            $0.favorites == true
 //        }
 //    }
-    
+
 }

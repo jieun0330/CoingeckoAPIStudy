@@ -13,7 +13,6 @@ import RealmSwift
 
 class FavoriteViewController: BaseViewController {
     
-    var list: Results<CoinRealmModel>!
     let repository = CoinRepository()
     
     lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser,
@@ -36,8 +35,7 @@ class FavoriteViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        list = repository.favoriteItemsFilter()
+
     }
     
     override func configureHierarchy() {
@@ -89,20 +87,12 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCollectionViewCell.identifier, for: indexPath) as! FavoriteCollectionViewCell
-        
-//        cell.icon.image = list[indexPath.row].
-        
+            
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = ChartViewController()
-//        self.present(vc, animated: true)
-//        vc.modalPresentationStyle = .fullScreen
-//        present(vc, animated: true)
         self.navigationController?.pushViewController(vc, animated: true)
-//        print(#function)
-//        navigationController?.popViewController(animated: <#T##Bool#>)
     }
-    
 }

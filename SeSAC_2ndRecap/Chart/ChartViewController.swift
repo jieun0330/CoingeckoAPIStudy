@@ -8,8 +8,11 @@
 import UIKit
 import Then
 import SnapKit
+import DGCharts
 
 class ChartViewController: BaseViewController {
+    
+//    let charView =
 
     lazy var rightFavoriteButton = UIBarButtonItem(image: .btnStar,
                                                    style: .plain,
@@ -123,7 +126,7 @@ class ChartViewController: BaseViewController {
 extension ChartViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
