@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class CoinRepository {
+class repositoryCRUD {
     
     private let realm = try! Realm()
     
@@ -18,14 +18,14 @@ class CoinRepository {
         do {
             try realm.write {
                 realm.add(data)
-                print(realm.configuration.fileURL)
+//                print(realm.configuration.fileURL)
             }
         } catch {
             print(error)
         }
     }
     
-    // Read
+    // Read All
     func fetchAllItem() -> [CoinRealmModel] {
         let result = realm.objects(CoinRealmModel.self)
         return Array(result)

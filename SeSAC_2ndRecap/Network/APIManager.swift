@@ -38,10 +38,10 @@ class APIManager {
             .responseDecodable(of: PriceAPI.self) { response in
             switch response.result {
             case .success(let success):
-                print("성공", success)
+                dump(success)
                 completionHandler(success)
             case .failure(let failure):
-                dump(failure)
+                print(failure)
             }
         }
     }

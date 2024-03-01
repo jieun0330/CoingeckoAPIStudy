@@ -15,7 +15,7 @@ import Toast
 class SearchViewController: BaseViewController {
 
     let viewModel = SearchViewModel()
-    let repository = CoinRepository()
+    let repository = repositoryCRUD()
     var coinInfoAPIResultList: [InfoAPI] = []
     var coinPriceAPIResultList: PriceAPI = []
     var realmList: [CoinRealmModel] = []

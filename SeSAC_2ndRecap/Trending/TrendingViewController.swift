@@ -11,7 +11,7 @@ import SnapKit
 
 class TrendingViewController: BaseViewController {
     
-    let repository = CoinRepository()
+    let repository = repositoryCRUD()
     
     lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser,
                                                  style: .plain,
@@ -55,7 +55,7 @@ class TrendingViewController: BaseViewController {
         
         
         
-        print("repository.fetchAllItem()", repository.fetchAllItem())
+//        print("repository.fetchAllItem()", repository.fetchAllItem())
 
         /*
          [CoinRealmModel {

@@ -10,8 +10,8 @@ import Then
 
 class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
-    let icon = UIImageView().then {
-        $0.image = UIImage(systemName: "circle")
+    let icon = UIImageView().then { _ in
+//        $0.image = UIImage(systemName: "circle")
     }
     
     let namestackView = UIStackView().then {

@@ -13,9 +13,12 @@ import RealmSwift
 
 class FavoriteViewController: BaseViewController {
     
-    let repository = CoinRepository()
-    var realmList: [CoinRealmModel] = []
+    let repository = repositoryCRUD()
     let viewModel = FavoriteViewModel()
+    // 즐겨찾기 되어있는 코인 모음집
+    var realmList: [CoinRealmModel] = []
+    
+    // 가격 포함되어있는 API 호출 결과물
     var priceAPIResult: PriceAPI = []
     
     lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser,
@@ -37,8 +40,10 @@ class FavoriteViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
     
-        realmList = repository.fetchAllItem()
+//        realmList = repositoryCRUD.readItemName(id: <#T##String#>)
 //        print("realmList", realmList)
         /*
          저장했을 경우
@@ -47,12 +52,38 @@ class FavoriteViewController: BaseViewController {
          }]
          */
         
-        guard let realmListID = realmList.first?.id else {
-            return
-        }
-//        print("realmListID", realmListID) // ✅
+        // 1. 저장되어있는것만 보여줘야 하니까 fetchAll을 해오지
+        realmList = repository.fetchAllItem()
+        print("realmList", realmList)
+        /*
+         realmList [CoinRealmModel {
+             id = whitebit;
+         }, CoinRealmModel {
+             id = whisperbot;
+         }, CoinRealmModel {
+             id = whiteheart;
+         }]
+         */
         
-        viewModel.inputViewDidLoadTrigger.value = realmListID
+        // 2. 이 중에 ID만 추출해올거야
+//        var realmListID: [String] = []
+        var test = ""
+
+        for list in realmList {
+            test.append(list.id + ",")
+        }
+        print("test", test) //whitebit,whisperbot,whiteheart,
+        
+        viewModel.inputViewDidLoadTrigger.value = test
+        
+        viewModel.outputPriceAPI.bind { data in
+            self.priceAPIResult = data
+            print("data", data)
+        }
+        
+        print("realmList", realmList)
+        print("priceapiresult", priceAPIResult)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,7 +142,12 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCollectionViewCell.identifier, for: indexPath) as! FavoriteCollectionViewCell
-
+        
+        print("priceAPIResult[indexPath.item]", priceAPIResult[indexPath.item])
+        
+        cell.name.text = priceAPIResult[indexPath.item].name
+        
+        
         return cell
     }
     
