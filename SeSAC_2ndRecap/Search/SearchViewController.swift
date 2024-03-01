@@ -159,17 +159,21 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 //        print("coinInfo.id", coinInfo.id) // ✅
         
         // 차트화면 가격
-        let priceForamtter = NumberFormatter()
-        func calculator(_ number: Double) -> String {
-            priceForamtter.numberStyle = .decimal
-            let result = priceForamtter.string(from: number as NSNumber)
-//            print("result", result) // Optional("81,978,234")
-            return result ?? "0"
-        }
+//        let priceForamtter = NumberFormatter()
+//        func calculator(_ number: Double) -> String {
+//            priceForamtter.numberStyle = .decimal
+//            let result = priceForamtter.string(from: number as NSNumber)
+//            return result ?? "0"
+//        }
+//        
+//        let coinPrice = calculator(ceil(coinPriceAPIResultList[0].currentPrice)) // ceil: 소수점 올림
         
-        let coinPrice = calculator(ceil(coinPriceAPIResultList[0].currentPrice)) // ceil: 소수점 올림
-//        print("coinPrice", coinPrice) // 81,978,234
+        let coinPrice = DesignSystemText.shared.calculator(coinPriceAPIResultList[0].currentPrice)
         vc.price.text = "₩\(coinPrice)"
+
+        
+        
+        
 
         // 차트화면 %
         if coinPriceAPIResultList[0].priceChangePercentage24H < 0 {

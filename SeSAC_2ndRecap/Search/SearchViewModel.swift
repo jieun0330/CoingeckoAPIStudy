@@ -39,10 +39,10 @@ class SearchViewModel {
             }, query: string)
         }
         
-//        inputDidSelectRow.bind { value in
-//            APIManager.shared.fetchCoinPriceAPI(completionHandler: { data in
-//                self.outputCoinPriceData.value = data
-//            }, query: value)
-//        }
+        inputDidSelectRow.bind { value in
+            APIManager.shared.fetchCoinPriceAPI(completionHandler: { data in
+                self.outputCoinPriceData.value = data
+            }, query: value)
+        }
     }
 }

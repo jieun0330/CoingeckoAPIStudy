@@ -143,9 +143,12 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCollectionViewCell.identifier, for: indexPath) as! FavoriteCollectionViewCell
         
-        print("priceAPIResult[indexPath.item]", priceAPIResult[indexPath.item])
+        let item = priceAPIResult[indexPath.item]
         
-        cell.name.text = priceAPIResult[indexPath.item].name
+        cell.name.text = item.name
+        cell.icon.kf.setImage(with: URL(string: item.image))
+        cell.symbol.text = item.symbol
+        cell.price.text = "\(item.currentPrice)"
         
         
         return cell
