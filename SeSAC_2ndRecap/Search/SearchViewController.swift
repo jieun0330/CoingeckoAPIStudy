@@ -164,7 +164,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             return result ?? "0"
         }
         
-        let coinPrice = calculator(coinPriceAPIResultList[0].currentPrice)
+        let coinPrice = calculator(ceil(coinPriceAPIResultList[0].currentPrice)) // ceil: 소수점 올림
 //        print("coinPrice", coinPrice) // 81,978,234
         
         // api 결과 rkrur -> 차트화면 가격
