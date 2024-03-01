@@ -13,7 +13,7 @@ class PriceCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let priceTitle = UILabel().then {
         $0.text = "고가"
-        $0.font = UIFont.systemFont(ofSize: 17)
+        $0.font = DesignSystemFont.percentageBold.font
         $0.textColor = .red
     }
     

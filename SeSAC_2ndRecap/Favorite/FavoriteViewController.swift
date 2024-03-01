@@ -25,7 +25,7 @@ class FavoriteViewController: BaseViewController {
     
     let mainTitle = UILabel().then {
         $0.text = "Favorite Coin"
-        $0.font = DesignSystemFont.main.font
+        $0.font = DesignSystemFont.allMain.font
     }
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: FavoriteViewController.configureCollectionViewLayout()).then {

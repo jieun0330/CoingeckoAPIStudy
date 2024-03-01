@@ -16,13 +16,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBarController = UITabBarController()
         
-//        let trendingView =
+        let trendingView = UINavigationController(rootViewController: TrendingViewController())
         let searchView = UINavigationController(rootViewController: SearchViewController())
         let favoritesView = UINavigationController(rootViewController: FavoriteViewController())
         let chartView = UINavigationController(rootViewController: ChartViewController())
         
         window?.rootViewController = tabBarController
-        tabBarController.setViewControllers([searchView, favoritesView], animated: false)
+        tabBarController.setViewControllers([trendingView, searchView, favoritesView], animated: false)
+        
+        trendingView.tabBarItem = UITabBarItem(title: "",
+                                               image: .tabTrendInactive,
+                                               selectedImage: .tabTrend.withRenderingMode(.alwaysOriginal))
         
         searchView.tabBarItem = UITabBarItem(title: "",
                                              image: .tabSearchInactive,

@@ -13,7 +13,7 @@ import RealmSwift
 import Toast
 
 class SearchViewController: BaseViewController {
-    
+
     let viewModel = SearchViewModel()
     let repository = CoinRepository()
     var coinInfoAPIResultList: [InfoAPI] = []
@@ -27,7 +27,7 @@ class SearchViewController: BaseViewController {
     
     let mainTitle = UILabel().then {
         $0.text = "Search"
-        $0.font = DesignSystemFont.main.font
+        $0.font = DesignSystemFont.allMain.font
     }
     
     lazy var searchBar = UISearchBar().then {
@@ -106,6 +106,8 @@ class SearchViewController: BaseViewController {
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // API 검색 결과 수
@@ -179,7 +181,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             vc.percentage.text = "+\(percentage)%"
             vc.percentage.textColor = .blue
         }
-
+        
         
         // ChartView 오른쪽 즐겨찾기 버튼
         if repository.readItemName(id: coinInfo.id).first?.id == coinInfo.id {
@@ -244,3 +246,28 @@ extension SearchViewController: UISearchBarDelegate {
         view.endEditing(true)
     }
 }
+
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PriceCollectionViewCell.identifier, for: indexPath) as! PriceCollectionViewCell
+
+        return cell
+    }
+    
+    
+}
+
+
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 1
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PriceCollectionViewCell.identifier, for: indexPath) as! PriceCollectionViewCell
+//
+//        return cell
+//    }

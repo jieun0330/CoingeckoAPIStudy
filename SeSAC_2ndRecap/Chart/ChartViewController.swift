@@ -11,11 +11,18 @@ import SnapKit
 import DGCharts
 import RealmSwift
 
+// ChartView에서 보여줘야할 데이터가 SearchView에서 값이 전달되어야 할 것 같다
+//protocol PassDataProtocol: Protocol {
+//    func didSelectRowAt(indexPath: IndexPath)
+//}
+
 class ChartViewController: BaseViewController {
     
     let viewModel = ChartViewModel()
-    var coinPriceAPIResult: [PriceAPI] = []
+    var coinPriceAPIResult: PriceAPI = []
 //    let repository = CoinRepository()
+    
+//    var passDelegate: PassDataProtocol?
     
     lazy var rightFavoriteButton = UIBarButtonItem(title: "",
                                                    style: .plain,
@@ -29,11 +36,11 @@ class ChartViewController: BaseViewController {
     }
     
     var name = UILabel().then {
-        $0.font = DesignSystemFont.main.font
+        $0.font = DesignSystemFont.allMain.font
     }
     
     let price = UILabel().then {
-        $0.font = DesignSystemFont.main.font
+        $0.font = DesignSystemFont.allMain.font
     }
     
     let percentage = UILabel().then {
@@ -57,7 +64,6 @@ class ChartViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.inputViewDidLoadTrigger.value = ()
         
     }
     
@@ -145,6 +151,8 @@ extension ChartViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PriceCollectionViewCell.identifier, for: indexPath) as! PriceCollectionViewCell
+        
+//        passDelegate?.didSelectRowAt(indexPath: indexPath)
         
         return cell
     }

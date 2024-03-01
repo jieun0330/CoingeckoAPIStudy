@@ -8,8 +8,8 @@
 import UIKit
 
 public enum DesignSystemFont {
-    case main
-    case subtitle
+    case allMain
+    case trendingSubtitle
     case coinName
     case symbol
     case price
@@ -21,9 +21,9 @@ public enum DesignSystemFont {
 extension DesignSystemFont {
     var font: UIFont {
         switch self {
-        case .main:
+        case .allMain:
             return .boldSystemFont(ofSize: 30) // dd
-        case .subtitle:
+        case .trendingSubtitle:
             return .boldSystemFont(ofSize: 17)
         case .coinName:
             return .boldSystemFont(ofSize: 15) // dd

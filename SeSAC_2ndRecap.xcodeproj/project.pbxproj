@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C23D49F02B9161E000D8AFAF /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D49EF2B9161E000D8AFAF /* FavoriteViewModel.swift */; };
+		C261D4DC2B91A39600501ACB /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4DB2B91A39600501ACB /* TrendingViewController.swift */; };
 		C2F4F3532B8DB0C800E65588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3522B8DB0C800E65588 /* AppDelegate.swift */; };
 		C2F4F3552B8DB0C800E65588 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3542B8DB0C800E65588 /* SceneDelegate.swift */; };
 		C2F4F3572B8DB0C800E65588 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3562B8DB0C800E65588 /* ViewController.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		C23D49EF2B9161E000D8AFAF /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		C261D4DB2B91A39600501ACB /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
 		C2F4F34F2B8DB0C800E65588 /* SeSAC_2ndRecap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_2ndRecap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F4F3522B8DB0C800E65588 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2F4F3542B8DB0C800E65588 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C261D4DA2B91A38900501ACB /* Trending */ = {
+			isa = PBXGroup;
+			children = (
+				C261D4DB2B91A39600501ACB /* TrendingViewController.swift */,
+			);
+			path = Trending;
+			sourceTree = "<group>";
+		};
 		C2F4F3462B8DB0C800E65588 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +128,7 @@
 		C2F4F3512B8DB0C800E65588 /* SeSAC_2ndRecap */ = {
 			isa = PBXGroup;
 			children = (
+				C261D4DA2B91A38900501ACB /* Trending */,
 				C2F4F3CB2B8F2CE000E65588 /* Chart */,
 				C2F4F3C42B8F035400E65588 /* Realm */,
 				C2F4F3982B8EAEB100E65588 /* Favorite */,
@@ -321,6 +332,7 @@
 				C2F4F3572B8DB0C800E65588 /* ViewController.swift in Sources */,
 				C2F4F39A2B8EAEC200E65588 /* FavoriteViewController.swift in Sources */,
 				C23D49F02B9161E000D8AFAF /* FavoriteViewModel.swift in Sources */,
+				C261D4DC2B91A39600501ACB /* TrendingViewController.swift in Sources */,
 				C2F4F3CF2B8F3D7600E65588 /* PriceCollectionViewCell.swift in Sources */,
 				C2F4F3822B8DC35C00E65588 /* APIManager.swift in Sources */,
 				C2F4F40A2B90FB0C00E65588 /* ChartViewModel.swift in Sources */,

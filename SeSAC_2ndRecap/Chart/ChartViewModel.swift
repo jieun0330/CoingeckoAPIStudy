@@ -9,7 +9,7 @@ import Foundation
 
 class ChartViewModel {
     
-    var inputViewDidLoadTrigger: Observable<Void?> = Observable(nil)
+    var inputViewDidLoadTrigger = Observable("")
     
     init() {
         
