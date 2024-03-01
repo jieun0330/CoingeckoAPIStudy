@@ -37,31 +37,29 @@ class FavoriteViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+
+//        viewModel.inputViewDidLoadTrigger.value = realmList.first?.id
         
         realmList = repository.fetchAllItem()
         print("realmList", realmList)
         /*
          저장했을 경우
          realmList [CoinRealmModel {
-             id = 65e12a1f97084667c6570f07;
-             name = WhiteBIT Coin;
-             favorites = 0;
-             symbol = WBT;
-             currentPrice = 3;
+             id = whitebit;
          }]
          */
         
-//        print("realmList.first?.name", realmList.first?.name)
-        /*
-         Optional("WhiteBIT Coin")
-         아무것도 저장안했을때는 없을 수 있으니까
-         */
+        guard let realmListID = realmList.first?.id else {
+            return
+        }
+        print("realmListID", realmListID) // whitebit
         
-//        guard let realmListName = realmList.first?.name else {
-//            return
-//        }
+        viewModel.inputViewDidLoadTrigger.value = realmListID
+
+        
+
 //        print("realmListName", realmListName)
-//        viewModel.inputViewDidLoadTrigger.value = realmListName
 
         
         

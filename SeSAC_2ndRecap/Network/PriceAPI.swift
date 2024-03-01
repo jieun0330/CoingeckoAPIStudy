@@ -10,10 +10,10 @@ import Foundation
 struct Price: Decodable {
     var id, symbol, name: String
     let image: String
-    let currentPrice: Int
-    let high24H, low24H: Int
+    let currentPrice: Double
+    let high24H, low24H: Double
     let priceChangePercentage24H: Double
-    let ath: Int
+    let ath: Double
     let athDate: String
     let roi: Roi?
     let lastUpdated: String
@@ -31,10 +31,16 @@ struct Price: Decodable {
     }
 }
 
-struct Roi: Codable {
+struct Roi: Decodable {
     let times: Double
-    let currency: String
+    let currency: Currency
     let percentage: Double
+}
+
+enum Currency: String, Codable {
+    case btc = "btc"
+    case eth = "eth"
+    case usd = "usd"
 }
 
 typealias PriceAPI = [Price]

@@ -40,6 +40,8 @@ class SearchViewModel {
         }
         
         inputDidSelectRow.bind { value in
+//            print("value", value) // white-rhinoceros
+            
             APIManager.shared.fetchCoinPriceAPI(completionHandler: { data in
 //                print("data", data)
                 /*

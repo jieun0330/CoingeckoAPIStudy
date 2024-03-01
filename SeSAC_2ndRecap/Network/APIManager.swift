@@ -41,7 +41,7 @@ class APIManager {
                 print("성공", success)
                 completionHandler(success)
             case .failure(let failure):
-                print(failure)
+                dump(failure)
             }
         }
     }
