@@ -10,6 +10,8 @@
 		C23D49F02B9161E000D8AFAF /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23D49EF2B9161E000D8AFAF /* FavoriteViewModel.swift */; };
 		C261D4DC2B91A39600501ACB /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4DB2B91A39600501ACB /* TrendingViewController.swift */; };
 		C261D4DE2B91AE3600501ACB /* MyFavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4DD2B91AE3500501ACB /* MyFavoriteCollectionViewCell.swift */; };
+		C261D4E02B91BE1B00501ACB /* TopCoinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4DF2B91BE1B00501ACB /* TopCoinCollectionViewCell.swift */; };
+		C261D4E22B91C3A200501ACB /* RankCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4E12B91C3A200501ACB /* RankCollectionViewCell.swift */; };
 		C2F4F3532B8DB0C800E65588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3522B8DB0C800E65588 /* AppDelegate.swift */; };
 		C2F4F3552B8DB0C800E65588 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3542B8DB0C800E65588 /* SceneDelegate.swift */; };
 		C2F4F3572B8DB0C800E65588 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3562B8DB0C800E65588 /* ViewController.swift */; };
@@ -52,6 +54,8 @@
 		C23D49EF2B9161E000D8AFAF /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		C261D4DB2B91A39600501ACB /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
 		C261D4DD2B91AE3500501ACB /* MyFavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
+		C261D4DF2B91BE1B00501ACB /* TopCoinCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCoinCollectionViewCell.swift; sourceTree = "<group>"; };
+		C261D4E12B91C3A200501ACB /* RankCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankCollectionViewCell.swift; sourceTree = "<group>"; };
 		C2F4F34F2B8DB0C800E65588 /* SeSAC_2ndRecap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_2ndRecap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F4F3522B8DB0C800E65588 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2F4F3542B8DB0C800E65588 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 			children = (
 				C261D4DB2B91A39600501ACB /* TrendingViewController.swift */,
 				C261D4DD2B91AE3500501ACB /* MyFavoriteCollectionViewCell.swift */,
+				C261D4DF2B91BE1B00501ACB /* TopCoinCollectionViewCell.swift */,
+				C261D4E12B91C3A200501ACB /* RankCollectionViewCell.swift */,
 			);
 			path = Trending;
 			sourceTree = "<group>";
@@ -330,6 +336,7 @@
 			files = (
 				C2F4F37F2B8DC09000E65588 /* BaseTableViewCell.swift in Sources */,
 				C2F4F36B2B8DB28500E65588 /* BaseViewController.swift in Sources */,
+				C261D4E22B91C3A200501ACB /* RankCollectionViewCell.swift in Sources */,
 				C2F4F3C62B8F036400E65588 /* CoinRealmModel.swift in Sources */,
 				C2F4F3872B8DC42300E65588 /* SearchAPI.swift in Sources */,
 				C2F4F3572B8DB0C800E65588 /* ViewController.swift in Sources */,
@@ -352,6 +359,7 @@
 				C2F4F38E2B8DDCC200E65588 /* Fonts.swift in Sources */,
 				C2F4F3932B8DE58000E65588 /* Observable.swift in Sources */,
 				C2F4F3552B8DB0C800E65588 /* SceneDelegate.swift in Sources */,
+				C261D4E02B91BE1B00501ACB /* TopCoinCollectionViewCell.swift in Sources */,
 				C2F4F37B2B8DB98200E65588 /* Colors.swift in Sources */,
 				C2F4F37D2B8DC05700E65588 /* SearchTableViewCell.swift in Sources */,
 			);
