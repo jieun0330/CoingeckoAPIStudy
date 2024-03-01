@@ -45,6 +45,7 @@ class ChartViewController: BaseViewController {
     let today = UILabel().then {
         $0.text = "Today"
         $0.font = DesignSystemFont.percentage.font
+        $0.textColor = .lightGray
     }
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: ChartViewController.configureCollectionViewLayout()).then {
