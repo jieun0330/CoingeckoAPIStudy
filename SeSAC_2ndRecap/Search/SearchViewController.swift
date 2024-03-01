@@ -147,29 +147,39 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
          Price(id: "bitcoin", symbol: "btc", name: "Bitcoin", image: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400", currentPrice: 81667075.0, high24H: 84583677.0, low24H: 80891947.0, priceChangePercentage24H: -0.41735, ath: 85032453.0, athDate: "2024-02-28T17:20:23.244Z", roi: nil, lastUpdated: "2024-03-01T04:13:01.617Z")
          */
 
-        // api 결과 이름 -> 차트화면 이름
+        // 차트화면 이름
         vc.name.text = coinInfo.name
-        // api 결과 아이콘 -> 차트화면 아아이콘
+        // 차트화면 아이콘 이미지
         vc.icon.kf.setImage(with: URL(string: coinInfo.large))
-        // api 결과 id -> 가격 불러오기 위한 PriceAPI 호출
+        
+        // 가격 불러오기 위한 PriceAPI 호출
         viewModel.inputDidSelectRow.value = coinInfo.id
 //        print("coinInfo.id", coinInfo.id) // ✅
         
+        // 차트화면 가격
         let priceForamtter = NumberFormatter()
         func calculator(_ number: Double) -> String {
             priceForamtter.numberStyle = .decimal
             let result = priceForamtter.string(from: number as NSNumber)
 //            print("result", result) // Optional("81,978,234")
-            
             return result ?? "0"
         }
         
         let coinPrice = calculator(ceil(coinPriceAPIResultList[0].currentPrice)) // ceil: 소수점 올림
 //        print("coinPrice", coinPrice) // 81,978,234
-        
-        // api 결과 rkrur -> 차트화면 가격
         vc.price.text = "₩\(coinPrice)"
-        
+
+        // 차트화면 %
+        if coinPriceAPIResultList[0].priceChangePercentage24H < 0 {
+            let percentage = String(format: "%.2f", coinPriceAPIResultList[0].priceChangePercentage24H)
+            vc.percentage.text = "\(percentage)%"
+            vc.percentage.textColor = .red
+        } else {
+            let percentage = String(format: "%.2f", coinPriceAPIResultList[0].priceChangePercentage24H)
+            vc.percentage.text = "+\(percentage)%"
+            vc.percentage.textColor = .blue
+        }
+
         
         // ChartView 오른쪽 즐겨찾기 버튼
         if repository.readItemName(id: coinInfo.id).first?.id == coinInfo.id {

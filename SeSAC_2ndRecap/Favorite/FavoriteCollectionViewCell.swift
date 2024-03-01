@@ -40,7 +40,7 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     let price = UILabel().then {
-        $0.text = "$69,234,245"
+//        $0.text = "$69,234,245"
         $0.font = DesignSystemFont.percentageBold.font
     }
     
@@ -50,8 +50,8 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     let percentage = UILabel().then {
-        $0.text = "+0.64%"
-        $0.textColor = .red
+//        $0.text = "+0.64%"
+//        $0.textColor = .red
         $0.font = DesignSystemFont.percentage.font
     }
     
