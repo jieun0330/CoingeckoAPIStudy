@@ -123,11 +123,16 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         // cell shadow + cornerRadis 같이 주는 방법 https://roniruny.tistory.com/184
         contentView.backgroundColor = DesignSystemColor.white.color
         contentView.layer.cornerRadius = 15
-        contentView.layer.shadowColor = DesignSystemColor.black.color.cgColor
-        layer.shadowOpacity = 0.1
-        layer.shadowRadius = 2
-        layer.shadowOffset = CGSize(width: 3, height: 3)
-        layer.masksToBounds = false
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.borderWidth = 1
+//        contentView.layer.shadowColor = DesignSystemColor.black.color.cgColor
+//        layer.shadowOpacity = 0.1
+//        layer.shadowRadius = 2
+//        layer.shadowOffset = CGSize(width: 0, height: 5)
+//        layer.shadowPath = UIBezierPath(roundedRect: self.bounds,
+//                                        byRoundingCorners: .allCorners,
+//                                        cornerRadii: CGSize(width: 8, height: 8)).cgPath
+//        layer.masksToBounds = false
     }
     
     required init?(coder: NSCoder) {

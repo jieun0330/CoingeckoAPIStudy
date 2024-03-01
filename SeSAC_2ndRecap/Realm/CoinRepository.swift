@@ -18,6 +18,7 @@ class CoinRepository {
         do {
             try realm.write {
                 realm.add(data)
+//                print(realm.configuration.fileURL)
             }
         } catch {
             print(error)
@@ -25,10 +26,10 @@ class CoinRepository {
     }
     
     // Read
-//    func fetchAllItem() -> [CoinRealmModel] {
-//        let result = realm.objects(CoinRealmModel.self)
-//        return Array(result)
-//    }
+    func fetchAllItem() -> [CoinRealmModel] {
+        let result = realm.objects(CoinRealmModel.self)
+        return Array(result)
+    }
     
     // Realm에 해당 이름이 있는지 확인 -> 즐겨찾기 star 표시
     func readItemName(item: String) -> Results<CoinRealmModel> {

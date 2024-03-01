@@ -37,6 +37,13 @@ class FavoriteViewController: BaseViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView.reloadData()
+        
+    }
+    
     override func configureHierarchy() {
         [mainTitle, collectionView].forEach {
             view.addSubview($0)
@@ -82,7 +89,7 @@ class FavoriteViewController: BaseViewController {
 
 extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return repository.fetchAllItem().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
