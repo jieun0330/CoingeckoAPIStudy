@@ -16,6 +16,26 @@ import RealmSwift
 //    func didSelectRowAt(indexPath: IndexPath)
 //}
 
+enum collectionViewCellName: Int, CaseIterable {
+    case highPrice
+    case lowPrice
+    case ath // 최고점
+    case atl // 최저점
+    
+    var cellName: String {
+        switch self {
+        case .highPrice:
+            "고가"
+        case .lowPrice:
+            "저가"
+        case .ath:
+            "신고점"
+        case .atl:
+            "신저점"
+        }
+    }
+}
+
 class ChartViewController: BaseViewController {
     
     let viewModel = ChartViewModel()
@@ -64,6 +84,7 @@ class ChartViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        print(collectionViewCellName.RawValue)
         
     }
     
@@ -146,11 +167,15 @@ class ChartViewController: BaseViewController {
 extension ChartViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PriceCollectionViewCell.identifier, for: indexPath) as! PriceCollectionViewCell
+        
+//        viewModel.inputDidSelectRow.value = coinInfo.id
+        
+        cell.priceTitle.text = collectionViewCellName.allCases[indexPath.row].cellName
         
 //        passDelegate?.didSelectRowAt(indexPath: indexPath)
         

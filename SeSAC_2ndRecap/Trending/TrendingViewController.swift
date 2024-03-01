@@ -52,6 +52,18 @@ class TrendingViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        print("repository.fetchAllItem()", repository.fetchAllItem())
+
+        /*
+         [CoinRealmModel {
+             id = whitebit;
+         }, CoinRealmModel {
+             id = whisperbot;
+         }]
+         */
 
     }
     

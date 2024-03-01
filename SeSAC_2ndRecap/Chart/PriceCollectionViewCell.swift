@@ -12,9 +12,9 @@ import SnapKit
 class PriceCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let priceTitle = UILabel().then {
-        $0.text = "고가"
+//        $0.text = "고가"
         $0.font = DesignSystemFont.percentageBold.font
-        $0.textColor = .red
+//        $0.textColor = .red
     }
     
     let price = UILabel().then {

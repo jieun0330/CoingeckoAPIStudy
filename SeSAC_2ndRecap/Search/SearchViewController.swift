@@ -183,6 +183,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         
+    
+        
+        
+        
         // ChartView 오른쪽 즐겨찾기 버튼
         if repository.readItemName(id: coinInfo.id).first?.id == coinInfo.id {
             vc.rightFavoriteButton.image = .btnStarFill.withRenderingMode(.alwaysOriginal)
