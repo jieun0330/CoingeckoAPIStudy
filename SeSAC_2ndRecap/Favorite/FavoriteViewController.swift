@@ -172,6 +172,8 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         let item = priceAPIResult[indexPath.item]
         
         vc.name.text = item.name
+        vc.icon.kf.setImage(with: URL(string: item.image))
+        
         
 
     }
