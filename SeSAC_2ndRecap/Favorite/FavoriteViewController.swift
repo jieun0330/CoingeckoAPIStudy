@@ -38,11 +38,8 @@ class FavoriteViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-
-//        viewModel.inputViewDidLoadTrigger.value = realmList.first?.id
-        
         realmList = repository.fetchAllItem()
-        print("realmList", realmList)
+//        print("realmList", realmList)
         /*
          저장했을 경우
          realmList [CoinRealmModel {
@@ -53,25 +50,15 @@ class FavoriteViewController: BaseViewController {
         guard let realmListID = realmList.first?.id else {
             return
         }
-        print("realmListID", realmListID) // whitebit
+//        print("realmListID", realmListID) // ✅
         
         viewModel.inputViewDidLoadTrigger.value = realmListID
-
-        
-
-//        print("realmListName", realmListName)
-
-        
-        
-
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         collectionView.reloadData()
-        
     }
     
     override func configureHierarchy() {
@@ -124,10 +111,7 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCollectionViewCell.identifier, for: indexPath) as! FavoriteCollectionViewCell
-        
-//        cell.name.text = realmList[indexPath.row].name
-//        cell.symbol.text = realmList[indexPath.row].symbol
-        
+
         return cell
     }
     
