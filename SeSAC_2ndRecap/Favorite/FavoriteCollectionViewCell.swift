@@ -53,6 +53,7 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
 //        $0.text = "+0.64%"
 //        $0.textColor = .red
         $0.font = DesignSystemFont.percentage.font
+
     }
     
     override init(frame: CGRect) {
@@ -115,7 +116,7 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         }
         
         percentage.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.centerX.equalToSuperview()
             $0.edges.equalToSuperview().inset(5)
         }
     }

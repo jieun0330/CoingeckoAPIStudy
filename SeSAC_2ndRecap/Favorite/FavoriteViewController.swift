@@ -152,6 +152,16 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         let coinPrice = DesignSystemText.shared.calculator(item.currentPrice)
         cell.price.text = "₩\(coinPrice)"
         
+        if item.priceChangePercentage24H < 0 {
+            let percentage = String(format: "%.2f", item.priceChangePercentage24H)
+            cell.percentage.text = "\(percentage)%"
+            cell.percentage.textColor = .red
+        } else {
+            let percentage = String(format: "%.2f", item.priceChangePercentage24H)
+            cell.percentage.text = "+\(percentage)%"
+            cell.percentage.textColor = .blue
+        }
+        
         return cell
     }
     
