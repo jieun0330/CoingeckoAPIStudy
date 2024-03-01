@@ -29,7 +29,7 @@ class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     let symbol = UILabel().then {
-        $0.font = DesignSystemFont.symbol.font
+        $0.font = DesignSystemFont.favoriteSymbol.font
         $0.textColor = UIColor.gray
     }
     

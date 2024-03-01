@@ -11,7 +11,7 @@ public enum DesignSystemFont {
     case allMain
     case trendingSubtitle
     case coinName
-    case symbol
+    case favoriteSymbol
     case price
     case priceBold
     case percentage
@@ -27,8 +27,8 @@ extension DesignSystemFont {
             return .boldSystemFont(ofSize: 17)
         case .coinName:
             return .boldSystemFont(ofSize: 15) // dd
-        case .symbol:
-            return .systemFont(ofSize: 15) // dd
+        case .favoriteSymbol:
+            return .systemFont(ofSize: 10) // dd
         case .price:
             return .boldSystemFont(ofSize: 18) // ㅇㅇ
         case .priceBold:

@@ -11,6 +11,8 @@ import SnapKit
 
 class TrendingViewController: BaseViewController {
     
+//    let repository = CoinRepository()
+    
     lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser,
                                                  style: .plain,
                                                  target: self,
@@ -24,13 +26,15 @@ class TrendingViewController: BaseViewController {
     let myFavorite = UILabel().then {
         $0.text = "My Favorite"
         $0.font = DesignSystemFont.trendingSubtitle.font
-//        $0.layer.borderColor = UIColor.red.cgColor
-//        $0.layer.borderWidth = 1
     }
     
     // TableView와 CollectionView 어떤걸 써야할지 몰라서 3분컷으로 써본 글입니다,, https://cyndi0330.tistory.com/41
-    let favoriteCollectionView = UICollectionView().then {
-        $0.backgroundColor = .orange
+    lazy var favoriteCollectionView = UICollectionView(frame: .zero,
+                                                       collectionViewLayout: TrendingViewController.configureCollectionViewLayout()).then {
+
+        $0.delegate = self
+        $0.dataSource = self
+        $0.register(MyFavoriteCollectionViewCell.self, forCellWithReuseIdentifier: MyFavoriteCollectionViewCell.identifier)
     }
     
     let topCoinLabel = UILabel().then {
@@ -38,9 +42,9 @@ class TrendingViewController: BaseViewController {
         $0.font = DesignSystemFont.trendingSubtitle.font
     }
     
-    let topCoinCollectionView = UICollectionView().then {
-        $0.backgroundColor = .green
-    }
+//    let topCoinCollectionView = UICollectionView().then {
+//        $0.backgroundColor = .green
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +52,7 @@ class TrendingViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        [mainTitle, myFavorite, favoriteCollectionView, topCoinLabel, topCoinCollectionView].forEach {
+        [mainTitle, myFavorite, favoriteCollectionView, topCoinLabel].forEach {
             view.addSubview($0)
         }
     }
@@ -79,12 +83,12 @@ class TrendingViewController: BaseViewController {
             $0.width.equalTo(100)
         }
         
-        topCoinCollectionView.snp.makeConstraints {
-            $0.leading.equalTo(topCoinLabel.snp.leading)
-            $0.top.equalTo(topCoinLabel.snp.bottom).offset(10)
-            $0.trailing.equalToSuperview().offset(-50)
-            $0.height.equalTo(180)
-        }
+//        topCoinCollectionView.snp.makeConstraints {
+//            $0.leading.equalTo(topCoinLabel.snp.leading)
+//            $0.top.equalTo(topCoinLabel.snp.bottom).offset(10)
+//            $0.trailing.equalToSuperview().offset(-50)
+//            $0.height.equalTo(180)
+//        }
         
     }
 
@@ -96,5 +100,37 @@ class TrendingViewController: BaseViewController {
     @objc func profileTabBarItemClicked() {
         
     }
+    
+    
+    static func configureCollectionViewLayout() -> UICollectionViewLayout{
+        
+        let layout = UICollectionViewFlowLayout()
+        let spacing: CGFloat = 10
+        let cellWidth = UIScreen.main.bounds.width - (spacing * 1.5)
+        layout.itemSize = CGSize(width: cellWidth / 2, height: cellWidth / 2.5)
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = spacing
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        
+        return layout
+        
+    }
+}
+
+extension TrendingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFavoriteCollectionViewCell.identifier, for: indexPath)
+        cell.backgroundColor = .systemGray6
+        cell.layer.cornerRadius = 15
+        cell.layer.masksToBounds = true
+        
+        return cell
+    }
+
     
 }
