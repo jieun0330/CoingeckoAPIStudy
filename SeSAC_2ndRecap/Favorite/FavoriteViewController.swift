@@ -148,8 +148,9 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         cell.name.text = item.name
         cell.icon.kf.setImage(with: URL(string: item.image))
         cell.symbol.text = item.symbol
-        cell.price.text = "\(item.currentPrice)"
         
+        let coinPrice = DesignSystemText.shared.calculator(item.currentPrice)
+        cell.price.text = "₩\(coinPrice)"
         
         return cell
     }
