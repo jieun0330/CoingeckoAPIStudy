@@ -19,7 +19,7 @@ class FavoriteViewModel {
                         
             APIManager.shared.fetchCoinPriceAPI(completionHandler: { data in
                 self.outputPriceAPI.value = data
-                print("data", data)
+//                print("data", data)
             }, query: value)
             
         }

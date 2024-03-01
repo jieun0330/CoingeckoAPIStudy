@@ -62,14 +62,14 @@ class SearchViewController: BaseViewController {
         
         //
         viewModel.outputCoinPriceData.bind { data in
-            print("data", data)
+//            print("data", data)
             /*
              data [SeSAC_2ndRecap.Price(id: "whiteheart", symbol: "white", name: "Whiteheart", image: "https://assets.coingecko.com/coins/images/13484/large/whiteheart.png?1696513245", currentPrice: 7774341, high24H: 7937170, low24H: 7346073, priceChangePercentage24H: 4.88268, ath: 7937170, athDate: "2024-02-29T16:45:38.733Z", roi: nil, lastUpdated: "2024-02-29T18:28:39.829Z")]
              */
             self.coinPriceAPIResultList = data
-            print("coinPriceAPIResultList", self.coinPriceAPIResultList)
-            // 위에랑 동일하게 옴
+            print("coinPriceAPIResultList.count", self.coinPriceAPIResultList.count)
         }
+        
         
     }
     
@@ -141,22 +141,27 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
-        
         let vc = ChartViewController()
         self.navigationController?.pushViewController(vc, animated: true)
         
         let coinInfo = coinInfoAPIResultList[indexPath.row]
-        print("coinInfo", coinInfo) // whitebit
+//        print("coinInfo", coinInfo) // ✅
+        
+        print("coinPriceAPIResultList[0]", coinPriceAPIResultList[0])
+        /*
+         Price(id: "bitcoin", symbol: "btc", name: "Bitcoin", image: "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1696501400", currentPrice: 81667075.0, high24H: 84583677.0, low24H: 80891947.0, priceChangePercentage24H: -0.41735, ath: 85032453.0, athDate: "2024-02-28T17:20:23.244Z", roi: nil, lastUpdated: "2024-03-01T04:13:01.617Z")
+         */
+
         // api 결과 이름 -> 차트화면 이름
         vc.name.text = coinInfo.name
         // api 결과 아이콘 -> 차트화면 아아이콘
         vc.icon.kf.setImage(with: URL(string: coinInfo.large))
         // api 결과 id -> 가격 불러오기 위한 PriceAPI 호출
         viewModel.inputDidSelectRow.value = coinInfo.id
-        print("coinInfo.id", coinInfo.id)
+//        print("coinInfo.id", coinInfo.id) // ✅
+        // api 결과 rkrur -> 차트화면 가격
+        vc.price.text = "\(coinPriceAPIResultList[0].currentPrice)"
         
-//        vc.price.text = "\(coinPriceAPIResultList[0].currentPrice)"
         
         
         
