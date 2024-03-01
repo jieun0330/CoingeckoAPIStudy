@@ -168,5 +168,11 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = ChartViewController()
         self.navigationController?.pushViewController(vc, animated: true)
+        
+        let item = priceAPIResult[indexPath.item]
+        
+        vc.name.text = item.name
+        
+
     }
 }
