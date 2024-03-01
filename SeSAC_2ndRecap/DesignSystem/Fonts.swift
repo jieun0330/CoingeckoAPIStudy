@@ -26,7 +26,7 @@ extension DesignSystemFont {
         case .subtitle:
             return .boldSystemFont(ofSize: 17)
         case .coinName:
-            return .boldSystemFont(ofSize: 17) // dd
+            return .boldSystemFont(ofSize: 15) // dd
         case .symbol:
             return .systemFont(ofSize: 15) // dd
         case .price:

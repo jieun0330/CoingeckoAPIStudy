@@ -17,7 +17,7 @@ class SearchViewController: BaseViewController {
     let viewModel = SearchViewModel()
     let repository = CoinRepository()
     var coinInfoAPIResultList: [InfoAPI] = []
-    var coinPriceAPIResultList: [PriceAPI] = []
+    var coinPriceAPIResultList: PriceAPI = []
     var realmList: [CoinRealmModel] = []
     
     lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser,
@@ -63,10 +63,12 @@ class SearchViewController: BaseViewController {
         //
         viewModel.outputCoinPriceData.bind { data in
             print("data", data)
-//            self.coinPriceAPIResultList[0] = data
             /*
              data [SeSAC_2ndRecap.Price(id: "whiteheart", symbol: "white", name: "Whiteheart", image: "https://assets.coingecko.com/coins/images/13484/large/whiteheart.png?1696513245", currentPrice: 7774341, high24H: 7937170, low24H: 7346073, priceChangePercentage24H: 4.88268, ath: 7937170, athDate: "2024-02-29T16:45:38.733Z", roi: nil, lastUpdated: "2024-02-29T18:28:39.829Z")]
              */
+            self.coinPriceAPIResultList = data
+            print("coinPriceAPIResultList", self.coinPriceAPIResultList)
+            // 위에랑 동일하게 옴
         }
         
     }
@@ -125,7 +127,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.favorites.tag = indexPath.row
         
         // Realm에 api 결과가 속해있으면
-        if repository.readItemName(item: row.name).first?.name == row.name {
+        if repository.readItemName(id: row.id).first?.id == row.id {
             // ⭐️ 표시
             cell.favorites.setImage(.btnStarFill, for: .normal)
         } else {
@@ -145,6 +147,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.pushViewController(vc, animated: true)
         
         let coinInfo = coinInfoAPIResultList[indexPath.row]
+        print("coinInfo", coinInfo) // whitebit
         // api 결과 이름 -> 차트화면 이름
         vc.name.text = coinInfo.name
         // api 결과 아이콘 -> 차트화면 아아이콘
@@ -153,8 +156,16 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         viewModel.inputDidSelectRow.value = coinInfo.id
         print("coinInfo.id", coinInfo.id)
         
+//        vc.price.text = "\(coinPriceAPIResultList[0].currentPrice)"
+        
+        
+        
+//        print("searchViewModel.outputCoinPriceData.value", viewModel.outputCoinPriceData.value)
+        
+        
+        
         // ChartView 오른쪽 즐겨찾기 버튼
-        if repository.readItemName(item: coinInfo.name).first?.name == coinInfo.name {
+        if repository.readItemName(id: coinInfo.id).first?.id == coinInfo.id {
             vc.rightFavoriteButton.image = .btnStarFill.withRenderingMode(.alwaysOriginal)
         } else{
             vc.rightFavoriteButton.image = .btnStar.withRenderingMode(.alwaysOriginal)
@@ -173,18 +184,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         // 즐겨찾기 버튼을 눌렀을 때 해당 셀의 name을
         // 형식에 맞게 저장해주기 위한 data
-        let saveToRealm = CoinRealmModel(name: coinInfoAPIResultList[sender.tag].name)
-//        print("saveToRealm", saveToRealm)
-        /*
-         data CoinRealmModel {
-             id = 65e0b314dd97ec12c15af07e;
-             name = WhiteBIT Coin;
-             favorites = 0;
-         }
-         */
-        
+        let saveToRealm = CoinRealmModel(id: coinInfoAPIResultList[sender.tag].id)
+        print("saveToRealm", saveToRealm) // whitebit
+
         // 실제 Realm에 저장되어있는 data
-        let realmDatas = repository.readItemName(item: coinInfoAPIResultList[sender.tag].name)
+        let realmDatas = repository.readItemName(id: coinInfoAPIResultList[sender.tag].name)
 //        print("realmDatas", realmDatas)
         /*
          item Results<CoinRealmModel> <0x109a46550> (
@@ -198,8 +202,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 //        if saveToRealm.name == realmDatas[0].name { // item[0] -> repo에 아무것도 없을 수 있으니까 오류
         // 그리고 item[0]일 수가 없지, 계속 쌓이니까
         if realmDatas.contains(where: { data in
-            print("data", data)
-            repository.deleteItem(item: data)
+//            print("data", data)
             /*
              data CoinRealmModel {
                  id = 65e0ad3a6a116db69771a768;
@@ -207,6 +210,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                  favorites = 0;
              }
              */
+            repository.deleteItem(item: data)
+
             return true
         }) {
             print("중복")

@@ -18,7 +18,7 @@ class CoinRepository {
         do {
             try realm.write {
                 realm.add(data)
-//                print(realm.configuration.fileURL)
+                print(realm.configuration.fileURL)
             }
         } catch {
             print(error)
@@ -32,9 +32,9 @@ class CoinRepository {
     }
     
     // Realm에 해당 이름이 있는지 확인 -> 즐겨찾기 star 표시
-    func readItemName(item: String) -> Results<CoinRealmModel> {
+    func readItemName(id: String) -> Results<CoinRealmModel> {
         return realm.objects(CoinRealmModel.self).where {
-            $0.name == item
+            $0.id == id
         }
     }
     

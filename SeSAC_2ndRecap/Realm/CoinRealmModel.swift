@@ -9,13 +9,18 @@ import Foundation
 import RealmSwift
 
 class CoinRealmModel: Object {
-    @Persisted(primaryKey: true) var id: ObjectId
-    @Persisted var name: String
-    @Persisted var favorites: Bool
+    @Persisted(primaryKey: true) var id: String
+//    @Persisted var name: String
+//    @Persisted var favorites: Bool
+//    @Persisted var symbol: String
+//    @Persisted var currentPrice: Int
     
-    convenience init(name: String) {
+    convenience init(id: String) {
         self.init()
-        self.name = name
-        self.favorites = false
+//        self.id = id
+        self.id = id
+//        self.favorites = false
+//        self.symbol = symbol
+//        self.currentPrice = currentPrice
     }
 }

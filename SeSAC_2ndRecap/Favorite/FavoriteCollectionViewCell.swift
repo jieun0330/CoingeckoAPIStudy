@@ -23,13 +23,13 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let name = UILabel().then {
         $0.font = DesignSystemFont.coinName.font
-        $0.text = "Bitcoin"
+//        $0.text = "Bitcoin"
     }
     
     let symbol = UILabel().then {
         $0.font = DesignSystemFont.symbol.font
         $0.textColor = UIColor.gray
-        $0.text = "BTC"
+//        $0.text = "BTC"
     }
     
     let priceStackView = UIStackView().then {
@@ -91,6 +91,7 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         
         name.snp.makeConstraints {
             $0.leading.top.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(10)
         }
         
         symbol.snp.makeConstraints {

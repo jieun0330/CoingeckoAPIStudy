@@ -14,6 +14,9 @@ import RealmSwift
 class FavoriteViewController: BaseViewController {
     
     let repository = CoinRepository()
+    var realmList: [CoinRealmModel] = []
+    let viewModel = FavoriteViewModel()
+    var priceAPIResult: PriceAPI = []
     
     lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser,
                                                  style: .plain,
@@ -34,6 +37,35 @@ class FavoriteViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        realmList = repository.fetchAllItem()
+        print("realmList", realmList)
+        /*
+         저장했을 경우
+         realmList [CoinRealmModel {
+             id = 65e12a1f97084667c6570f07;
+             name = WhiteBIT Coin;
+             favorites = 0;
+             symbol = WBT;
+             currentPrice = 3;
+         }]
+         */
+        
+//        print("realmList.first?.name", realmList.first?.name)
+        /*
+         Optional("WhiteBIT Coin")
+         아무것도 저장안했을때는 없을 수 있으니까
+         */
+        
+//        guard let realmListName = realmList.first?.name else {
+//            return
+//        }
+//        print("realmListName", realmListName)
+//        viewModel.inputViewDidLoadTrigger.value = realmListName
+
+        
+        
+
         
     }
     
@@ -94,6 +126,9 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCollectionViewCell.identifier, for: indexPath) as! FavoriteCollectionViewCell
+        
+//        cell.name.text = realmList[indexPath.row].name
+//        cell.symbol.text = realmList[indexPath.row].symbol
         
         return cell
     }
