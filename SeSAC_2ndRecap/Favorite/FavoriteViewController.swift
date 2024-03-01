@@ -183,6 +183,9 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
             vc.percentage.text = "+\(percentage)%"
             vc.percentage.textColor = .blue
         }
+        
+        let coinPrice = DesignSystemText.shared.calculator(item.currentPrice)
+        vc.price.text = "₩\(coinPrice)"
 
     }
 }
