@@ -28,7 +28,8 @@ class TrendingViewController: BaseViewController {
 //        $0.layer.borderWidth = 1
     }
     
-    let favoriteTableView = UITableView().then {
+    // TableView와 CollectionView 어떤걸 써야할지 몰라서 3분컷으로 써본 글입니다,, https://cyndi0330.tistory.com/41
+    let favoriteCollectionView = UICollectionView().then {
         $0.backgroundColor = .orange
     }
     
@@ -37,7 +38,7 @@ class TrendingViewController: BaseViewController {
         $0.font = DesignSystemFont.trendingSubtitle.font
     }
     
-    let topCoinTableView = UITableView().then {
+    let topCoinCollectionView = UICollectionView().then {
         $0.backgroundColor = .green
     }
 
@@ -47,7 +48,7 @@ class TrendingViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        [mainTitle, myFavorite, favoriteTableView, topCoinLabel, topCoinTableView].forEach {
+        [mainTitle, myFavorite, favoriteCollectionView, topCoinLabel, topCoinCollectionView].forEach {
             view.addSubview($0)
         }
     }
@@ -65,7 +66,7 @@ class TrendingViewController: BaseViewController {
             $0.width.equalTo(100)
         }
         
-        favoriteTableView.snp.makeConstraints {
+        favoriteCollectionView.snp.makeConstraints {
             $0.leading.equalTo(myFavorite.snp.leading)
             $0.top.equalTo(myFavorite.snp.bottom).offset(10)
             $0.trailing.equalToSuperview()
@@ -73,12 +74,12 @@ class TrendingViewController: BaseViewController {
         }
         
         topCoinLabel.snp.makeConstraints {
-            $0.leading.equalTo(favoriteTableView.snp.leading)
-            $0.top.equalTo(favoriteTableView.snp.bottom).offset(20)
+            $0.leading.equalTo(favoriteCollectionView.snp.leading)
+            $0.top.equalTo(favoriteCollectionView.snp.bottom).offset(20)
             $0.width.equalTo(100)
         }
         
-        topCoinTableView.snp.makeConstraints {
+        topCoinCollectionView.snp.makeConstraints {
             $0.leading.equalTo(topCoinLabel.snp.leading)
             $0.top.equalTo(topCoinLabel.snp.bottom).offset(10)
             $0.trailing.equalToSuperview().offset(-50)
