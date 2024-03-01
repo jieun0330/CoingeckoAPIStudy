@@ -173,8 +173,16 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         
         vc.name.text = item.name
         vc.icon.kf.setImage(with: URL(string: item.image))
-        
-        
+
+        if item.priceChangePercentage24H < 0 {
+            let percentage = String(format: "%.2f", item.priceChangePercentage24H)
+            vc.percentage.text = "\(percentage)%"
+            vc.percentage.textColor = .red
+        } else {
+            let percentage = String(format: "%.2f", item.priceChangePercentage24H)
+            vc.percentage.text = "+\(percentage)%"
+            vc.percentage.textColor = .blue
+        }
 
     }
 }
