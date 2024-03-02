@@ -28,7 +28,7 @@ class FavoriteViewController: BaseViewController {
     
     let mainTitle = UILabel().then {
         $0.text = "Favorite Coin"
-        $0.font = DesignSystemFont.allMain.font
+        $0.font = DesignSystemFont.allMainTitle.font
     }
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: FavoriteViewController.configureCollectionViewLayout()).then {
@@ -186,6 +186,12 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         
         let coinPrice = DesignSystemText.shared.calculator(item.currentPrice)
         vc.price.text = "₩\(coinPrice)"
+        
+        if repository.readItemName(id: item.id).first?.id == item.id {
+            vc.rightFavoriteButton.image = .btnStarFill.withRenderingMode(.alwaysOriginal)
+        } else{
+            vc.rightFavoriteButton.image = .btnStar.withRenderingMode(.alwaysOriginal)
+        }
 
     }
 }

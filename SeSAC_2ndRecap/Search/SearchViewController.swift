@@ -27,7 +27,7 @@ class SearchViewController: BaseViewController {
     
     let mainTitle = UILabel().then {
         $0.text = "Search"
-        $0.font = DesignSystemFont.allMain.font
+        $0.font = DesignSystemFont.allMainTitle.font
     }
     
     lazy var searchBar = UISearchBar().then {
@@ -261,7 +261,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PriceCollectionViewCell.identifier, for: indexPath) as! PriceCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartPriceCollectionViewCell.identifier, for: indexPath) as! ChartPriceCollectionViewCell
 
         return cell
     }

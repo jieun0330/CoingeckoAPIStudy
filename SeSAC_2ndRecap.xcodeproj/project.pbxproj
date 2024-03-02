@@ -44,7 +44,7 @@
 		C2F4F3C62B8F036400E65588 /* CoinRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3C52B8F036400E65588 /* CoinRealmModel.swift */; };
 		C2F4F3C82B8F06FD00E65588 /* repositoryCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3C72B8F06FD00E65588 /* repositoryCRUD.swift */; };
 		C2F4F3CD2B8F2CE600E65588 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3CC2B8F2CE600E65588 /* ChartViewController.swift */; };
-		C2F4F3CF2B8F3D7600E65588 /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3CE2B8F3D7600E65588 /* PriceCollectionViewCell.swift */; };
+		C2F4F3CF2B8F3D7600E65588 /* ChartPriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3CE2B8F3D7600E65588 /* ChartPriceCollectionViewCell.swift */; };
 		C2F4F3D22B8F445500E65588 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F3D12B8F445500E65588 /* DGCharts */; };
 		C2F4F3D42B8F445500E65588 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F3D32B8F445500E65588 /* DGChartsDynamic */; };
 		C2F4F4062B90567C00E65588 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F4052B90567C00E65588 /* Toast */; };
@@ -85,7 +85,7 @@
 		C2F4F3C52B8F036400E65588 /* CoinRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRealmModel.swift; sourceTree = "<group>"; };
 		C2F4F3C72B8F06FD00E65588 /* repositoryCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = repositoryCRUD.swift; sourceTree = "<group>"; };
 		C2F4F3CC2B8F2CE600E65588 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
-		C2F4F3CE2B8F3D7600E65588 /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
+		C2F4F3CE2B8F3D7600E65588 /* ChartPriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPriceCollectionViewCell.swift; sourceTree = "<group>"; };
 		C2F4F4072B909F9100E65588 /* PriceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAPI.swift; sourceTree = "<group>"; };
 		C2F4F4092B90FB0C00E65588 /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +142,7 @@
 		C2F4F3512B8DB0C800E65588 /* SeSAC_2ndRecap */ = {
 			isa = PBXGroup;
 			children = (
+				C2F4F36F2B8DB59000E65588 /* DesignSystem */,
 				C261D4DA2B91A38900501ACB /* Trending */,
 				C2F4F3CB2B8F2CE000E65588 /* Chart */,
 				C2F4F3C42B8F035400E65588 /* Realm */,
@@ -149,7 +150,6 @@
 				C2F4F3912B8DE57900E65588 /* Observable */,
 				C2F4F3882B8DC68200E65588 /* Protocol */,
 				C2F4F3802B8DC34D00E65588 /* Network */,
-				C2F4F36F2B8DB59000E65588 /* DesignSystem */,
 				C2F4F3692B8DB27F00E65588 /* Base */,
 				C2F4F3662B8DB25E00E65588 /* Search */,
 				C2F4F3522B8DB0C800E65588 /* AppDelegate.swift */,
@@ -242,7 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				C2F4F3CC2B8F2CE600E65588 /* ChartViewController.swift */,
-				C2F4F3CE2B8F3D7600E65588 /* PriceCollectionViewCell.swift */,
+				C2F4F3CE2B8F3D7600E65588 /* ChartPriceCollectionViewCell.swift */,
 				C2F4F4092B90FB0C00E65588 /* ChartViewModel.swift */,
 			);
 			path = Chart;
@@ -349,7 +349,7 @@
 				C2F4F39A2B8EAEC200E65588 /* FavoriteViewController.swift in Sources */,
 				C23D49F02B9161E000D8AFAF /* FavoriteViewModel.swift in Sources */,
 				C261D4DC2B91A39600501ACB /* TrendingViewController.swift in Sources */,
-				C2F4F3CF2B8F3D7600E65588 /* PriceCollectionViewCell.swift in Sources */,
+				C2F4F3CF2B8F3D7600E65588 /* ChartPriceCollectionViewCell.swift in Sources */,
 				C261D4E42B91DEDB00501ACB /* TrendingViewModel.swift in Sources */,
 				C2F4F3822B8DC35C00E65588 /* APIManager.swift in Sources */,
 				C2F4F40A2B90FB0C00E65588 /* ChartViewModel.swift in Sources */,

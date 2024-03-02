@@ -20,7 +20,7 @@ class TrendingViewController: BaseViewController {
     
     let mainTitle = UILabel().then {
         $0.text = "Crypto Coin"
-        $0.font = DesignSystemFont.allMain.font
+        $0.font = DesignSystemFont.allMainTitle.font
     }
     
     let myFavorite = UILabel().then {

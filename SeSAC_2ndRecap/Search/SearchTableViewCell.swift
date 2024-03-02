@@ -25,11 +25,11 @@ class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     let name = UILabel().then {
-        $0.font = DesignSystemFont.coinName.font
+        $0.font = DesignSystemFont.allCoinName.font
     }
     
     let symbol = UILabel().then {
-        $0.font = DesignSystemFont.favoriteSymbol.font
+        $0.font = DesignSystemFont.allSymbolName.font
         $0.textColor = UIColor.gray
     }
     

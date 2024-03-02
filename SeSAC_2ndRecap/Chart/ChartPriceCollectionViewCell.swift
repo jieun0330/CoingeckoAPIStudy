@@ -9,17 +9,17 @@ import UIKit
 import Then
 import SnapKit
 
-class PriceCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
+class ChartPriceCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let priceTitle = UILabel().then {
 //        $0.text = "고가"
-        $0.font = DesignSystemFont.percentageBold.font
+        $0.font = DesignSystemFont.allPercentageBold.font
 //        $0.textColor = .red
     }
     
     let price = UILabel().then {
         $0.text = "$69,234,243"
-        $0.font = UIFont.systemFont(ofSize: 17)
+        $0.font = DesignSystemFont.allPrice.font
         $0.textColor = .gray
     }
     

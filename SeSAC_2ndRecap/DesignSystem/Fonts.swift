@@ -8,34 +8,37 @@
 import UIKit
 
 public enum DesignSystemFont {
-    case allMain
+    case allMainTitle
+    case allCoinName
+    case allSymbolName
+    case allPriceBold
+    case allPrice
+    case allPercentageBold
+    case allPercentage
     case trendingSubtitle
-    case coinName
-    case favoriteSymbol
-    case price
-    case priceBold
-    case percentage
-    case percentageBold
+    case trendingRankNum
 }
 
 extension DesignSystemFont {
     var font: UIFont {
         switch self {
-        case .allMain:
-            return .boldSystemFont(ofSize: 30) // dd
+        case .allMainTitle:
+            return .boldSystemFont(ofSize: 30)
+        case .allCoinName:
+            return .boldSystemFont(ofSize: 15)
+        case .allSymbolName:
+            return .systemFont(ofSize: 10)
+        case .allPriceBold:
+            return .boldSystemFont(ofSize: 18)
+        case .allPrice:
+            return .boldSystemFont(ofSize: 17)
+        case .allPercentageBold:
+            return .boldSystemFont(ofSize: 17)
+        case .allPercentage:
+            return .systemFont(ofSize: 15)
         case .trendingSubtitle:
             return .boldSystemFont(ofSize: 17)
-        case .coinName:
-            return .boldSystemFont(ofSize: 15) // dd
-        case .favoriteSymbol:
-            return .systemFont(ofSize: 10) // dd
-        case .price:
-            return .boldSystemFont(ofSize: 18) // ㅇㅇ
-        case .priceBold:
-            return .boldSystemFont(ofSize: 17)
-        case .percentage:
-            return .systemFont(ofSize: 15) //dd
-        case .percentageBold:
+        case .trendingRankNum:
             return .boldSystemFont(ofSize: 17)
         }
     }

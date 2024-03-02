@@ -35,7 +35,7 @@ class TopCoinCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     override func configureView() {
-        contentView.backgroundColor = .purple
+        contentView.backgroundColor = DesignSystemColor.purple.color
     }
     
     required init?(coder: NSCoder) {

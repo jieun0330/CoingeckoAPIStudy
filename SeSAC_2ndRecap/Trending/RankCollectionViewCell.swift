@@ -13,7 +13,7 @@ class RankCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let rankNum = UILabel().then {
         $0.text = "1"
-        $0.font = UIFont.systemFont(ofSize: 10)
+        $0.font = DesignSystemFont.trendingRankNum.font
     }
     
     let image = UIImageView().then {
@@ -26,12 +26,12 @@ class RankCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let name = UILabel().then {
         $0.text = "Solana"
-        $0.font = UIFont.systemFont(ofSize: 10)
+        $0.font = DesignSystemFont.allCoinName.font
     }
     
     let symbol = UILabel().then {
         $0.text = "LTC"
-        $0.font = UIFont.systemFont(ofSize: 10)
+        $0.font = DesignSystemFont.allSymbolName.font
     }
     
     let pricestackView = UIStackView().then { _ in
@@ -40,12 +40,12 @@ class RankCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let price = UILabel().then {
         $0.text = "0.4175"
-        $0.font = UIFont.systemFont(ofSize: 10)
+        $0.font = DesignSystemFont.allPrice.font
     }
     
     let percentage = UILabel().then {
         $0.text = "+21.18%"
-        $0.font = UIFont.systemFont(ofSize: 10)
+        $0.font = DesignSystemFont.allPercentage.font
     }
     
     override init(frame: CGRect) {

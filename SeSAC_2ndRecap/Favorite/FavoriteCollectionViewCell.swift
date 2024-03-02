@@ -22,12 +22,12 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     let name = UILabel().then {
-        $0.font = DesignSystemFont.coinName.font
+        $0.font = DesignSystemFont.allCoinName.font
 //        $0.text = "Bitcoin"
     }
     
     let symbol = UILabel().then {
-        $0.font = DesignSystemFont.favoriteSymbol.font
+        $0.font = DesignSystemFont.allSymbolName.font
         $0.textColor = UIColor.gray
 //        $0.text = "BTC"
     }
@@ -41,7 +41,7 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let price = UILabel().then {
 //        $0.text = "$69,234,245"
-        $0.font = DesignSystemFont.percentageBold.font
+        $0.font = DesignSystemFont.allPercentageBold.font
     }
     
     let percentageBox = UIView().then {
@@ -52,7 +52,7 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     let percentage = UILabel().then {
 //        $0.text = "+0.64%"
 //        $0.textColor = .red
-        $0.font = DesignSystemFont.percentage.font
+        $0.font = DesignSystemFont.percentageBold.font
 
     }
     

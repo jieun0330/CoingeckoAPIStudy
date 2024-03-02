@@ -39,6 +39,7 @@ enum collectionViewCellName: Int, CaseIterable {
 class ChartViewController: BaseViewController {
     
     let viewModel = ChartViewModel()
+    let repository = repositoryCRUD()
     var coinPriceAPIResult: PriceAPI = []
 //    let repository = CoinRepository()
     
@@ -56,29 +57,29 @@ class ChartViewController: BaseViewController {
     }
     
     var name = UILabel().then {
-        $0.font = DesignSystemFont.allMain.font
+        $0.font = DesignSystemFont.allMainTitle.font
     }
     
     let price = UILabel().then {
-        $0.font = DesignSystemFont.allMain.font
+        $0.font = DesignSystemFont.allMainTitle.font
     }
     
     let percentage = UILabel().then {
         $0.text = "+3.22%"
         $0.textColor = .red
-        $0.font = DesignSystemFont.percentage.font
+        $0.font = DesignSystemFont.allPercentageBold.font
     }
     
     let today = UILabel().then {
         $0.text = "Today"
-        $0.font = DesignSystemFont.percentage.font
+        $0.font = DesignSystemFont.allPercentageBold.font
         $0.textColor = .lightGray
     }
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: ChartViewController.configureCollectionViewLayout()).then {
         $0.delegate = self
         $0.dataSource = self
-        $0.register(PriceCollectionViewCell.self, forCellWithReuseIdentifier: PriceCollectionViewCell.identifier)
+        $0.register(ChartPriceCollectionViewCell.self, forCellWithReuseIdentifier: ChartPriceCollectionViewCell.identifier)
     }
     
     override func viewDidLoad() {
@@ -138,16 +139,20 @@ class ChartViewController: BaseViewController {
     }
     
     @objc func rightFavoriteButtonClicked(_ sender: UIButton) {
-        
-//        if name.text == coinPriceAPIResult[sender.tag]
-        
-//        sender.setImage(UIImage(systemName: "pencil"), for: .normal)
-        
-//        UIBarButtonItem.image
-//        UIBarButtonItem(image: .btnStarFill, style: .plain, target: <#T##Any?#>, action: <#T##Selector?#>)
-//        print(#function)
-        
-//        if repository.readItemName(item: <#T##String#>)
+
+//        let saveToRealm = CoinRealmModel(id: coinPriceAPIResult[sender.tag].id)
+//        let realmDatas = repository.readItemName(id: coinPriceAPIResult[sender.tag].name)
+//
+//        if realmDatas.contains(where: { data in
+//            repository.deleteItem(item: data)
+//            return true
+//        }) {
+//            print("중복")
+//            self.view.makeToast("즐겨찾기에서 삭제되었습니다")
+//        } else {
+//            repository.createFavoriteItem(saveToRealm)
+//            self.view.makeToast("즐겨찾기에 추가되었습니다")
+//        }
         
     }
     
@@ -171,7 +176,7 @@ extension ChartViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PriceCollectionViewCell.identifier, for: indexPath) as! PriceCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartPriceCollectionViewCell.identifier, for: indexPath) as! ChartPriceCollectionViewCell
         
 //        viewModel.inputDidSelectRow.value = coinInfo.id
         

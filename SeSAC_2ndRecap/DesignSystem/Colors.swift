@@ -24,7 +24,7 @@ extension DesignSystemColor {
     var color: UIColor {
         switch self {
         case .purple:
-            return .init(red: 145, green: 76, blue: 245, alpha: 1)
+            return UIColor.init(red: 145, green: 76, blue: 245, alpha: 1)
         case .red:
             return .init(red: 240, green: 68, blue: 82, alpha: 1)
         case .pink:
