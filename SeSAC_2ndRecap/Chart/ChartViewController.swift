@@ -10,8 +10,11 @@ import Then
 import SnapKit
 import DGCharts
 import RealmSwift
+import Kingfisher
 
 class ChartViewController: BaseViewController {
+
+    var data: Price!
     
     lazy var rightFavoriteButton = UIBarButtonItem(title: "",
                                                    style: .plain,
@@ -102,6 +105,21 @@ class ChartViewController: BaseViewController {
         view.backgroundColor = DesignSystemColor.white.color
         navigationItem.title = ""
         navigationItem.rightBarButtonItem = rightFavoriteButton
+        
+        icon.kf.setImage(with: URL(string: data.image))
+        name.text = data.name
+        
+        let coinPrice = DesignSystemText.shared.priceCalculator(data.currentPrice)
+        price.text = coinPrice
+        
+        if data.priceChangePercentage24H < 0 {
+            price.textColor = DesignSystemColor.red.color
+        } else {
+            price.textColor = DesignSystemColor.blue.color
+        }
+        
+        percentage.text = DesignSystemText.shared.percentageCalculator(number: data.priceChangePercentage24H)
+        
     }
     
     @objc func rightFavoriteButtonClicked(_ sender: UIButton) {

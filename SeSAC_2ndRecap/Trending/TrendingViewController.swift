@@ -170,6 +170,7 @@ extension TrendingViewController: UICollectionViewDelegate, UICollectionViewData
             cell.layer.cornerRadius = 15
             cell.layer.masksToBounds = true
             
+//            cell.name.text = viewModel.outputCoinInfoAPI.value[indexPath.row]
             
                         
             return cell

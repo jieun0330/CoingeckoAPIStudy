@@ -41,7 +41,7 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     let percentageBox = UIView().then {
-        $0.backgroundColor = .orange
+//        $0.backgroundColor = DesignSystemColor.blue.color
         $0.layer.cornerRadius = 8
     }
     
