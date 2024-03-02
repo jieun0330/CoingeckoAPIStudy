@@ -16,7 +16,7 @@ class FavoriteViewModel {
     init() {
         inputViewDidLoadTrigger.bind { value in
             
-            print("value", value) // whitebit,whisperbot,whiteheart,
+//            print("value", value) // whitebit,whisperbot,whiteheart,
             
             APIManager.shared.fetchCoinPriceAPI(completionHandler: { data in
                 self.outputPriceAPI.value = data

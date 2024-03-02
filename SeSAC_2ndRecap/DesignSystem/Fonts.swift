@@ -33,7 +33,7 @@ extension DesignSystemFont {
         case .allPrice:
             return .boldSystemFont(ofSize: 17)
         case .allPercentageBold:
-            return .boldSystemFont(ofSize: 17)
+            return .boldSystemFont(ofSize: 15)
         case .allPercentage:
             return .systemFont(ofSize: 15)
         case .trendingSubtitle:

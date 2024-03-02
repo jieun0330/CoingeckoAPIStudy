@@ -52,7 +52,7 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     let percentage = UILabel().then {
 //        $0.text = "+0.64%"
 //        $0.textColor = .red
-        $0.font = DesignSystemFont.percentageBold.font
+        $0.font = DesignSystemFont.allPercentageBold.font
 
     }
     

@@ -19,10 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let trendingView = UINavigationController(rootViewController: TrendingViewController())
         let searchView = UINavigationController(rootViewController: SearchViewController())
         let favoritesView = UINavigationController(rootViewController: FavoriteViewController())
-        let chartView = UINavigationController(rootViewController: ChartViewController())
+        let settingView = UINavigationController(rootViewController: SettingViewController())
         
         window?.rootViewController = tabBarController
-        tabBarController.setViewControllers([trendingView, searchView, favoritesView], animated: false)
+        tabBarController.setViewControllers([trendingView, searchView, favoritesView, settingView], animated: false)
         
         trendingView.tabBarItem = UITabBarItem(title: "",
                                                image: .tabTrendInactive,
@@ -31,9 +31,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         searchView.tabBarItem = UITabBarItem(title: "",
                                              image: .tabSearchInactive,
                                              selectedImage: .tabSearch.withRenderingMode(.alwaysOriginal))
+        
         favoritesView.tabBarItem = UITabBarItem(title: "",
                                                 image: .tabPortfolioInactive,
                                                 selectedImage: .tabPortfolio.withRenderingMode(.alwaysOriginal))
+        
+        settingView.tabBarItem = UITabBarItem(title: "",
+                                              image: .tabUserInactive,
+                                              selectedImage: .tabUser.withRenderingMode(.alwaysOriginal))
+        
         
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.

@@ -24,7 +24,7 @@ class MyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let name = UILabel().then {
         $0.font = DesignSystemFont.allCoinName.font
-        $0.text = "Bitcoin"
+//        $0.text = "Bitcoin"
     }
     
     let symbol = UILabel().then {

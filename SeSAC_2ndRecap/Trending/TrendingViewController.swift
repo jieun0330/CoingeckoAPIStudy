@@ -12,6 +12,9 @@ import SnapKit
 class TrendingViewController: BaseViewController {
     
     let repository = repositoryCRUD()
+    let viewModel = TrendingViewModel()
+    var realmList: [CoinRealmModel] = []
+    var coinDetailInfoAPIResult: PriceAPI = []
     
     lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser,
                                                  style: .plain,
@@ -54,6 +57,38 @@ class TrendingViewController: BaseViewController {
         super.viewDidLoad()
         
         
+        realmList = repository.fetchAllItem()
+        
+        var idList = ""
+        
+        print("realmList", realmList)
+        
+        for list in realmList {
+            idList.append(list.id + ",")
+        }
+        
+        print("idList", idList)
+        
+        
+        
+        viewModel.inputViewDidLoadTrigger.value = idList
+        
+        viewModel.outputCoinDetailInfoAPIResult.bind { data in
+            self.coinDetailInfoAPIResult = data
+                        print("data", data)
+
+
+        }
+
+        print("coinDetailInfoAPIResult", coinDetailInfoAPIResult)
+        
+//        viewModel.inputViewDidLoadTrigger.value = realmList
+        
+        
+        
+//        let id = realmList.filter { $0.id ==  }
+        
+//        repository.fetchAllItem()
         
 //        print("repository.fetchAllItem()", repository.fetchAllItem())
 
@@ -163,12 +198,17 @@ extension TrendingViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        
+        
         if collectionView == favoriteCollectionView {
             
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFavoriteCollectionViewCell.identifier, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFavoriteCollectionViewCell.identifier, for: indexPath) as! MyFavoriteCollectionViewCell
             cell.backgroundColor = .systemGray6
             cell.layer.cornerRadius = 15
             cell.layer.masksToBounds = true
+            
+//            cell.name.text = coinDetailInfoAPIResult[indexPath.row].name
+            
             
             return cell
         } else {
