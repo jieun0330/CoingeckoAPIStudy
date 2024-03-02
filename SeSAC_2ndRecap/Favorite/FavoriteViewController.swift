@@ -14,7 +14,7 @@ import RealmSwift
 class FavoriteViewController: BaseViewController {
     
     let repository = repositoryCRUD()
-    let viewModel = FavoriteViewModel()
+    let viewModel = ViewModel()
     
     var realmList: [CoinRealmModel] = []
     var priceAPIResult: PriceAPI = []
@@ -58,12 +58,13 @@ class FavoriteViewController: BaseViewController {
         }
         //        print("searchID", searchID) //whitebit,whisperbot,whiteheart,
         
-        viewModel.inputViewDidLoadTrigger.value = searchID
+        viewModel.inputViewTrigger.value = searchID
         
-        viewModel.outputPriceAPI.bind { data in
+        viewModel.outputCoinPriceAPI.bind { data in
             self.priceAPIResult = data
-            //            print("data", data)
         }
+        
+        print("priceAPIResult", priceAPIResult)
     }
     
     override func viewWillAppear(_ animated: Bool) {

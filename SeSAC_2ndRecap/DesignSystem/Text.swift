@@ -26,7 +26,7 @@ class DesignSystemText {
         let percentage = String(format: "%.2f", number)
         
         if number < 0 {
-            return "-\(percentage)"
+            return percentage
         } else {
             return "+\(percentage)"
         }

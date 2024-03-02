@@ -12,9 +12,8 @@ import SnapKit
 class TrendingViewController: BaseViewController {
     
     let repository = repositoryCRUD()
-    let viewModel = TrendingViewModel()
+    let viewModel = ViewModel()
     var realmList: [CoinRealmModel] = []
-    var coinDetailInfoAPIResult: PriceAPI = []
     
     lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser,
                                                  style: .plain,
@@ -64,11 +63,14 @@ class TrendingViewController: BaseViewController {
             idList.append(list.id + ",")
         }
         
-        viewModel.inputViewDidLoadTrigger.value = idList
+        viewModel.inputViewTrigger.value = idList
         
-        viewModel.outputCoinDetailInfoAPIResult.bind { data in
-            self.coinDetailInfoAPIResult = data
+        viewModel.outputCoinPriceAPI.bind { data in
+            self.favoriteCollectionView.reloadData()
         }
+        
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -168,7 +170,10 @@ extension TrendingViewController: UICollectionViewDelegate, UICollectionViewData
             cell.layer.cornerRadius = 15
             cell.layer.masksToBounds = true
             
+            
+                        
             return cell
+            
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopCoinCollectionViewCell.identifier, for: indexPath)
             cell.backgroundColor = .orange

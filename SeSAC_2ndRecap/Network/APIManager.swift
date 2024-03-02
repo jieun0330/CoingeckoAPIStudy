@@ -14,7 +14,7 @@ class APIManager {
     
     private init() { }
     
-    func fetchCoinAPI(completionHandler: @escaping (SearchAPI) -> Void, query: String) {
+    func fetchCoinInfoAPI(completionHandler: @escaping (SearchAPI) -> Void, query: String) {
         let url = "https://api.coingecko.com/api/v3/search?query=\(query)"
         
         AF

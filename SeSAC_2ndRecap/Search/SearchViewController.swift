@@ -14,7 +14,7 @@ import Toast
 
 class SearchViewController: BaseViewController {
     
-    let viewModel = SearchViewModel()
+    let viewModel = ViewModel()
     let repository = repositoryCRUD()
     var coinInfoAPIResultList: [InfoAPI] = []
     var coinPriceAPIResultList: PriceAPI = []
@@ -55,12 +55,12 @@ class SearchViewController: BaseViewController {
         super.viewDidLoad()
         
         // 검색결과 API 호출
-        viewModel.outputCoinInfoData.bind { data in
+        viewModel.outputCoinInfoAPI.bind { data in
             self.coinInfoAPIResultList = data
             self.tableView.reloadData()
         }
         
-        viewModel.outputCoinPriceData.bind { data in
+        viewModel.outputCoinPriceAPI.bind { data in
             //            print("data", data)
             /*
              data [SeSAC_2ndRecap.Price(id: "whiteheart", symbol: "white", name: "Whiteheart", image: "https://assets.coingecko.com/coins/images/13484/large/whiteheart.png?1696513245", currentPrice: 7774341, high24H: 7937170, low24H: 7346073, priceChangePercentage24H: 4.88268, ath: 7937170, athDate: "2024-02-29T16:45:38.733Z", roi: nil, lastUpdated: "2024-02-29T18:28:39.829Z")]
@@ -149,7 +149,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         vc.icon.kf.setImage(with: URL(string: coinInfo.large))
         
         // 가격 불러오기 위한 PriceAPI 호출
-        viewModel.inputDidSelectRow.value = coinInfo.id
+        viewModel.inputViewTrigger.value = coinInfo.id
         
         // 차트화면 가격
         let coinPrice = DesignSystemText.shared.priceCalculator(coinPriceAPIResultList[0].currentPrice)
