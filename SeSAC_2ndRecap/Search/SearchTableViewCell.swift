@@ -11,8 +11,6 @@ import SnapKit
 
 class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    let repository = repositoryCRUD()
-    
     let icon = UIImageView().then { _ in
         
     }

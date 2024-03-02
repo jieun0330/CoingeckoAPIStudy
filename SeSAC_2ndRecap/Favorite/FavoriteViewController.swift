@@ -15,10 +15,8 @@ class FavoriteViewController: BaseViewController {
     
     let repository = repositoryCRUD()
     let viewModel = FavoriteViewModel()
-    // 즐겨찾기 되어있는 코인 모음집
-    var realmList: [CoinRealmModel] = []
     
-    // 가격 포함되어있는 API 호출 결과물
+    var realmList: [CoinRealmModel] = []
     var priceAPIResult: PriceAPI = []
     
     lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser,
@@ -41,49 +39,31 @@ class FavoriteViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-    
-//        realmList = repositoryCRUD.readItemName(id: <#T##String#>)
-//        print("realmList", realmList)
-        /*
-         저장했을 경우
-         realmList [CoinRealmModel {
-             id = whitebit;
-         }]
-         */
-        
-        // 1. 저장되어있는것만 보여줘야 하니까 fetchAll을 해오지
         realmList = repository.fetchAllItem()
-        print("realmList", realmList)
+        //        print("realmList", realmList)
         /*
          realmList [CoinRealmModel {
-             id = whitebit;
+         id = whitebit;
          }, CoinRealmModel {
-             id = whisperbot;
+         id = whisperbot;
          }, CoinRealmModel {
-             id = whiteheart;
+         id = whiteheart;
          }]
          */
         
-        // 2. 이 중에 ID만 추출해올거야
-//        var realmListID: [String] = []
-        var test = ""
-
-        for list in realmList {
-            test.append(list.id + ",")
-        }
-        print("test", test) //whitebit,whisperbot,whiteheart,
+        var searchID = ""
         
-        viewModel.inputViewDidLoadTrigger.value = test
+        for list in realmList {
+            searchID.append(list.id + ",")
+        }
+        //        print("searchID", searchID) //whitebit,whisperbot,whiteheart,
+        
+        viewModel.inputViewDidLoadTrigger.value = searchID
         
         viewModel.outputPriceAPI.bind { data in
             self.priceAPIResult = data
-            print("data", data)
+            //            print("data", data)
         }
-        
-        print("realmList", realmList)
-        print("priceapiresult", priceAPIResult)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -144,14 +124,12 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCollectionViewCell.identifier, for: indexPath) as! FavoriteCollectionViewCell
         
         let item = priceAPIResult[indexPath.item]
+        let coinPrice = DesignSystemText.shared.priceCalculator(item.currentPrice)
         
         cell.name.text = item.name
         cell.icon.kf.setImage(with: URL(string: item.image))
         cell.symbol.text = item.symbol
-        
-        let coinPrice = DesignSystemText.shared.priceCalculator(item.currentPrice)
         cell.price.text = "₩\(coinPrice)"
-    
         cell.percentage.text = DesignSystemText.shared.percentageCalculator(number: item.priceChangePercentage24H)
         
         if item.priceChangePercentage24H < 0 {
@@ -171,7 +149,6 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         
         vc.name.text = item.name
         vc.icon.kf.setImage(with: URL(string: item.image))
-        
         vc.percentage.text = DesignSystemText.shared.percentageCalculator(number: item.priceChangePercentage24H)
         
         if item.priceChangePercentage24H < 0 {
@@ -188,6 +165,5 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         } else{
             vc.rightFavoriteButton.image = .btnStar.withRenderingMode(.alwaysOriginal)
         }
-
     }
 }

@@ -34,7 +34,7 @@ class TrendingViewController: BaseViewController {
     // TableView와 CollectionView 어떤걸 써야할지 몰라서 3분컷으로 써본 글입니다,, https://cyndi0330.tistory.com/41
     lazy var favoriteCollectionView = UICollectionView(frame: .zero,
                                                        collectionViewLayout: TrendingViewController.favoriteCollectionViewLayout()).then {
-
+        
         $0.delegate = self
         $0.dataSource = self
         $0.register(MyFavoriteCollectionViewCell.self, forCellWithReuseIdentifier: MyFavoriteCollectionViewCell.identifier)
@@ -52,61 +52,29 @@ class TrendingViewController: BaseViewController {
         $0.dataSource = self
         $0.register(TopCoinCollectionViewCell.self, forCellWithReuseIdentifier: TopCoinCollectionViewCell.identifier)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         realmList = repository.fetchAllItem()
         
         var idList = ""
         
-        print("realmList", realmList)
-        
         for list in realmList {
             idList.append(list.id + ",")
         }
-        
-        print("idList", idList)
-        
-        
         
         viewModel.inputViewDidLoadTrigger.value = idList
         
         viewModel.outputCoinDetailInfoAPIResult.bind { data in
             self.coinDetailInfoAPIResult = data
-                        print("data", data)
-
-
         }
-
-        print("coinDetailInfoAPIResult", coinDetailInfoAPIResult)
-        
-//        viewModel.inputViewDidLoadTrigger.value = realmList
-        
-        
-        
-//        let id = realmList.filter { $0.id ==  }
-        
-//        repository.fetchAllItem()
-        
-//        print("repository.fetchAllItem()", repository.fetchAllItem())
-
-        /*
-         [CoinRealmModel {
-             id = whitebit;
-         }, CoinRealmModel {
-             id = whisperbot;
-         }]
-         */
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         favoriteCollectionView.reloadData()
-        
     }
     
     override func configureHierarchy() {
@@ -142,24 +110,20 @@ class TrendingViewController: BaseViewController {
         }
         
         topCoinCollectionView.snp.makeConstraints {
-//            $0.leading.equalTo(topCoinLabel.snp.leading)
             $0.top.equalTo(topCoinLabel.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(180)
         }
-        
     }
-
+    
     override func configureView() {
         navigationItem.rightBarButtonItem = profileTabBarItem
         view.backgroundColor = DesignSystemColor.white.color
-        
     }
     
     @objc func profileTabBarItemClicked() {
         
     }
-    
     
     static func favoriteCollectionViewLayout() -> UICollectionViewLayout{
         
@@ -188,7 +152,6 @@ class TrendingViewController: BaseViewController {
         
         return layout
     }
-    
 }
 
 extension TrendingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -198,8 +161,6 @@ extension TrendingViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        
-        
         if collectionView == favoriteCollectionView {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFavoriteCollectionViewCell.identifier, for: indexPath) as! MyFavoriteCollectionViewCell
@@ -207,19 +168,12 @@ extension TrendingViewController: UICollectionViewDelegate, UICollectionViewData
             cell.layer.cornerRadius = 15
             cell.layer.masksToBounds = true
             
-//            cell.name.text = coinDetailInfoAPIResult[indexPath.row].name
-            
-            
             return cell
         } else {
-            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopCoinCollectionViewCell.identifier, for: indexPath)
             cell.backgroundColor = .orange
-//            cell.layer.cornerRadius = 15
-//            cell.layer.masksToBounds = true
             
             return cell
-            
         }
         return UICollectionViewCell()
     }

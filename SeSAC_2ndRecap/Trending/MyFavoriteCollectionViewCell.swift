@@ -24,7 +24,7 @@ class MyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let name = UILabel().then {
         $0.font = DesignSystemFont.allCoinName.font
-//        $0.text = "Bitcoin"
+        $0.text = "Bitcoin"
     }
     
     let symbol = UILabel().then {
@@ -95,7 +95,6 @@ class MyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
             $0.horizontalEdges.equalTo(contentView).inset(10)
             $0.bottom.equalTo(contentView).inset(10)
             $0.height.equalTo(50)
-//            $0.trailing.equalToSuperview().offset(-10)
         }
         
         price.snp.makeConstraints {
@@ -104,18 +103,14 @@ class MyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         
         percentage.snp.makeConstraints {
             $0.leading.bottom.equalToSuperview()
-
         }
     }
     
     override func configureView() {
-
         
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    
+    }    
 }

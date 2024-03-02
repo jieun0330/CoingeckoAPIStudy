@@ -30,7 +30,5 @@ class DesignSystemText {
         } else {
             return "+\(percentage)"
         }
-    }
-    
-    
+    }    
 }

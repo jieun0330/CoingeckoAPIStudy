@@ -18,7 +18,6 @@ class repositoryCRUD {
         do {
             try realm.write {
                 realm.add(data)
-//                print(realm.configuration.fileURL)
             }
         } catch {
             print(error)
@@ -38,11 +37,6 @@ class repositoryCRUD {
         }
     }
     
-    // 이렇게 해도 문제 없으려나?
-//    func itemFilter() -> Results<CoinRealmModel> {
-//        return realm.objects(CoinRealmModel.self)
-//    }
-    
     // Update
     
     // Delete
@@ -52,7 +46,7 @@ class repositoryCRUD {
                 realm.delete(item)
             }
         } catch {
-            
+            print(error)
         }
     }
 }

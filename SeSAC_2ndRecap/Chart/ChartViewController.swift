@@ -11,45 +11,13 @@ import SnapKit
 import DGCharts
 import RealmSwift
 
-// ChartView에서 보여줘야할 데이터가 SearchView에서 값이 전달되어야 할 것 같다
-//protocol PassDataProtocol: Protocol {
-//    func didSelectRowAt(indexPath: IndexPath)
-//}
-
-enum collectionViewCellName: Int, CaseIterable {
-    case highPrice
-    case lowPrice
-    case ath // 최고점
-    case atl // 최저점
-    
-    var cellName: String {
-        switch self {
-        case .highPrice:
-            "고가"
-        case .lowPrice:
-            "저가"
-        case .ath:
-            "신고점"
-        case .atl:
-            "신저점"
-        }
-    }
-}
-
 class ChartViewController: BaseViewController {
-    
-    let viewModel = ChartViewModel()
-    let repository = repositoryCRUD()
-    var coinPriceAPIResult: PriceAPI = []
-//    let repository = CoinRepository()
-    
-//    var passDelegate: PassDataProtocol?
     
     lazy var rightFavoriteButton = UIBarButtonItem(title: "",
                                                    style: .plain,
                                                    target: self,
                                                    action: #selector(rightFavoriteButtonClicked)).then { _ in
-                
+        
     }
     
     let icon = UIImageView().then {
@@ -84,8 +52,6 @@ class ChartViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        print(collectionViewCellName.RawValue)
         
     }
     
@@ -139,20 +105,20 @@ class ChartViewController: BaseViewController {
     }
     
     @objc func rightFavoriteButtonClicked(_ sender: UIButton) {
-
-//        let saveToRealm = CoinRealmModel(id: coinPriceAPIResult[sender.tag].id)
-//        let realmDatas = repository.readItemName(id: coinPriceAPIResult[sender.tag].name)
-//
-//        if realmDatas.contains(where: { data in
-//            repository.deleteItem(item: data)
-//            return true
-//        }) {
-//            print("중복")
-//            self.view.makeToast("즐겨찾기에서 삭제되었습니다")
-//        } else {
-//            repository.createFavoriteItem(saveToRealm)
-//            self.view.makeToast("즐겨찾기에 추가되었습니다")
-//        }
+        
+        //        let saveToRealm = CoinRealmModel(id: coinPriceAPIResult[sender.tag].id)
+        //        let realmDatas = repository.readItemName(id: coinPriceAPIResult[sender.tag].name)
+        //
+        //        if realmDatas.contains(where: { data in
+        //            repository.deleteItem(item: data)
+        //            return true
+        //        }) {
+        //            print("중복")
+        //            self.view.makeToast("즐겨찾기에서 삭제되었습니다")
+        //        } else {
+        //            repository.createFavoriteItem(saveToRealm)
+        //            self.view.makeToast("즐겨찾기에 추가되었습니다")
+        //        }
         
     }
     
@@ -178,11 +144,7 @@ extension ChartViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartPriceCollectionViewCell.identifier, for: indexPath) as! ChartPriceCollectionViewCell
         
-//        viewModel.inputDidSelectRow.value = coinInfo.id
-        
         cell.priceTitle.text = collectionViewCellName.allCases[indexPath.row].cellName
-        
-//        passDelegate?.didSelectRowAt(indexPath: indexPath)
         
         return cell
     }

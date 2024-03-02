@@ -20,14 +20,14 @@ class APIManager {
         AF
             .request(url)
             .responseDecodable(of: SearchAPI.self) { response in
-            switch response.result {
-            case .success(let success):
-                print(success)
-                completionHandler(success)
-            case .failure(let failure):
-                print(failure)
+                switch response.result {
+                case .success(let success):
+                    print(success)
+                    completionHandler(success)
+                case .failure(let failure):
+                    print(failure)
+                }
             }
-        }
     }
     
     func fetchCoinPriceAPI(completionHandler: @escaping (PriceAPI) -> Void, query: String) {
@@ -36,13 +36,13 @@ class APIManager {
         AF
             .request(url)
             .responseDecodable(of: PriceAPI.self) { response in
-            switch response.result {
-            case .success(let success):
-                print(success)
-                completionHandler(success)
-            case .failure(let failure):
-                print(failure)
+                switch response.result {
+                case .success(let success):
+                    print(success)
+                    completionHandler(success)
+                case .failure(let failure):
+                    print(failure)
+                }
             }
-        }
     }
 }

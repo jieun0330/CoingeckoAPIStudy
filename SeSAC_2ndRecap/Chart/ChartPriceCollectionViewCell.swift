@@ -12,9 +12,7 @@ import SnapKit
 class ChartPriceCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let priceTitle = UILabel().then {
-//        $0.text = "고가"
         $0.font = DesignSystemFont.allPercentageBold.font
-//        $0.textColor = .red
     }
     
     let price = UILabel().then {
@@ -50,5 +48,4 @@ class ChartPriceCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
