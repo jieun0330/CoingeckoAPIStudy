@@ -168,22 +168,26 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 //        
 //        let coinPrice = calculator(ceil(coinPriceAPIResultList[0].currentPrice)) // ceil: 소수점 올림
         
-        let coinPrice = DesignSystemText.shared.calculator(coinPriceAPIResultList[0].currentPrice)
+        let coinPrice = DesignSystemText.shared.priceCalculator(coinPriceAPIResultList[0].currentPrice)
         vc.price.text = "₩\(coinPrice)"
 
         
         
+        if coinPriceAPIResultList[0].priceChangePercentage24H < 0 {
+            vc.percentage.textColor = DesignSystemColor.red.color
+        } else {
+            vc.percentage.textColor = DesignSystemColor.blue.color
+        }
         
+        
+        vc.percentage.text = DesignSystemText.shared.percentageCalculator(number: coinPriceAPIResultList[0].priceChangePercentage24H)
+
 
         // 차트화면 %
         if coinPriceAPIResultList[0].priceChangePercentage24H < 0 {
-            let percentage = String(format: "%.2f", coinPriceAPIResultList[0].priceChangePercentage24H)
-            vc.percentage.text = "\(percentage)%"
-            vc.percentage.textColor = .red
+            vc.percentage.textColor = DesignSystemColor.red.color
         } else {
-            let percentage = String(format: "%.2f", coinPriceAPIResultList[0].priceChangePercentage24H)
-            vc.percentage.text = "+\(percentage)%"
-            vc.percentage.textColor = .blue
+            vc.percentage.textColor = DesignSystemColor.blue.color
         }
         
         

@@ -149,17 +149,15 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         cell.icon.kf.setImage(with: URL(string: item.image))
         cell.symbol.text = item.symbol
         
-        let coinPrice = DesignSystemText.shared.calculator(item.currentPrice)
+        let coinPrice = DesignSystemText.shared.priceCalculator(item.currentPrice)
         cell.price.text = "₩\(coinPrice)"
+    
+        cell.percentage.text = DesignSystemText.shared.percentageCalculator(number: item.priceChangePercentage24H)
         
         if item.priceChangePercentage24H < 0 {
-            let percentage = String(format: "%.2f", item.priceChangePercentage24H)
-            cell.percentage.text = "\(percentage)%"
-            cell.percentage.textColor = .red
+            cell.percentage.textColor = DesignSystemColor.red.color
         } else {
-            let percentage = String(format: "%.2f", item.priceChangePercentage24H)
-            cell.percentage.text = "+\(percentage)%"
-            cell.percentage.textColor = .blue
+            cell.percentage.textColor = DesignSystemColor.blue.color
         }
         
         return cell
@@ -173,18 +171,16 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         
         vc.name.text = item.name
         vc.icon.kf.setImage(with: URL(string: item.image))
-
+        
+        vc.percentage.text = DesignSystemText.shared.percentageCalculator(number: item.priceChangePercentage24H)
+        
         if item.priceChangePercentage24H < 0 {
-            let percentage = String(format: "%.2f", item.priceChangePercentage24H)
-            vc.percentage.text = "\(percentage)%"
-            vc.percentage.textColor = .red
+            vc.percentage.textColor = DesignSystemColor.red.color
         } else {
-            let percentage = String(format: "%.2f", item.priceChangePercentage24H)
-            vc.percentage.text = "+\(percentage)%"
-            vc.percentage.textColor = .blue
+            vc.percentage.textColor = DesignSystemColor.blue.color
         }
         
-        let coinPrice = DesignSystemText.shared.calculator(item.currentPrice)
+        let coinPrice = DesignSystemText.shared.priceCalculator(item.currentPrice)
         vc.price.text = "₩\(coinPrice)"
         
         if repository.readItemName(id: item.id).first?.id == item.id {

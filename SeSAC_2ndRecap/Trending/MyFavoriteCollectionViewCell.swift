@@ -29,7 +29,7 @@ class MyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let symbol = UILabel().then {
         $0.font = DesignSystemFont.allSymbolName.font
-        $0.textColor = UIColor.gray
+        $0.textColor = DesignSystemColor.gray.color
         $0.text = "BTC"
     }
     

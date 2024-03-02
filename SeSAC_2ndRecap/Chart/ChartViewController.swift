@@ -66,14 +66,14 @@ class ChartViewController: BaseViewController {
     
     let percentage = UILabel().then {
         $0.text = "+3.22%"
-        $0.textColor = .red
+        $0.textColor = DesignSystemColor.red.color
         $0.font = DesignSystemFont.allPercentageBold.font
     }
     
     let today = UILabel().then {
         $0.text = "Today"
         $0.font = DesignSystemFont.allPercentageBold.font
-        $0.textColor = .lightGray
+        $0.textColor = DesignSystemColor.lightGray.color
     }
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: ChartViewController.configureCollectionViewLayout()).then {
@@ -133,7 +133,7 @@ class ChartViewController: BaseViewController {
     }
     
     override func configureView() {
-        view.backgroundColor = .white
+        view.backgroundColor = DesignSystemColor.white.color
         navigationItem.title = ""
         navigationItem.rightBarButtonItem = rightFavoriteButton
     }

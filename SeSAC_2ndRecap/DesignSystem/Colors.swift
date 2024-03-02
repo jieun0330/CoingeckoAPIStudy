@@ -7,7 +7,7 @@
 
 import UIKit
 
-public enum DesignSystemColor {
+enum DesignSystemColor {
     case purple
     case red
     case pink
@@ -22,27 +22,29 @@ public enum DesignSystemColor {
 
 extension DesignSystemColor {
     var color: UIColor {
+        
         switch self {
+            
         case .purple:
-            return UIColor.init(red: 145, green: 76, blue: 245, alpha: 1)
+            return .init(red: 145, green: 76, blue: 245)
         case .red:
-            return .init(red: 240, green: 68, blue: 82, alpha: 1)
+            return .init(red: 240, green: 68, blue: 82)
         case .pink:
-            return .init(red: 255, green: 234, blue: 237, alpha: 1)
+            return .init(red: 255, green: 234, blue: 237)
         case .blue:
-            return .init(red: 50, green: 130, blue: 248, alpha: 1)
+            return .init(red: 50, green: 130, blue: 248)
         case .sky:
-            return .init(red: 229, green: 240, blue: 255, alpha: 1)
+            return .init(red: 229, green: 240, blue: 255)
         case .black:
-            return .init(red: 0, green: 0, blue: 0, alpha: 1)
+            return .init(red: 0, green: 0, blue: 0)
         case .gray:
-            return .init(red: 130, green: 130, blue: 130, alpha: 1)
+            return .init(red: 130, green: 130, blue: 130)
         case .indigo:
-            return .init(red: 52, green: 61, blue: 76, alpha: 1)
+            return .init(red: 52, green: 61, blue: 76)
         case .lightGray:
-            return .init(red: 243, green: 244, blue: 246, alpha: 1)
+            return .init(red: 243, green: 244, blue: 246)
         case .white:
-            return .init(red: 255, green: 255, blue: 255, alpha: 1)
+            return .init(red: 255, green: 255, blue: 255)
         }
     }
 }

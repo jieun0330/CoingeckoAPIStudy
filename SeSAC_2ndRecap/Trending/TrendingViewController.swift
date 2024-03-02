@@ -152,7 +152,7 @@ class TrendingViewController: BaseViewController {
 
     override func configureView() {
         navigationItem.rightBarButtonItem = profileTabBarItem
-        view.backgroundColor = .white
+        view.backgroundColor = DesignSystemColor.white.color
         
     }
     
@@ -203,7 +203,7 @@ extension TrendingViewController: UICollectionViewDelegate, UICollectionViewData
         if collectionView == favoriteCollectionView {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyFavoriteCollectionViewCell.identifier, for: indexPath) as! MyFavoriteCollectionViewCell
-            cell.backgroundColor = .systemGray6
+            cell.backgroundColor = DesignSystemColor.lightGray.color
             cell.layer.cornerRadius = 15
             cell.layer.masksToBounds = true
             

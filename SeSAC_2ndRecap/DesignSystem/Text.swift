@@ -15,9 +15,22 @@ class DesignSystemText {
     
     private let priceFormatter = NumberFormatter()
     
-    func calculator(_ number: Double) -> String {
+    func priceCalculator(_ number: Double) -> String {
         priceFormatter.numberStyle = .decimal
         let result = priceFormatter.string(from: number as NSNumber)
         return result ?? "0"
     }
+    
+    func percentageCalculator(number: Double) -> String {
+        
+        let percentage = String(format: "%.2f", number)
+        
+        if number < 0 {
+            return "-\(percentage)"
+        } else {
+            return "+\(percentage)"
+        }
+    }
+    
+    
 }

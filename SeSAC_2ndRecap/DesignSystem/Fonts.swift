@@ -7,7 +7,7 @@
 
 import UIKit
 
-public enum DesignSystemFont {
+enum DesignSystemFont {
     case allMainTitle
     case allCoinName
     case allSymbolName
