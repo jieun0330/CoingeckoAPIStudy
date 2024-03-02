@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class repositoryCRUD {
+class RepositoryRealm {
     
     private let realm = try! Realm()
     
@@ -18,6 +18,7 @@ class repositoryCRUD {
         do {
             try realm.write {
                 realm.add(data)
+                print(realm.configuration.fileURL)
             }
         } catch {
             print(error)

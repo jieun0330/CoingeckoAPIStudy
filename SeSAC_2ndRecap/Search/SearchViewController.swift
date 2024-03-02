@@ -15,7 +15,7 @@ import Toast
 class SearchViewController: BaseViewController {
     
     let viewModel = ViewModel()
-    let repository = repositoryCRUD()
+    let repository = RepositoryRealm()
     var coinInfoAPIResultList: [InfoAPI] = []
     var coinPriceAPIResultList: PriceAPI = []
     var coinID: String?
@@ -154,30 +154,17 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         // 즐겨찾기 버튼을 눌렀을 때 해당 셀의 id를 램 형식에 맞게 저장해주기 위한 data
         let saveToRealm = CoinRealmModel(id: viewModel.outputCoinInfoAPI.value[sender.tag].id)
-        
-        // 실제 Realm에 저장되어있는 data
-        let realmDatas = repository.readItemName(id: viewModel.outputCoinInfoAPI.value[sender.tag].name)
-        //        print("realmDatas", realmDatas)
-        /*
-         item Results<CoinRealmModel> <0x109a46550> (
-         [0] CoinRealmModel {
-         id = 65e0aa1d2831eeee2da3c033;
-         name = WhiteBIT Coin;
-         favorites = 0;
-         },
+//        print("saveToRealm", saveToRealm)
+        /* saveToRealm
+         CoinRealmModel {
+             id = tether-gold;
+         }
          */
         
+        // 실제 Realm에 저장되어있는 data
+        let realmDatas = repository.readItemName(id: viewModel.outputCoinInfoAPI.value[sender.tag].id)
+        
         if realmDatas.contains(where: { data in
-            //            print("data", data)
-            /*
-             data CoinRealmModel {
-             id = 65e0ad3a6a116db69771a768;
-             name = Whiteheart;
-             favorites = 0;
-             }
-             */
-            repository.deleteItem(item: data)
-            
             return true
         }) {
             print("중복")

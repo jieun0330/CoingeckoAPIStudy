@@ -13,7 +13,7 @@ import RealmSwift
 
 class FavoriteViewController: BaseViewController {
     
-    let repository = repositoryCRUD()
+    let repository = RepositoryRealm()
     let viewModel = ViewModel()
     
     var realmList: [CoinRealmModel] = []

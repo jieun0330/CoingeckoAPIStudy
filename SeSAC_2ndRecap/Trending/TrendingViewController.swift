@@ -11,7 +11,7 @@ import SnapKit
 
 final class TrendingViewController: BaseViewController {
     
-    let repository = repositoryCRUD()
+    let repository = RepositoryRealm()
     let viewModel = ViewModel()
     var realmList: [CoinRealmModel] = []
     
