@@ -16,7 +16,7 @@ class ChartViewController: BaseViewController {
 
     var data: Price!
     
-    lazy var rightFavoriteButton = UIBarButtonItem(title: "",
+    lazy var rightFavoriteButton = UIBarButtonItem(image: .btnStar,
                                                    style: .plain,
                                                    target: self,
                                                    action: #selector(rightFavoriteButtonClicked)).then { _ in
@@ -47,7 +47,8 @@ class ChartViewController: BaseViewController {
         $0.textColor = DesignSystemColor.lightGray.color
     }
     
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: ChartViewController.configureCollectionViewLayout()).then {
+    lazy var collectionView = UICollectionView(
+        frame: .zero, collectionViewLayout: ChartViewController.configureCollectionViewLayout()).then {
         $0.delegate = self
         $0.dataSource = self
         $0.register(ChartPriceCollectionViewCell.self, forCellWithReuseIdentifier: ChartPriceCollectionViewCell.identifier)
@@ -56,6 +57,9 @@ class ChartViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        viewModel.outputCoinPriceAPI.bind { data in
+//            self.coinPriceAPIResult = data
+//        }
     }
     
     override func configureHierarchy() {
@@ -106,6 +110,7 @@ class ChartViewController: BaseViewController {
         navigationItem.title = ""
         navigationItem.rightBarButtonItem = rightFavoriteButton
         
+
         icon.kf.setImage(with: URL(string: data.image))
         name.text = data.name
         
@@ -119,9 +124,8 @@ class ChartViewController: BaseViewController {
         }
         
         percentage.text = DesignSystemText.shared.percentageCalculator(number: data.priceChangePercentage24H)
-        
     }
-    
+        
     @objc func rightFavoriteButtonClicked(_ sender: UIButton) {
         
         //        let saveToRealm = CoinRealmModel(id: coinPriceAPIResult[sender.tag].id)
@@ -137,7 +141,6 @@ class ChartViewController: BaseViewController {
         //            repository.createFavoriteItem(saveToRealm)
         //            self.view.makeToast("즐겨찾기에 추가되었습니다")
         //        }
-        
     }
     
     static func configureCollectionViewLayout() -> UICollectionViewLayout {

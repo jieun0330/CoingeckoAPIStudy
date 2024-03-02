@@ -18,6 +18,7 @@ class SearchViewController: BaseViewController {
     let repository = repositoryCRUD()
     var coinInfoAPIResultList: [InfoAPI] = []
     var coinPriceAPIResultList: PriceAPI = []
+    var coinID: String?
     
     lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser,
                                                  style: .plain,
@@ -61,15 +62,16 @@ class SearchViewController: BaseViewController {
         }
         
         viewModel.outputCoinPriceAPI.bind { data in
-            //            print("data", data)
-            /*
-             data [SeSAC_2ndRecap.Price(id: "whiteheart", symbol: "white", name: "Whiteheart", image: "https://assets.coingecko.com/coins/images/13484/large/whiteheart.png?1696513245", currentPrice: 7774341, high24H: 7937170, low24H: 7346073, priceChangePercentage24H: 4.88268, ath: 7937170, athDate: "2024-02-29T16:45:38.733Z", roi: nil, lastUpdated: "2024-02-29T18:28:39.829Z")]
-             */
             self.coinPriceAPIResultList = data
-            //            print("coinPriceAPIResultList.count", self.coinPriceAPIResultList.count) // 1개
+            
+            if self.coinID != nil {
+                let vc = ChartViewController()
+                vc.data = self.coinPriceAPIResultList.first
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
-    
+
     override func configureHierarchy() {
         [mainTitle, searchBar, tableView].forEach {
             view.addSubview($0)
@@ -111,15 +113,18 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // API 검색 결과 수
-        return coinInfoAPIResultList.count
+        return viewModel.outputCoinInfoAPI.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
-        let row = coinInfoAPIResultList[indexPath.row]
+        let row = viewModel.outputCoinInfoAPI.value[indexPath.row]
         
         cell.icon.kf.setImage(with: URL(string: row.large))
         cell.name.text = row.name
+        
+
+        
         cell.symbol.text = row.symbol
         cell.favorites.tag = indexPath.row
         
@@ -133,52 +138,25 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.favorites.addTarget(self, action: #selector(favoritesButtonClicked), for: .touchUpInside)
         
+        
         return cell
-    }
+            }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let vc = ChartViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        let coinPriceInfo = coinInfoAPIResultList[indexPath.row]
+        self.coinID = coinPriceInfo.id
         
-        let coinInfo = coinInfoAPIResultList[indexPath.row]
-        
-        // 차트화면 이름
-        vc.name.text = coinInfo.name
-        // 차트화면 아이콘 이미지
-        vc.icon.kf.setImage(with: URL(string: coinInfo.large))
-        
-        // 가격 불러오기 위한 PriceAPI 호출
-        viewModel.inputViewTrigger.value = coinInfo.id
-        
-        // 차트화면 가격
-        let coinPrice = DesignSystemText.shared.priceCalculator(coinPriceAPIResultList[0].currentPrice)
-        vc.price.text = "₩\(coinPrice)"
-        
-        // 차트화면 %
-        vc.percentage.text = DesignSystemText.shared.percentageCalculator(number: coinPriceAPIResultList[0].priceChangePercentage24H)
-        
-        if coinPriceAPIResultList[0].priceChangePercentage24H < 0 {
-            vc.percentage.textColor = DesignSystemColor.red.color
-        } else {
-            vc.percentage.textColor = DesignSystemColor.blue.color
-        }
-        
-        // 차트화면 오른쪽 즐겨찾기 버튼
-        if repository.readItemName(id: coinInfo.id).first?.id == coinInfo.id {
-            vc.rightFavoriteButton.image = .btnStarFill.withRenderingMode(.alwaysOriginal)
-        } else{
-            vc.rightFavoriteButton.image = .btnStar.withRenderingMode(.alwaysOriginal)
-        }
+        viewModel.inputViewTrigger.value = coinPriceInfo.id
     }
     
     @objc func favoritesButtonClicked(_ sender: UIButton) {
         
         // 즐겨찾기 버튼을 눌렀을 때 해당 셀의 id를 램 형식에 맞게 저장해주기 위한 data
-        let saveToRealm = CoinRealmModel(id: coinInfoAPIResultList[sender.tag].id)
+        let saveToRealm = CoinRealmModel(id: viewModel.outputCoinInfoAPI.value[sender.tag].id)
         
         // 실제 Realm에 저장되어있는 data
-        let realmDatas = repository.readItemName(id: coinInfoAPIResultList[sender.tag].name)
+        let realmDatas = repository.readItemName(id: viewModel.outputCoinInfoAPI.value[sender.tag].name)
         //        print("realmDatas", realmDatas)
         /*
          item Results<CoinRealmModel> <0x109a46550> (

@@ -24,7 +24,6 @@ class MyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let name = UILabel().then {
         $0.font = DesignSystemFont.allCoinName.font
-        $0.text = "Bitcoin"
     }
     
     let symbol = UILabel().then {
@@ -49,9 +48,13 @@ class MyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         $0.text = "+0.64%"
         $0.font = DesignSystemFont.allPercentageBold.font
     }
-    
+
     override init(frame: CGRect) {
         super .init(frame: frame)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func configureHierarchy() {
@@ -109,8 +112,4 @@ class MyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     override func configureView() {
         
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }    
 }

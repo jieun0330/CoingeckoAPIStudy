@@ -55,7 +55,6 @@ class FavoriteViewController: BaseViewController {
         for list in realmList {
             searchID.append(list.id + ",")
         }
-        //        print("searchID", searchID) //whitebit,whisperbot,whiteheart,
         
         viewModel.inputViewTrigger.value = searchID
         
@@ -114,6 +113,7 @@ class FavoriteViewController: BaseViewController {
 }
 
 extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return repository.fetchAllItem().count
     }
@@ -145,12 +145,9 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         let item = viewModel.outputCoinPriceAPI.value[indexPath.item]
         
         let vc = ChartViewController()
-//        vc.data = item
-        self.navigationController?.pushViewController(vc, animated: true)
         vc.data = item
-        
+        self.navigationController?.pushViewController(vc, animated: true)
 
-        
 //        if repository.readItemName(id: data.id).first?.id == data.id {
 //            self.rightFavoriteButton.image = .btnStarFill.withRenderingMode(.alwaysOriginal)
 //        } else{

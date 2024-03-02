@@ -3,4 +3,70 @@
    uuid = "0473D7C0-04F6-4E8F-8364-C9EB30EB74C6"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "394F14FB-F928-47E7-8F82-FD80AA4E1705"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_2ndRecap/Trending/TrendingViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "394F14FB-F928-47E7-8F82-FD80AA4E1705 - fafc215ea1d6d62"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SeSAC_2ndRecap.TrendingViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "SeSAC_2ndRecap"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jieun/Desktop/sesac/%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B4%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD/SeSAC_2ndRecap/SeSAC_2ndRecap/Trending/TrendingViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "272">
+               </Location>
+               <Location
+                  uuid = "394F14FB-F928-47E7-8F82-FD80AA4E1705 - fafc215ea1d6d43"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SeSAC_2ndRecap.TrendingViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "SeSAC_2ndRecap"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jieun/Desktop/sesac/%E1%84%80%E1%85%A1%E1%86%BC%E1%84%8B%E1%85%B4%E1%84%8C%E1%85%A1%E1%84%85%E1%85%AD/SeSAC_2ndRecap/SeSAC_2ndRecap/Trending/TrendingViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "272">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B1438837-204D-4EB3-949C-76EF6317C605"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SeSAC_2ndRecap/ViewModel/ViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "init()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

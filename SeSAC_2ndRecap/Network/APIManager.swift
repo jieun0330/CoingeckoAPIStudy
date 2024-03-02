@@ -30,12 +30,12 @@ class APIManager {
             }
     }
     
-    func fetchCoinPriceAPI(completionHandler: @escaping (PriceAPI) -> Void, query: String) {
+    func fetchCoinPriceAPI(completionHandler: @escaping ([Price]) -> Void, query: String) {
         let url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=krw&ids=\(query)"
         
         AF
             .request(url)
-            .responseDecodable(of: PriceAPI.self) { response in
+            .responseDecodable(of: [Price].self) { response in
                 switch response.result {
                 case .success(let success):
                     print(success)

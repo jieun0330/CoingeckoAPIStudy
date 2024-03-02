@@ -29,10 +29,6 @@ struct Price: Decodable {
         case roi
         case lastUpdated = "last_updated"
     }
-    
-    static func empty() -> Price {
-        Price(id: "", symbol: "", name: "", image: "", currentPrice: 0, high24H: 0, low24H: 0, priceChangePercentage24H: 0, ath: 0, athDate: "", roi: nil, lastUpdated: "")
-    }
 }
 
 struct Roi: Decodable {
