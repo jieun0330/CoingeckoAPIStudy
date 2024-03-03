@@ -17,7 +17,7 @@ final class ChartViewController: BaseViewController {
     let repository = RepositoryRealm()
     var data: Market!
     
-    lazy var rightFavoriteButton = UIBarButtonItem(image: .btnStarFill.withRenderingMode(.alwaysOriginal),
+    lazy var rightFavoriteButton = UIBarButtonItem(image: DesignSystemImage.starFill.image,
                                                    style: .plain,
                                                    target: self,
                                                    action: #selector(rightFavoriteButtonClicked)).then { _ in
@@ -132,12 +132,12 @@ final class ChartViewController: BaseViewController {
             return true
         }) {
             self.view.makeToast("즐겨찾기에서 삭제되었습니다")
-            rightFavoriteButton.image = .btnStar.withRenderingMode(.alwaysOriginal)
+            rightFavoriteButton.image = DesignSystemImage.star.image
             collectionView.reloadData()
         } else {
             repository.createFavoriteItem(readRealmModel)
             self.view.makeToast("즐겨찾기에 추가되었습니다")
-            rightFavoriteButton.image = .btnStarFill.withRenderingMode(.alwaysOriginal)
+            rightFavoriteButton.image = DesignSystemImage.starFill.image
         }
         
     }

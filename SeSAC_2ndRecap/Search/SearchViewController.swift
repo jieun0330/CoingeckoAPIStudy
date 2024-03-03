@@ -20,7 +20,7 @@ final class SearchViewController: BaseViewController {
     var coinPriceAPIResultList: PriceAPI = []
     var coinID: String?
     
-    lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser.withRenderingMode(.alwaysOriginal),
+    lazy var profileTabBarItem = UIBarButtonItem(image: DesignSystemImage.user.image,
                                                  style: .plain,
                                                  target: self,
                                                  action: #selector(profileTabBarItemClicked))

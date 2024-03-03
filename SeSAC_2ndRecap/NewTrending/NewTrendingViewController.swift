@@ -16,7 +16,7 @@ final class NewTrendingViewController: BaseViewController {
     var topCoinAPIResult: [Coin] = []
     var topNFTAPIResult: [Nft] = []
     
-    lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser.withRenderingMode(.alwaysOriginal),
+    lazy var profileTabBarItem = UIBarButtonItem(image: DesignSystemImage.user.image,
                                                  style: .plain,
                                                  target: self,
                                                  action: #selector(profileTabBarItemClicked))

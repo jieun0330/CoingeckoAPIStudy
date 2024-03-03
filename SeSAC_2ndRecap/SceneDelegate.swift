@@ -27,20 +27,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarController.setViewControllers([trendingView, searchView, favoritesView, settingView], animated: false)
         
         trendingView.tabBarItem = UITabBarItem(title: "",
-                                               image: .tabTrendInactive,
-                                               selectedImage: .tabTrend.withRenderingMode(.alwaysOriginal))
+                                               image: DesignSystemImage.trendInactive.image,
+                                               selectedImage: DesignSystemImage.trend.image)
         
         searchView.tabBarItem = UITabBarItem(title: "",
-                                             image: .tabSearchInactive,
-                                             selectedImage: .tabSearch.withRenderingMode(.alwaysOriginal))
+                                             image: DesignSystemImage.searchInactive.image,
+                                             selectedImage: DesignSystemImage.search.image)
         
         favoritesView.tabBarItem = UITabBarItem(title: "",
-                                                image: .tabPortfolioInactive,
-                                                selectedImage: .tabPortfolio.withRenderingMode(.alwaysOriginal))
+                                                image: DesignSystemImage.portfolioInactive.image,
+                                                selectedImage: DesignSystemImage.portfolio.image)
         
         settingView.tabBarItem = UITabBarItem(title: "",
-                                              image: .tabUserInactive,
-                                              selectedImage: .tabUser.withRenderingMode(.alwaysOriginal))
+                                              image: DesignSystemImage.userInactive.image,
+                                              selectedImage: DesignSystemImage.user.image)
         
         
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
