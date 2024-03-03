@@ -92,12 +92,16 @@ extension NewNTFTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
             let trending = viewModel.outputTrendingNFTAPI.value[indexPath.item]
             
             cell.name.text = trending.name
+            cell.rankNum.text = "\(indexPath.item+1)"
+            cell.image.kf.setImage(with: URL(string: trending.thumb))
+            cell.price.text = trending.data.floorPrice
+            cell.symbol.text = trending.symbol
+//            let percentage = DesignSystemText.shared.percentageCalculator(number: krwKey["krw"]!)
+
+            let percentage = DesignSystemText.shared.percentageCalculator(number: Double(trending.data.floorPriceInUsd24HPercentageChange)!)
+            cell.percentage.text = percentage
+//            print("percentage", percentage)
             
-//            cell.rankNum.text = "\(indexPath.item+1)"
-//            cell.name.text = trending.name
-//            cell.image.kf.setImage(with: URL(string: trending.small))
-//            cell.price.text = trending.data.price
-//            
 //            let krwKey: [String: Double] = trending.data.priceChangePercentage24H
 //            let percentage = DesignSystemText.shared.percentageCalculator(number: krwKey["krw"]!)
 //            cell.percentage.text = percentage

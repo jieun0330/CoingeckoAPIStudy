@@ -40,12 +40,12 @@ class NewNFTCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     let price = UILabel().then {
-        $0.text = "1.70 ETH"
+//        $0.text = "1.70 ETH"
         $0.font = DesignSystemFont.allPercentage.font
     }
     
     let percentage = UILabel().then {
-        $0.text = "+21.18%"
+//        $0.text = "+21.18%"
         $0.font = DesignSystemFont.allPercentage.font
     }
     
@@ -75,7 +75,7 @@ class NewNFTCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         
         image.snp.makeConstraints {
             $0.centerY.equalTo(rankNum)
-            //            $0.size.equalTo(25)
+            $0.size.equalTo(25)
             $0.leading.equalTo(rankNum.snp.trailing).offset(10)
         }
         
