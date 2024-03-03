@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C25A81892B943E12008C542D /* TransitionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A81882B943E12008C542D /* TransitionStyle.swift */; };
+		C25A818E2B944189008C542D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A818D2B944189008C542D /* API.swift */; };
 		C261D4DC2B91A39600501ACB /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4DB2B91A39600501ACB /* TrendingViewController.swift */; };
 		C261D4DE2B91AE3600501ACB /* MyFavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4DD2B91AE3500501ACB /* MyFavoriteCollectionViewCell.swift */; };
 		C261D4E02B91BE1B00501ACB /* TopCoinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4DF2B91BE1B00501ACB /* TopCoinCollectionViewCell.swift */; };
@@ -56,10 +58,12 @@
 		C2F4F3D22B8F445500E65588 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F3D12B8F445500E65588 /* DGCharts */; };
 		C2F4F3D42B8F445500E65588 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F3D32B8F445500E65588 /* DGChartsDynamic */; };
 		C2F4F4062B90567C00E65588 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F4052B90567C00E65588 /* Toast */; };
-		C2F4F4082B909F9100E65588 /* PriceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F4072B909F9100E65588 /* PriceAPI.swift */; };
+		C2F4F4082B909F9100E65588 /* MarketAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F4072B909F9100E65588 /* MarketAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C25A81882B943E12008C542D /* TransitionStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionStyle.swift; sourceTree = "<group>"; };
+		C25A818D2B944189008C542D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C261D4DB2B91A39600501ACB /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
 		C261D4DD2B91AE3500501ACB /* MyFavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		C261D4DF2B91BE1B00501ACB /* TopCoinCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCoinCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -101,7 +105,7 @@
 		C2F4F3C72B8F06FD00E65588 /* RepositoryRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryRealm.swift; sourceTree = "<group>"; };
 		C2F4F3CC2B8F2CE600E65588 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		C2F4F3CE2B8F3D7600E65588 /* ChartPriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPriceCollectionViewCell.swift; sourceTree = "<group>"; };
-		C2F4F4072B909F9100E65588 /* PriceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceAPI.swift; sourceTree = "<group>"; };
+		C2F4F4072B909F9100E65588 /* MarketAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +239,7 @@
 				C2F4F37A2B8DB98200E65588 /* Colors.swift */,
 				C2F4F38D2B8DDCC200E65588 /* Fonts.swift */,
 				C261D4E52B920E6900501ACB /* Text.swift */,
+				C25A81882B943E12008C542D /* TransitionStyle.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -242,9 +247,10 @@
 		C2F4F3802B8DC34D00E65588 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				C25A818D2B944189008C542D /* API.swift */,
 				C2F4F3812B8DC35C00E65588 /* APIManager.swift */,
 				C2F4F3862B8DC42300E65588 /* SearchAPI.swift */,
-				C2F4F4072B909F9100E65588 /* PriceAPI.swift */,
+				C2F4F4072B909F9100E65588 /* MarketAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -402,11 +408,12 @@
 				C261D4DE2B91AE3600501ACB /* MyFavoriteCollectionViewCell.swift in Sources */,
 				C2F4F3CD2B8F2CE600E65588 /* ChartViewController.swift in Sources */,
 				C261D4E62B920E6900501ACB /* Text.swift in Sources */,
-				C2F4F4082B909F9100E65588 /* PriceAPI.swift in Sources */,
+				C2F4F4082B909F9100E65588 /* MarketAPI.swift in Sources */,
 				C26F1E6B2B94076F00F1BECA /* NewNTFTableViewCell.swift in Sources */,
 				C2F4F39E2B8EB2DD00E65588 /* FavoriteCollectionViewCell.swift in Sources */,
 				C276CF8C2B934FFD004ED09F /* MyFavoriteTableViewCell.swift in Sources */,
 				C2F4F3532B8DB0C800E65588 /* AppDelegate.swift in Sources */,
+				C25A81892B943E12008C542D /* TransitionStyle.swift in Sources */,
 				C26F1E652B93F3BD00F1BECA /* NewMyFavoriteCollectionViewCell.swift in Sources */,
 				C2F4F38A2B8DC68700E65588 /* Protocol.swift in Sources */,
 				C2F4F3C82B8F06FD00E65588 /* RepositoryRealm.swift in Sources */,
@@ -418,6 +425,7 @@
 				C2F4F3932B8DE58000E65588 /* Observable.swift in Sources */,
 				C261D4E92B92F58700501ACB /* SettingViewController.swift in Sources */,
 				C2F4F3552B8DB0C800E65588 /* SceneDelegate.swift in Sources */,
+				C25A818E2B944189008C542D /* API.swift in Sources */,
 				C261D4E02B91BE1B00501ACB /* TopCoinCollectionViewCell.swift in Sources */,
 				C2F4F37B2B8DB98200E65588 /* Colors.swift in Sources */,
 				C261D4EB2B93077B00501ACB /* CellEnum.swift in Sources */,

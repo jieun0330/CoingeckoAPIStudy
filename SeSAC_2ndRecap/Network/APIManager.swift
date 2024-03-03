@@ -8,17 +8,16 @@
 import Foundation
 import Alamofire
 
-class APIManager {
-    
-    static let shared = APIManager()
+final class APIManager {
     
     private init() { }
     
-    func fetchCoinInfoAPI(completionHandler: @escaping (SearchAPI) -> Void, query: String) {
-        let url = "https://api.coingecko.com/api/v3/search?query=\(query)"
+    static let shared = APIManager()
+    
+    func fetchCoinInfoAPI(api: CoinAPI, completionHandler: @escaping (SearchAPI) -> Void) {
         
         AF
-            .request(url)
+            .request(api.endpoint)
             .responseDecodable(of: SearchAPI.self) { response in
                 switch response.result {
                 case .success(let success):
@@ -30,11 +29,10 @@ class APIManager {
             }
     }
     
-    func fetchCoinPriceAPI(completionHandler: @escaping ([Price]) -> Void, query: String) {
-        let url = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=krw&ids=\(query)"
+    func fetchCoinPriceAPI(api: CoinAPI, completionHandler: @escaping ([Price]) -> Void) {
         
         AF
-            .request(url)
+            .request(api.endpoint)
             .responseDecodable(of: [Price].self) { response in
                 switch response.result {
                 case .success(let success):
