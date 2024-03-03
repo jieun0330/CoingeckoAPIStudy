@@ -92,6 +92,7 @@ extension NewTopCoinTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             let trending = viewModel.outputTrendingAPI.value[indexPath.item]
             
             cell.name.text = trending.item.name
+            cell.image.kf.setImage(with: URL(string: trending.item.small))
         }
         
 

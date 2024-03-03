@@ -74,7 +74,7 @@ class NewTopCoinCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         
         image.snp.makeConstraints {
             $0.centerY.equalTo(rankNum)
-//            $0.size.equalTo(25)
+            $0.size.equalTo(25)
             $0.leading.equalTo(rankNum.snp.trailing).offset(10)
         }
         
