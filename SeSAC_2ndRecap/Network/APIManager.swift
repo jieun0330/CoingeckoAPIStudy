@@ -14,7 +14,7 @@ final class APIManager {
     
     static let shared = APIManager()
     
-    func fetchCoinInfoAPI(api: CoinAPI, completionHandler: @escaping (SearchAPI) -> Void) {
+    func fetchSearchAPI(api: CoinAPI, completionHandler: @escaping (SearchAPI) -> Void) {
         
         AF
             .request(api.endpoint)
@@ -29,11 +29,11 @@ final class APIManager {
             }
     }
     
-    func fetchCoinPriceAPI(api: CoinAPI, completionHandler: @escaping ([Price]) -> Void) {
+    func fetchMarketAPI(api: CoinAPI, completionHandler: @escaping ([Market]) -> Void) {
         
         AF
             .request(api.endpoint)
-            .responseDecodable(of: [Price].self) { response in
+            .responseDecodable(of: [Market].self) { response in
                 switch response.result {
                 case .success(let success):
                     print(success)
@@ -43,4 +43,11 @@ final class APIManager {
                 }
             }
     }
+    
+//    func fetchTrendingAPI(api: CoinAPI) {
+//        AF
+//            .request(api.endpoint)
+//            .responseDecodable(of: )
+//    }
+    
 }

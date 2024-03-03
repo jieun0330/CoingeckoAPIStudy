@@ -15,7 +15,7 @@ import Toast
 
 class ChartViewController: BaseViewController {
 
-    var data: Price!
+    var data: Market!
     
     let repository = RepositoryRealm()
     let viewModel = ViewModel()

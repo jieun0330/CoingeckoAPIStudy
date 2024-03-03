@@ -20,13 +20,13 @@ final class ViewModel {
     init() {
         // 검색했을 때
         inputSearchBarTapped.bind { value in
-            APIManager.shared.fetchCoinInfoAPI(api: .search(query: value), completionHandler: { data in
+            APIManager.shared.fetchSearchAPI(api: .search(query: value), completionHandler: { data in
                 self.outputCoinInfoAPI.value = data.coins
             })
         }
         
         inputViewTrigger.bind { value in
-            APIManager.shared.fetchCoinPriceAPI(api: .market(query: value), completionHandler: { data in
+            APIManager.shared.fetchMarketAPI(api: .market(query: value), completionHandler: { data in
                 self.outputCoinPriceAPI.value = data
             })
         }

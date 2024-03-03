@@ -21,7 +21,6 @@ class NewTrendingViewController: BaseViewController {
                                                  target: self,
                                                  action: #selector(profileTabBarItemClicked))
     
-    
     let mainTitle = UILabel().then {
         $0.text = "Crypto Coin"
         $0.font = DesignSystemFont.allMainTitle.font
@@ -33,8 +32,6 @@ class NewTrendingViewController: BaseViewController {
         $0.register(NewMyFavoriteTableViewCell.self, forCellReuseIdentifier: NewMyFavoriteTableViewCell.identifier)
         $0.register(NewTopCoinTableViewCell.self, forCellReuseIdentifier: NewTopCoinTableViewCell.identifier)
         $0.register(NewNTFTableViewCell.self, forCellReuseIdentifier: NewNTFTableViewCell.identifier)
-
-//        $0.backgroundColor = .orange
     }
 
     override func viewDidLoad() {

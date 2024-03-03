@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Price: Decodable {
+struct Market: Decodable {
     var id, symbol, name: String
     let image: String
     let currentPrice: Double
@@ -47,4 +47,4 @@ enum Currency: String, Decodable {
     case usd = "usd"
 }
 
-typealias PriceAPI = [Price]
+typealias PriceAPI = [Market]
