@@ -16,13 +16,14 @@ final class ViewModel {
     // Trending 화면, Favorite 화면
     var inputViewTrigger = Observable("")
     var inputTopCoinTrigger: Observable<Void?> = Observable(nil)
-    // SearchView
     
     var outputSearchAPI: Observable<[SearchAPI]> = Observable([])
     var outputMarketAPI: Observable<PriceAPI> = Observable([])
     var outputTrendingCoinAPI: Observable<[Coin]> = Observable([])
     var outputTrendingNFTAPI: Observable<[Nft]> = Observable([])
     var outputToastMessage: ((String) -> Void)?
+    var outputPrice = Observable("")
+    var outputPriceTextColor = Observable(false)
     
     init() {
         
@@ -66,6 +67,7 @@ final class ViewModel {
         inputViewTrigger.value = idList
     }
     
+    // SearchView
     func favoriteButtonClick(id: String) {
         let saveToRealm = CoinRealmModel(id: id)
         let realmDatas = repository.readItemName(id: id)
@@ -83,5 +85,34 @@ final class ViewModel {
                 outputToastMessage?("즐겨찾기에 추가되었습니다")
             }
         }
+    }
+    
+    func collectionViewCellPrice(indexPath: Int, data: Market) {
+        var price: Double
+        var textColor: Bool?
+        
+        switch indexPath {
+        case 0:
+            price = data.high24H
+            textColor = true
+        case 1:
+            price = data.low24H
+            textColor = false
+        case 2:
+            price = data.ath // 신고점
+            textColor = true
+        case 3:
+            price = data.atl // 신저점
+            textColor = false
+            
+        default:
+            price = 0
+            textColor = true
+        }
+        
+        let calculatedPrice = DesignSystemText.shared.priceCalculator(price)
+        
+        outputPrice.value = calculatedPrice
+        outputPriceTextColor.value = textColor!
     }
 }

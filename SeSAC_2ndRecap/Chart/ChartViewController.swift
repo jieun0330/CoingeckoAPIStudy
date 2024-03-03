@@ -114,18 +114,18 @@ final class ChartViewController: BaseViewController {
         percentage.text = DesignSystemText.shared.percentageCalculator(number: data.priceChangePercentage24H)
         
         let coinPrice = DesignSystemText.shared.priceCalculator(data.currentPrice)
-        price.text = coinPrice
+        price.text = "₩\(coinPrice)"
         
-        if data.priceChangePercentage24H < 0 {
-            price.textColor = DesignSystemColor.red.color
-        } else {
-            price.textColor = DesignSystemColor.blue.color
-        }
+        //        if data.priceChangePercentage24H < 0 {
+        //            price.textColor = DesignSystemColor.red.color
+        //        } else {
+        //            price.textColor = DesignSystemColor.blue.color
+        //        }
     }
     
     @objc func rightFavoriteButtonClicked(_ sender: UIButton) {
         
-
+        
         let readRealmModel = CoinRealmModel(id: data.id)
         let realmData = repository.readItemName(id: data.id)
         
@@ -162,37 +162,19 @@ extension ChartViewController: UICollectionViewDelegate, UICollectionViewDataSou
         return 4
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartPriceCollectionViewCell.identifier, for: indexPath) as! ChartPriceCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: ChartPriceCollectionViewCell.identifier,
+            for: indexPath) as! ChartPriceCollectionViewCell
         
-        cell.priceTitle.text = collectionViewCellName.allCases[indexPath.row].cellName
+        cell.priceTitle.text = collectionViewCellName.allCases[indexPath.item].cellName
         
-        var price: Double
-        var textColor: UIColor
-        
-        switch indexPath.row {
-        case 0:
-            price = data.high24H
-            textColor = DesignSystemColor.red.color
-        case 1:
-            price = data.low24H
-            textColor = DesignSystemColor.blue.color
-        case 2:
-            price = data.ath
-            textColor = DesignSystemColor.red.color
-        case 3:
-            price = data.atl
-            textColor = DesignSystemColor.blue.color
-            
-        default:
-            price = 0
-            textColor = .black
+        viewModel.collectionViewCellPrice(indexPath: indexPath.item, data: data)
+        cell.price.text = "₩\(viewModel.outputPrice.value)"
+        viewModel.outputPriceTextColor.bind { value in
+            cell.priceTitle.textColor = value ? DesignSystemColor.blue.color : DesignSystemColor.red.color
         }
-        
-        let calculatedPrice = DesignSystemText.shared.priceCalculator(price)
-        
-        cell.price.text = "₩\(calculatedPrice)"
-        cell.priceTitle.textColor = textColor
         
         return cell
     }
