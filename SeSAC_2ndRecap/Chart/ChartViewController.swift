@@ -147,7 +147,7 @@ class ChartViewController: BaseViewController {
         
         
         let readRealmModel = CoinRealmModel(id: data.id)
-        print("readRealmModel", readRealmModel)
+//        print("readRealmModel", readRealmModel)
         /* readRealmModel
          CoinRealmModel {
              id = bitcoin;
@@ -155,8 +155,36 @@ class ChartViewController: BaseViewController {
          */
         
         
-        let realmData = repository.readItemName(id: readRealmModel.id)
-        print("realmData", realmData)
+        let realmData = repository.readItemName(id: data.id)
+        
+        if realmData.contains(where: { data in
+            repository.deleteItem(item: data)
+            return true
+        }) {
+            self.view.makeToast("즐겨찾기에서 삭제되었습니다")
+            rightFavoriteButton.image = .btnStar
+            collectionView.reloadData()
+        } else {
+            repository.createFavoriteItem(readRealmModel)
+            self.view.makeToast("즐겨찾기에 추가되었습니다")
+            rightFavoriteButton.image = .btnStarFill
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+//        print("realmData", realmData)
         /*
          Results<CoinRealmModel> <0x1094a7ef0> (
              [0] CoinRealmModel {
@@ -165,7 +193,14 @@ class ChartViewController: BaseViewController {
          )
          */
         
-        repository.deleteItem(item: readRealmModel)
+//        if realmData.contains(where: { data in
+//            repository.deleteItem(item: readRealmModel)
+//            return true
+//        }) {
+//            self.view.makeToast("즐겨찾기에서 삭제되었습니다")
+//        }
+        
+//        repository.deleteItem(item: readRealmModel)
 
         
 //
@@ -174,8 +209,7 @@ class ChartViewController: BaseViewController {
 //            repository.deleteItem(item: readRealmModel)
 //            return true
 //        }) {
-            self.view.makeToast("즐겨찾기에서 삭제되었습니다")
-            rightFavoriteButton.image = .btnStar
+ 
 //        } else {
 //            if repository.fetchAllItem().count >= 10 {
 //                self.view.makeToast("즐겨찾기는 최대 10개까지 가능합니다")
