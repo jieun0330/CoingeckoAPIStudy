@@ -61,6 +61,12 @@ class NewTrendingViewController: BaseViewController {
 
     }
     
+    // 즐겨찾기 저장 누르고 다시 왔을 때
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func configureHierarchy() {
         [mainTitle, tableView].forEach {
             view.addSubview($0)

@@ -104,11 +104,12 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         percentageBox.snp.makeConstraints {
             $0.bottom.trailing.equalToSuperview()
             $0.height.equalTo(25)
-            $0.width.equalTo(75)
+            $0.width.equalTo(70)
         }
         
         percentage.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
+            $0.center.equalToSuperview()
+//            $0.trailing.equalToSuperview()
 //            $0.edges.equalToSuperview().inset(5)
         }
     }

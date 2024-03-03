@@ -139,6 +139,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.favorites.addTarget(self, action: #selector(favoritesButtonClicked), for: .touchUpInside)
         
         
+        if cell.name.text == row.name {
+            cell.name.textColor = DesignSystemColor.purple.color
+        }
+        
+        
         return cell
             }
     
@@ -183,27 +188,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 // toast 메세지 띄워주기
                 self.view.makeToast("즐겨찾기에 추가되었습니다")
             }
-
-
-            
-
-            
-            /*
-             레포에 포함되어 있으면 -> 삭제
-             
-             레포에 포함안되어 있으면 -> 생성
-                + 레포가 10개가 넘으면 -> 토스트
-            
-             if 레포 not contain data || {
-             
-                if
-             레포 생성
-             } else 레포 contain data{
-             레포 삭제
-             }
-             
-            */
-            
             
         }
     }
