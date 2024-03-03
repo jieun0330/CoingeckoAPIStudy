@@ -165,17 +165,18 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let realmDatas = repository.readItemName(id: viewModel.outputCoinInfoAPI.value[sender.tag].id)
         
         if realmDatas.contains(where: { data in
+            repository.deleteItem(item: data)
             return true
         }) {
+            tableView.reloadData()
             print("중복")
             self.view.makeToast("즐겨찾기에서 삭제되었습니다")
-            tableView.reloadData()
         } else {
+            tableView.reloadData()
             // repository에 저장하기
             repository.createFavoriteItem(saveToRealm)
             // toast 메세지 띄워주기
             self.view.makeToast("즐겨찾기에 추가되었습니다")
-            tableView.reloadData()
         }
     }
 }
