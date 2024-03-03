@@ -89,12 +89,20 @@ extension NewTopCoinTableViewCell: UICollectionViewDelegate, UICollectionViewDat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewTopCoinCollectionViewCell.identifier, for: indexPath) as! NewTopCoinCollectionViewCell
         
         if !viewModel.outputTrendingAPI.value.isEmpty {
-            let trending = viewModel.outputTrendingAPI.value[indexPath.item]
+            let trending = viewModel.outputTrendingAPI.value[indexPath.item].item
             
-            cell.name.text = trending.item.name
-            cell.image.kf.setImage(with: URL(string: trending.item.small))
-            cell.price.text = trending.item.data.price
+            cell.name.text = trending.name
+            cell.image.kf.setImage(with: URL(string: trending.small))
+            cell.price.text = trending.data.price
+            
+            let krwKey: [String: Double] = trending.data.priceChangePercentage24H
+            let percentage = DesignSystemText.shared.percentageCalculator(number: krwKey["krw"]!)
+            cell.percentage.text = percentage
 
+            
+//            var dic2 : [String : Int] = ["zedd":30, "swift":40,"iOS":50]
+            //print(dic2["zedd"]!)//30
+//            출처: https://zeddios.tistory.com/129 [ZeddiOS:티스토리]
             
         }
         
