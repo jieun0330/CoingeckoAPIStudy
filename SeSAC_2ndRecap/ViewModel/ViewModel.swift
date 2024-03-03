@@ -19,7 +19,9 @@ final class ViewModel {
     
     var outputSearchAPI: Observable<[SearchAPI]> = Observable([])
     var outputMarketAPI: Observable<PriceAPI> = Observable([])
-    var outputTrendingAPI: Observable<[Coin]> = Observable([])
+    var outputTrendingCoinAPI: Observable<[Coin]> = Observable([])
+    var outputTrendingNFTAPI: Observable<[Nft]> = Observable([])
+    
     
     init() {
         // 검색했을 때
@@ -38,7 +40,8 @@ final class ViewModel {
         
         inputTopCoinTrigger.bind { _ in
             APIManager.shared.fetchTrendingAPI(api: .trending) { data in
-                self.outputTrendingAPI.value = data.coins
+                self.outputTrendingCoinAPI.value = data.coins
+                self.outputTrendingNFTAPI.value = data.nfts
             }
         }
         

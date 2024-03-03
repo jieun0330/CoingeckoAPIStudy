@@ -16,6 +16,7 @@ class NewTrendingViewController: BaseViewController {
     let viewModel = ViewModel()
     var priceAPIResult: PriceAPI = []
     var topCoinAPIResult: [Coin] = []
+    var topNFTAPIResult: [Nft] = []
     
     lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser.withRenderingMode(.alwaysOriginal),
                                                  style: .plain,
@@ -39,12 +40,18 @@ class NewTrendingViewController: BaseViewController {
         super.viewDidLoad()
         
         viewModel.idList()
+        
         viewModel.outputMarketAPI.bind { data in
             self.tableView.reloadData()
             self.priceAPIResult = data
         }
-        viewModel.outputTrendingAPI.bind { data in
+        
+        viewModel.outputTrendingCoinAPI.bind { data in
             self.topCoinAPIResult = data
+        }
+        
+        viewModel.outputTrendingNFTAPI.bind { data in
+            self.topNFTAPIResult = data
         }
         
     }
@@ -124,7 +131,7 @@ extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource 
             
             let cell = tableView.dequeueReusableCell(withIdentifier: NewTopCoinTableViewCell.identifier, for: indexPath) as! NewTopCoinTableViewCell
             
-            cell.viewModel.outputTrendingAPI.value = topCoinAPIResult
+            cell.viewModel.outputTrendingCoinAPI.value = topCoinAPIResult
             
             
             
@@ -132,6 +139,8 @@ extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource 
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: NewNTFTableViewCell.identifier, for: indexPath) as! NewNTFTableViewCell
+            
+            cell.viewModel.outputTrendingNFTAPI.value = topNFTAPIResult
             
             return cell
         }

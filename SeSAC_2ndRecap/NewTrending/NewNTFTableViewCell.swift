@@ -11,6 +11,8 @@ import SnapKit
 
 class NewNTFTableViewCell: BaseTableViewCell, ReusableProtocol {
     
+    let viewModel = ViewModel()
+
     let topNFTLabel = UILabel().then {
         $0.text = "Top 7 NFT"
         $0.font = DesignSystemFont.trendingSubtitle.font
@@ -83,9 +85,26 @@ extension NewNTFTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewNFTCollectionViewCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewNFTCollectionViewCell.identifier, for: indexPath) as! NewNFTCollectionViewCell
         
-//        cell.backgroundColor = .orange
+        
+        if !viewModel.outputTrendingNFTAPI.value.isEmpty {
+            let trending = viewModel.outputTrendingNFTAPI.value[indexPath.item]
+            
+            cell.name.text = trending.name
+            
+//            cell.rankNum.text = "\(indexPath.item+1)"
+//            cell.name.text = trending.name
+//            cell.image.kf.setImage(with: URL(string: trending.small))
+//            cell.price.text = trending.data.price
+//            
+//            let krwKey: [String: Double] = trending.data.priceChangePercentage24H
+//            let percentage = DesignSystemText.shared.percentageCalculator(number: krwKey["krw"]!)
+//            cell.percentage.text = percentage
+ 
+
+        }
+        
         
         return cell
     }

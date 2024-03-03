@@ -26,7 +26,7 @@ class NewNFTCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     let name = UILabel().then {
-        $0.text = "Sappy Seals"
+//        $0.text = "Sappy Seals"
         $0.font = DesignSystemFont.allCoinName.font
     }
     
