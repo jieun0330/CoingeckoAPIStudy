@@ -44,7 +44,7 @@ class ChartViewController: BaseViewController {
     let today = UILabel().then {
         $0.text = "Today"
         $0.font = DesignSystemFont.allPercentageBold.font
-        $0.textColor = DesignSystemColor.lightGray.color
+        $0.textColor = DesignSystemColor.gray.color
     }
     
     lazy var collectionView = UICollectionView(
@@ -124,6 +124,9 @@ class ChartViewController: BaseViewController {
         }
         
         percentage.text = DesignSystemText.shared.percentageCalculator(number: data.priceChangePercentage24H)
+        
+    
+        
     }
         
     @objc func rightFavoriteButtonClicked(_ sender: UIButton) {
@@ -166,6 +169,34 @@ extension ChartViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartPriceCollectionViewCell.identifier, for: indexPath) as! ChartPriceCollectionViewCell
         
         cell.priceTitle.text = collectionViewCellName.allCases[indexPath.row].cellName
+        
+        var price: Double
+        
+        switch indexPath.row {
+        case 0:
+            price = data.high24H
+        case 1:
+            price = data.low24H
+        case 2:
+            price = data.ath
+        case 3:
+            price = data.atl
+            
+        default:
+            price = 0
+        }
+        
+        cell.price.text = "\(price)"
+        
+        
+//        if indexPath.row == 0 {
+//            cell.price.text = "\(data.high24H)"
+//        } else if indexPath.row == 1 {
+//            cell.price.text = "\(data.low24H)"
+//        } else {
+//            cell.price.text = "\(data.ath)"
+//        }
+//        
         
         return cell
     }

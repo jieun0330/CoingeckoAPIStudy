@@ -15,6 +15,8 @@ struct Price: Decodable {
     let priceChangePercentage24H: Double
     let ath: Double
     let athDate: String
+    let atl: Double
+    let atlDate: String
     let roi: Roi?
     let lastUpdated: String
     
@@ -26,6 +28,8 @@ struct Price: Decodable {
         case priceChangePercentage24H = "price_change_percentage_24h"
         case ath
         case athDate = "ath_date"
+        case atl
+        case atlDate = "atl_date"
         case roi
         case lastUpdated = "last_updated"
     }

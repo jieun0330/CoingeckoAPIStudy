@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBarController = UITabBarController()
         
-        let trendingView = UINavigationController(rootViewController: TrendingViewController())
+        let trendingView = UINavigationController(rootViewController: NewTrendingViewController())
         let searchView = UINavigationController(rootViewController: SearchViewController())
         let favoritesView = UINavigationController(rootViewController: FavoriteViewController())
         let settingView = UINavigationController(rootViewController: SettingViewController())

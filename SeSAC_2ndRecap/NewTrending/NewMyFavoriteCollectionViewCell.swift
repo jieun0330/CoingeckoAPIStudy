@@ -1,16 +1,18 @@
 //
-//  FavoriteCollectionViewCell.swift
+//  NewMyFavoriteCollectionViewCell.swift
 //  SeSAC_2ndRecap
 //
-//  Created by 박지은 on 2/28/24.
+//  Created by 박지은 on 3/3/24.
 //
 
 import UIKit
 import Then
+import SnapKit
 
-class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
+class NewMyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
-    let icon = UIImageView().then { _ in
+    let icon = UIImageView().then {
+        $0.image = UIImage(systemName: "circle")
     }
     
     let namestackView = UIStackView().then {
@@ -27,6 +29,7 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     let symbol = UILabel().then {
         $0.font = DesignSystemFont.allSymbolName.font
         $0.textColor = DesignSystemColor.gray.color
+        $0.text = "BTC"
     }
     
     let priceStackView = UIStackView().then {
@@ -37,14 +40,12 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     let price = UILabel().then {
+        $0.text = "$69,234,245"
         $0.font = DesignSystemFont.allPercentageBold.font
     }
     
-    let percentageBox = UIView().then {
-        $0.layer.cornerRadius = 8
-    }
-    
     let percentage = UILabel().then {
+        $0.text = "+0.64%"
         $0.font = DesignSystemFont.allPercentageBold.font
     }
     
@@ -61,23 +62,21 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
             namestackView.addSubview($0)
         }
         
-        [price, percentageBox].forEach {
+        [price, percentage].forEach {
             priceStackView.addSubview($0)
-        }
-        
-        [percentage].forEach {
-            percentageBox.addSubview($0)
         }
     }
     
     override func configureConstraints() {
         icon.snp.makeConstraints {
-            $0.leading.top.equalToSuperview().offset(10)
-            $0.size.equalTo(35)
+            $0.leading.equalTo(contentView).offset(10)
+            $0.top.equalToSuperview().inset(10)
+            $0.size.equalTo(30)
         }
         
         namestackView.snp.makeConstraints {
             $0.leading.equalTo(icon.snp.trailing).offset(5)
+            $0.top.equalTo(icon.snp.top)
             $0.trailing.equalToSuperview().offset(-5)
             $0.verticalEdges.equalTo(icon)
         }
@@ -92,44 +91,26 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         }
         
         priceStackView.snp.makeConstraints {
-            $0.trailing.bottom.equalToSuperview().offset(-10)
+            $0.horizontalEdges.equalTo(contentView).inset(10)
+            $0.bottom.equalTo(contentView).inset(10)
             $0.height.equalTo(50)
-            $0.leading.equalTo(icon.snp.leading)
         }
         
         price.snp.makeConstraints {
-            $0.top.trailing.equalToSuperview()
-        }
-        
-        percentageBox.snp.makeConstraints {
-            $0.bottom.trailing.equalToSuperview()
-            $0.height.equalTo(25)
-            $0.width.equalTo(75)
+            $0.top.leading.equalToSuperview()
         }
         
         percentage.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-//            $0.edges.equalToSuperview().inset(5)
+            $0.leading.bottom.equalToSuperview()
         }
     }
     
-    override func configureView() {
-        // cell shadow + cornerRadis 같이 주는 방법 https://roniruny.tistory.com/184
-        contentView.backgroundColor = DesignSystemColor.white.color
-        contentView.layer.cornerRadius = 15
-        contentView.layer.borderColor = UIColor.lightGray.cgColor
-        contentView.layer.borderWidth = 1
-        //        contentView.layer.shadowColor = DesignSystemColor.black.color.cgColor
-        //        layer.shadowOpacity = 0.1
-        //        layer.shadowRadius = 2
-        //        layer.shadowOffset = CGSize(width: 0, height: 5)
-        //        layer.shadowPath = UIBezierPath(roundedRect: self.bounds,
-        //                                        byRoundingCorners: .allCorners,
-        //                                        cornerRadii: CGSize(width: 8, height: 8)).cgPath
-        //        layer.masksToBounds = false
-    }
-    
+//    override func configureView() {
+//        <#code#>
+//    }
+//    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
