@@ -16,8 +16,8 @@ class NewTopCoinCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         $0.font = DesignSystemFont.trendingRankNum.font
     }
     
-    let image = UIImageView().then {
-        $0.image = .tabPortfolio
+    let image = UIImageView().then { _ in
+
     }
     
     let nameStackView = UIStackView().then { _ in
@@ -39,7 +39,7 @@ class NewTopCoinCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     let price = UILabel().then {
-        $0.text = "0.4175"
+//        $0.text = "0.4175"
         $0.font = DesignSystemFont.allPercentage.font
     }
     

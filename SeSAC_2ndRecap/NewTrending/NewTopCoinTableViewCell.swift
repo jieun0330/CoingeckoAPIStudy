@@ -93,6 +93,9 @@ extension NewTopCoinTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             
             cell.name.text = trending.item.name
             cell.image.kf.setImage(with: URL(string: trending.item.small))
+            cell.price.text = trending.item.data.price
+
+            
         }
         
 
