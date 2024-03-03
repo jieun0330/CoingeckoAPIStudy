@@ -192,7 +192,9 @@ extension ChartViewController: UICollectionViewDelegate, UICollectionViewDataSou
             textColor = .black
         }
         
-        cell.price.text = "\(price)"
+        let calculatedPrice = DesignSystemText.shared.priceCalculator(price)
+        
+        cell.price.text = "₩\(calculatedPrice)"
         cell.priceTitle.textColor = textColor
         
         
