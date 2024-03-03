@@ -9,7 +9,7 @@ import UIKit
 import Then
 import SnapKit
 
-class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
+final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let icon = UIImageView().then { _ in
         

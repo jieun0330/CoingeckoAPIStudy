@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class CoinRealmModel: Object {
+final class CoinRealmModel: Object {
     @Persisted(primaryKey: true) var id: String
     
     convenience init(id: String) {

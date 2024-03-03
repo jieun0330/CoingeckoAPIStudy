@@ -7,13 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C25A81892B943E12008C542D /* TransitionStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A81882B943E12008C542D /* TransitionStyle.swift */; };
 		C25A818E2B944189008C542D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A818D2B944189008C542D /* API.swift */; };
 		C25A81902B9445BF008C542D /* TrendingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25A818F2B9445BF008C542D /* TrendingAPI.swift */; };
-		C261D4DC2B91A39600501ACB /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4DB2B91A39600501ACB /* TrendingViewController.swift */; };
-		C261D4DE2B91AE3600501ACB /* MyFavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4DD2B91AE3500501ACB /* MyFavoriteCollectionViewCell.swift */; };
-		C261D4E02B91BE1B00501ACB /* TopCoinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4DF2B91BE1B00501ACB /* TopCoinCollectionViewCell.swift */; };
-		C261D4E22B91C3A200501ACB /* RankCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4E12B91C3A200501ACB /* RankCollectionViewCell.swift */; };
 		C261D4E62B920E6900501ACB /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4E52B920E6900501ACB /* Text.swift */; };
 		C261D4E92B92F58700501ACB /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4E82B92F58700501ACB /* SettingViewController.swift */; };
 		C261D4EB2B93077B00501ACB /* CellEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4EA2B93077B00501ACB /* CellEnum.swift */; };
@@ -25,10 +20,8 @@
 		C26F1E6B2B94076F00F1BECA /* NewNTFTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E6A2B94076F00F1BECA /* NewNTFTableViewCell.swift */; };
 		C26F1E6D2B94080800F1BECA /* NewNFTCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E6C2B94080800F1BECA /* NewNFTCollectionViewCell.swift */; };
 		C276CF882B932787004ED09F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C276CF872B932787004ED09F /* ViewModel.swift */; };
-		C276CF8C2B934FFD004ED09F /* MyFavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C276CF8B2B934FFD004ED09F /* MyFavoriteTableViewCell.swift */; };
 		C2F4F3532B8DB0C800E65588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3522B8DB0C800E65588 /* AppDelegate.swift */; };
 		C2F4F3552B8DB0C800E65588 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3542B8DB0C800E65588 /* SceneDelegate.swift */; };
-		C2F4F3572B8DB0C800E65588 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3562B8DB0C800E65588 /* ViewController.swift */; };
 		C2F4F35A2B8DB0C800E65588 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F4F3582B8DB0C800E65588 /* Main.storyboard */; };
 		C2F4F35C2B8DB0CA00E65588 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2F4F35B2B8DB0CA00E65588 /* Assets.xcassets */; };
 		C2F4F35F2B8DB0CA00E65588 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2F4F35D2B8DB0CA00E65588 /* LaunchScreen.storyboard */; };
@@ -63,13 +56,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C25A81882B943E12008C542D /* TransitionStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionStyle.swift; sourceTree = "<group>"; };
 		C25A818D2B944189008C542D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		C25A818F2B9445BF008C542D /* TrendingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingAPI.swift; sourceTree = "<group>"; };
-		C261D4DB2B91A39600501ACB /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
-		C261D4DD2B91AE3500501ACB /* MyFavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
-		C261D4DF2B91BE1B00501ACB /* TopCoinCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCoinCollectionViewCell.swift; sourceTree = "<group>"; };
-		C261D4E12B91C3A200501ACB /* RankCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankCollectionViewCell.swift; sourceTree = "<group>"; };
 		C261D4E52B920E6900501ACB /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		C261D4E82B92F58700501ACB /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		C261D4EA2B93077B00501ACB /* CellEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellEnum.swift; sourceTree = "<group>"; };
@@ -81,11 +69,9 @@
 		C26F1E6A2B94076F00F1BECA /* NewNTFTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNTFTableViewCell.swift; sourceTree = "<group>"; };
 		C26F1E6C2B94080800F1BECA /* NewNFTCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNFTCollectionViewCell.swift; sourceTree = "<group>"; };
 		C276CF872B932787004ED09F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		C276CF8B2B934FFD004ED09F /* MyFavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		C2F4F34F2B8DB0C800E65588 /* SeSAC_2ndRecap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_2ndRecap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F4F3522B8DB0C800E65588 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2F4F3542B8DB0C800E65588 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C2F4F3562B8DB0C800E65588 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C2F4F3592B8DB0C800E65588 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C2F4F35B2B8DB0CA00E65588 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C2F4F35E2B8DB0CA00E65588 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -131,18 +117,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C261D4DA2B91A38900501ACB /* Trending */ = {
-			isa = PBXGroup;
-			children = (
-				C261D4DB2B91A39600501ACB /* TrendingViewController.swift */,
-				C276CF8B2B934FFD004ED09F /* MyFavoriteTableViewCell.swift */,
-				C261D4DD2B91AE3500501ACB /* MyFavoriteCollectionViewCell.swift */,
-				C261D4DF2B91BE1B00501ACB /* TopCoinCollectionViewCell.swift */,
-				C261D4E12B91C3A200501ACB /* RankCollectionViewCell.swift */,
-			);
-			path = Trending;
-			sourceTree = "<group>";
-		};
 		C261D4E72B92F57700501ACB /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,7 +170,6 @@
 				C261D4E72B92F57700501ACB /* Setting */,
 				C2F4F36F2B8DB59000E65588 /* DesignSystem */,
 				C26F1E5B2B93F10200F1BECA /* NewTrending */,
-				C261D4DA2B91A38900501ACB /* Trending */,
 				C2F4F3CB2B8F2CE000E65588 /* Chart */,
 				C2F4F3C42B8F035400E65588 /* Realm */,
 				C2F4F3982B8EAEB100E65588 /* Favorite */,
@@ -207,7 +180,6 @@
 				C2F4F3662B8DB25E00E65588 /* Search */,
 				C2F4F3522B8DB0C800E65588 /* AppDelegate.swift */,
 				C2F4F3542B8DB0C800E65588 /* SceneDelegate.swift */,
-				C2F4F3562B8DB0C800E65588 /* ViewController.swift */,
 				C2F4F3582B8DB0C800E65588 /* Main.storyboard */,
 				C2F4F35B2B8DB0CA00E65588 /* Assets.xcassets */,
 				C2F4F35D2B8DB0CA00E65588 /* LaunchScreen.storyboard */,
@@ -241,7 +213,6 @@
 				C2F4F37A2B8DB98200E65588 /* Colors.swift */,
 				C2F4F38D2B8DDCC200E65588 /* Fonts.swift */,
 				C261D4E52B920E6900501ACB /* Text.swift */,
-				C25A81882B943E12008C542D /* TransitionStyle.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -398,26 +369,20 @@
 				C26F1E612B93F18200F1BECA /* NewMyFavoriteTableViewCell.swift in Sources */,
 				C26F1E692B93F98A00F1BECA /* NewTopCoinCollectionViewCell.swift in Sources */,
 				C2F4F36B2B8DB28500E65588 /* BaseViewController.swift in Sources */,
-				C261D4E22B91C3A200501ACB /* RankCollectionViewCell.swift in Sources */,
 				C2F4F3C62B8F036400E65588 /* CoinRealmModel.swift in Sources */,
 				C2F4F3872B8DC42300E65588 /* Search.swift in Sources */,
-				C2F4F3572B8DB0C800E65588 /* ViewController.swift in Sources */,
 				C26F1E672B93F7EF00F1BECA /* NewTopCoinTableViewCell.swift in Sources */,
 				C2F4F39A2B8EAEC200E65588 /* FavoriteViewController.swift in Sources */,
 				C26F1E6D2B94080800F1BECA /* NewNFTCollectionViewCell.swift in Sources */,
-				C261D4DC2B91A39600501ACB /* TrendingViewController.swift in Sources */,
 				C2F4F3CF2B8F3D7600E65588 /* ChartPriceCollectionViewCell.swift in Sources */,
 				C2F4F3822B8DC35C00E65588 /* APIManager.swift in Sources */,
-				C261D4DE2B91AE3600501ACB /* MyFavoriteCollectionViewCell.swift in Sources */,
 				C2F4F3CD2B8F2CE600E65588 /* ChartViewController.swift in Sources */,
 				C261D4E62B920E6900501ACB /* Text.swift in Sources */,
 				C25A81902B9445BF008C542D /* TrendingAPI.swift in Sources */,
 				C2F4F4082B909F9100E65588 /* MarketAPI.swift in Sources */,
 				C26F1E6B2B94076F00F1BECA /* NewNTFTableViewCell.swift in Sources */,
 				C2F4F39E2B8EB2DD00E65588 /* FavoriteCollectionViewCell.swift in Sources */,
-				C276CF8C2B934FFD004ED09F /* MyFavoriteTableViewCell.swift in Sources */,
 				C2F4F3532B8DB0C800E65588 /* AppDelegate.swift in Sources */,
-				C25A81892B943E12008C542D /* TransitionStyle.swift in Sources */,
 				C26F1E652B93F3BD00F1BECA /* NewMyFavoriteCollectionViewCell.swift in Sources */,
 				C2F4F38A2B8DC68700E65588 /* Protocol.swift in Sources */,
 				C2F4F3C82B8F06FD00E65588 /* RepositoryRealm.swift in Sources */,
@@ -430,7 +395,6 @@
 				C261D4E92B92F58700501ACB /* SettingViewController.swift in Sources */,
 				C2F4F3552B8DB0C800E65588 /* SceneDelegate.swift in Sources */,
 				C25A818E2B944189008C542D /* API.swift in Sources */,
-				C261D4E02B91BE1B00501ACB /* TopCoinCollectionViewCell.swift in Sources */,
 				C2F4F37B2B8DB98200E65588 /* Colors.swift in Sources */,
 				C261D4EB2B93077B00501ACB /* CellEnum.swift in Sources */,
 				C2F4F37D2B8DC05700E65588 /* SearchTableViewCell.swift in Sources */,

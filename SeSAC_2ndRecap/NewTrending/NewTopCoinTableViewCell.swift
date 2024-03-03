@@ -9,7 +9,7 @@ import UIKit
 import Then
 import SnapKit
 
-class NewTopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
+final class NewTopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let viewModel = ViewModel()
     
@@ -19,14 +19,12 @@ class NewTopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: NewTopCoinTableViewCell.configureCollectionViewLayout()).then {
-        
         $0.delegate = self
         $0.dataSource = self
-        $0.register(NewTopCoinCollectionViewCell.self, forCellWithReuseIdentifier: NewTopCoinCollectionViewCell.identifier)
-//        $0.backgroundColor = .purple
-
+        $0.register(NewTopCoinCollectionViewCell.self,
+                    forCellWithReuseIdentifier: NewTopCoinCollectionViewCell.identifier)
     }
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -59,7 +57,7 @@ class NewTopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    static func configureCollectionViewLayout() -> UICollectionViewLayout{
+    static func configureCollectionViewLayout() -> UICollectionViewLayout {
         
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
@@ -68,25 +66,27 @@ class NewTopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.sectionInset = UIEdgeInsets(top: spacing,
+                                           left: spacing,
+                                           bottom: spacing,
+                                           right: spacing)
         
         return layout
     }
-    
 }
-
-
 
 extension NewTopCoinTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
-//    height
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return 15
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewTopCoinCollectionViewCell.identifier, for: indexPath) as! NewTopCoinCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: NewTopCoinCollectionViewCell.identifier,
+            for: indexPath) as! NewTopCoinCollectionViewCell
         
         if !viewModel.outputTrendingCoinAPI.value.isEmpty {
             let trending = viewModel.outputTrendingCoinAPI.value[indexPath.item].item
@@ -100,16 +100,7 @@ extension NewTopCoinTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             let krwKey: [String: Double] = trending.data.priceChangePercentage24H
             let percentage = DesignSystemText.shared.percentageCalculator(number: krwKey["krw"]!)
             cell.percentage.text = percentage
- 
-
         }
-        
-
-        
-//        cell.backgroundColor = .orange
-        
         return cell
     }
-    
-    
 }

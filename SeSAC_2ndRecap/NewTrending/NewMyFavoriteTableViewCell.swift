@@ -9,13 +9,10 @@ import UIKit
 import Then
 import SnapKit
 
-class NewMyFavoriteTableViewCell: BaseTableViewCell, ReusableProtocol {
+final class NewMyFavoriteTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let repository = RepositoryRealm()
     let viewModel = ViewModel()
-    var realmList: [CoinRealmModel] = []
-    let priceAPIResult: PriceAPI = []
-
     
     let myFavorite = UILabel().then {
         $0.text = "My Favorite"
@@ -26,20 +23,12 @@ class NewMyFavoriteTableViewCell: BaseTableViewCell, ReusableProtocol {
         
         $0.delegate = self
         $0.dataSource = self
-        $0.register(NewMyFavoriteCollectionViewCell.self, forCellWithReuseIdentifier: NewMyFavoriteCollectionViewCell.identifier)
-//        $0.backgroundColor = .purple
-
+        $0.register(NewMyFavoriteCollectionViewCell.self,
+                    forCellWithReuseIdentifier: NewMyFavoriteCollectionViewCell.identifier)
     }
-
-//    lazy var collectionView = UICollectionView(frame: .zero,
-//                                               collectionViewLayout: TrendingViewController.favoriteCollectionViewLayout()).then {
-
-//    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        
         
     }
     
@@ -65,20 +54,13 @@ class NewMyFavoriteTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     override func configureView() {
         contentView.backgroundColor = DesignSystemColor.white.color
-        
-
-//        viewModel.outputCoinPriceAPI.bind { data in
-//            self.favoriteCollectionView.reloadData()
-//        }
-        
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    static func configureCollectionViewLayout() -> UICollectionViewLayout{
+    static func configureCollectionViewLayout() -> UICollectionViewLayout {
         
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
@@ -87,32 +69,33 @@ class NewMyFavoriteTableViewCell: BaseTableViewCell, ReusableProtocol {
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.sectionInset = UIEdgeInsets(top: spacing,
+                                           left: spacing,
+                                           bottom: spacing,
+                                           right: spacing)
         
         return layout
     }
 }
 
-
 extension NewMyFavoriteTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return repository.fetchAllItem().count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewMyFavoriteCollectionViewCell.identifier, for: indexPath) as! NewMyFavoriteCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: NewMyFavoriteCollectionViewCell.identifier,
+            for: indexPath) as! NewMyFavoriteCollectionViewCell
         
         cell.backgroundColor = DesignSystemColor.lightGray.color
         cell.layer.cornerRadius = 15
         cell.layer.masksToBounds = true
         
-        
-        
-        
         if !viewModel.outputMarketAPI.value.isEmpty {
             let item = viewModel.outputMarketAPI.value[indexPath.item]
-            
-            
             cell.name.text = item.name
             cell.icon.kf.setImage(with: URL(string: item.image))
             cell.symbol.text = item.symbol
@@ -120,11 +103,7 @@ extension NewMyFavoriteTableViewCell: UICollectionViewDelegate, UICollectionView
             cell.price.text = "₩\(price)"
             let percentage = DesignSystemText.shared.percentageCalculator(number: item.priceChangePercentage24H)
             cell.percentage.text = percentage
-        
         }
-        
         return cell
     }
-    
-    
 }

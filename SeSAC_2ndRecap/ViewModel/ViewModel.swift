@@ -22,20 +22,20 @@ final class ViewModel {
     var outputTrendingCoinAPI: Observable<[Coin]> = Observable([])
     var outputTrendingNFTAPI: Observable<[Nft]> = Observable([])
     
-    
     init() {
+        
         // 검색했을 때
         inputSearchBarTapped.bind { value in
-
-            APIManager.shared.fetchSearchAPI(api: .search(query: value), completionHandler: { data in
+            APIManager.shared.fetchSearchAPI(api: .search(query: value),
+                                             completionHandler: { data in
                 self.outputSearchAPI.value = data.coins
             })
         }
         
         inputViewTrigger.bind { value in
-            APIManager.shared.fetchMarketAPI(api: .market(query: value), completionHandler: { data in
-                self.outputMarketAPI.value = data
-            })
+//            if value.count != 0 {
+                self.callRequest(value: value)
+//            }
         }
         
         inputTopCoinTrigger.bind { _ in
@@ -44,7 +44,13 @@ final class ViewModel {
                 self.outputTrendingNFTAPI.value = data.nfts
             }
         }
-        
+    }
+    
+    func callRequest(value: String) {
+        APIManager.shared.fetchMarketAPI(api: .market(query: value),
+                                         completionHandler: { data in
+            self.outputMarketAPI.value = data
+        })
     }
     
     func idList() {

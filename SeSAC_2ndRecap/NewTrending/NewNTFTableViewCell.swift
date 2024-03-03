@@ -9,24 +9,22 @@ import UIKit
 import Then
 import SnapKit
 
-class NewNTFTableViewCell: BaseTableViewCell, ReusableProtocol {
+final class NewNTFTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let viewModel = ViewModel()
-
+    
     let topNFTLabel = UILabel().then {
         $0.text = "Top 7 NFT"
         $0.font = DesignSystemFont.trendingSubtitle.font
     }
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: NewNTFTableViewCell.configureCollectionViewLayout()).then {
-        
         $0.delegate = self
         $0.dataSource = self
-        $0.register(NewNFTCollectionViewCell.self, forCellWithReuseIdentifier: NewNFTCollectionViewCell.identifier)
-//        $0.backgroundColor = .purple
-
+        $0.register(NewNFTCollectionViewCell.self,
+                    forCellWithReuseIdentifier: NewNFTCollectionViewCell.identifier)
     }
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -55,7 +53,7 @@ class NewNTFTableViewCell: BaseTableViewCell, ReusableProtocol {
         contentView.backgroundColor = DesignSystemColor.white.color
     }
     
-    static func configureCollectionViewLayout() -> UICollectionViewLayout{
+    static func configureCollectionViewLayout() -> UICollectionViewLayout {
         
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
@@ -64,29 +62,31 @@ class NewNTFTableViewCell: BaseTableViewCell, ReusableProtocol {
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.sectionInset = UIEdgeInsets(top: spacing,
+                                           left: spacing,
+                                           bottom: spacing,
+                                           right: spacing)
         
         return layout
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 extension NewNTFTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
-//    height
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return 7
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewNFTCollectionViewCell.identifier, for: indexPath) as! NewNFTCollectionViewCell
-        
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: NewNFTCollectionViewCell.identifier,
+            for: indexPath) as! NewNFTCollectionViewCell
         
         if !viewModel.outputTrendingNFTAPI.value.isEmpty {
             let trending = viewModel.outputTrendingNFTAPI.value[indexPath.item]
@@ -96,22 +96,9 @@ extension NewNTFTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
             cell.image.kf.setImage(with: URL(string: trending.thumb))
             cell.price.text = trending.data.floorPrice
             cell.symbol.text = trending.symbol
-//            let percentage = DesignSystemText.shared.percentageCalculator(number: krwKey["krw"]!)
-
             let percentage = DesignSystemText.shared.percentageCalculator(number: Double(trending.data.floorPriceInUsd24HPercentageChange)!)
             cell.percentage.text = percentage
-//            print("percentage", percentage)
-            
-//            let krwKey: [String: Double] = trending.data.priceChangePercentage24H
-//            let percentage = DesignSystemText.shared.percentageCalculator(number: krwKey["krw"]!)
-//            cell.percentage.text = percentage
- 
-
         }
-        
-        
         return cell
     }
-    
-    
 }

@@ -12,7 +12,7 @@ import Kingfisher
 import RealmSwift
 import Toast
 
-class SearchViewController: BaseViewController {
+final class SearchViewController: BaseViewController {
     
     let viewModel = ViewModel()
     let repository = RepositoryRealm()
@@ -20,7 +20,7 @@ class SearchViewController: BaseViewController {
     var coinPriceAPIResultList: PriceAPI = []
     var coinID: String?
     
-    lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser,
+    lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser.withRenderingMode(.alwaysOriginal),
                                                  style: .plain,
                                                  target: self,
                                                  action: #selector(profileTabBarItemClicked))
@@ -71,7 +71,7 @@ class SearchViewController: BaseViewController {
             }
         }
     }
-
+    
     override func configureHierarchy() {
         [mainTitle, searchBar, tableView].forEach {
             view.addSubview($0)
@@ -122,9 +122,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.icon.kf.setImage(with: URL(string: row.large))
         cell.name.text = row.name
-        
-
-        
         cell.symbol.text = row.symbol
         cell.favorites.tag = indexPath.row
         
@@ -138,16 +135,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.favorites.addTarget(self, action: #selector(favoritesButtonClicked), for: .touchUpInside)
         
-
-        
         return cell
-            }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let coinPriceInfo = coinInfoAPIResultList[indexPath.row]
         self.coinID = coinPriceInfo.id
-        
         viewModel.inputViewTrigger.value = coinPriceInfo.id
     }
     
@@ -155,13 +149,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         // 즐겨찾기 버튼을 눌렀을 때 해당 셀의 id를 램 형식에 맞게 저장해주기 위한 data
         let saveToRealm = CoinRealmModel(id: viewModel.outputSearchAPI.value[sender.tag].id)
-//        print("saveToRealm", saveToRealm)
-        /* saveToRealm
-         CoinRealmModel {
-             id = tether-gold;
-         }
-         */
-        
         // 실제 Realm에 저장되어있는 data
         let realmDatas = repository.readItemName(id: viewModel.outputSearchAPI.value[sender.tag].id)
         
@@ -173,8 +160,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             print("중복")
             self.view.makeToast("즐겨찾기에서 삭제되었습니다")
         } else {
-            
-            
             if repository.fetchAllItem().count >= 10 {
                 self.view.makeToast("즐겨찾기는 최대 10개까지 가능합니다")
             } else {
@@ -184,7 +169,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 // toast 메세지 띄워주기
                 self.view.makeToast("즐겨찾기에 추가되었습니다")
             }
-            
         }
     }
 }

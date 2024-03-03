@@ -8,9 +8,10 @@
 import UIKit
 import Then
 
-class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
+final class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let icon = UIImageView().then { _ in
+        
     }
     
     let namestackView = UIStackView().then {
@@ -109,8 +110,6 @@ class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         
         percentage.snp.makeConstraints {
             $0.center.equalToSuperview()
-//            $0.trailing.equalToSuperview()
-//            $0.edges.equalToSuperview().inset(5)
         }
     }
     

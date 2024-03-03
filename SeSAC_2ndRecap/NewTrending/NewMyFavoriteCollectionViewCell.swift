@@ -9,10 +9,10 @@ import UIKit
 import Then
 import SnapKit
 
-class NewMyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
+final class NewMyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
-    let icon = UIImageView().then {
-        $0.image = UIImage(systemName: "circle")
+    let icon = UIImageView().then { _ in
+        
     }
     
     let namestackView = UIStackView().then {
@@ -29,7 +29,6 @@ class NewMyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol 
     let symbol = UILabel().then {
         $0.font = DesignSystemFont.allSymbolName.font
         $0.textColor = DesignSystemColor.gray.color
-        $0.text = "BTC"
     }
     
     let priceStackView = UIStackView().then {
@@ -40,12 +39,10 @@ class NewMyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol 
     }
     
     let price = UILabel().then {
-        $0.text = "$69,234,245"
         $0.font = DesignSystemFont.allPercentageBold.font
     }
     
     let percentage = UILabel().then {
-        $0.text = "+0.64%"
         $0.font = DesignSystemFont.allPercentageBold.font
     }
     
@@ -112,5 +109,4 @@ class NewMyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

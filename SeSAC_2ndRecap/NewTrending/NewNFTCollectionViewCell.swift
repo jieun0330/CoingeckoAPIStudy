@@ -9,16 +9,14 @@ import UIKit
 import Then
 import SnapKit
 
-class NewNFTCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
- 
+final class NewNFTCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let rankNum = UILabel().then {
-        $0.text = "1"
         $0.font = DesignSystemFont.trendingRankNum.font
     }
     
-    let image = UIImageView().then {
-        $0.image = .tabPortfolio
+    let image = UIImageView().then { _ in
+        
     }
     
     let nameStackView = UIStackView().then { _ in
@@ -26,12 +24,10 @@ class NewNFTCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     let name = UILabel().then {
-//        $0.text = "Sappy Seals"
         $0.font = DesignSystemFont.allCoinName.font
     }
     
     let symbol = UILabel().then {
-        $0.text = "LTC"
         $0.font = DesignSystemFont.allSymbolName.font
     }
     
@@ -40,12 +36,10 @@ class NewNFTCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     let price = UILabel().then {
-//        $0.text = "1.70 ETH"
         $0.font = DesignSystemFont.allPercentage.font
     }
     
     let percentage = UILabel().then {
-//        $0.text = "+21.18%"
         $0.font = DesignSystemFont.allPercentage.font
     }
     
@@ -81,10 +75,8 @@ class NewNFTCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         
         nameStackView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-            //            $0.width.equalTo(100)
             $0.verticalEdges.equalToSuperview().inset(20)
             $0.leading.equalTo(image.snp.trailing).offset(10)
-            //            $0.height.equalTo(100)
         }
         
         name.snp.makeConstraints {
@@ -110,14 +102,12 @@ class NewNFTCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
             $0.bottom.trailing.equalToSuperview()
         }
     }
-        
-        override func configureView() {
-    //        contentView.backgroundColor = .orange
-        }
     
+    override func configureView() {
+        
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

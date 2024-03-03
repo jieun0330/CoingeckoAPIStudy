@@ -9,7 +9,7 @@ import UIKit
 import Then
 import SnapKit
 
-class ChartPriceCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
+final class ChartPriceCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let priceTitle = UILabel().then {
         $0.font = DesignSystemFont.allPriceBold.font

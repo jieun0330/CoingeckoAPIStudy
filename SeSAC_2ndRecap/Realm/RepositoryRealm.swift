@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class RepositoryRealm {
+final class RepositoryRealm {
     
     private let realm = try! Realm()
     
@@ -18,7 +18,7 @@ class RepositoryRealm {
         do {
             try realm.write {
                 realm.add(data)
-                print(realm.configuration.fileURL)
+//                print(realm.configuration.fileURL)
             }
         } catch {
             print(error)

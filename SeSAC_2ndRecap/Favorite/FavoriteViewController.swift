@@ -11,12 +11,12 @@ import SnapKit
 import Kingfisher
 import RealmSwift
 
-class FavoriteViewController: BaseViewController {
+final class FavoriteViewController: BaseViewController {
     
     let repository = RepositoryRealm()
     let viewModel = ViewModel()
     
-    lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser,
+    lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser.withRenderingMode(.alwaysOriginal),
                                                  style: .plain,
                                                  target: self,
                                                  action: #selector(profileTabBarItemClicked))
@@ -30,7 +30,8 @@ class FavoriteViewController: BaseViewController {
         $0.backgroundColor = DesignSystemColor.white.color
         $0.delegate = self
         $0.dataSource = self
-        $0.register(FavoriteCollectionViewCell.self, forCellWithReuseIdentifier: FavoriteCollectionViewCell.identifier)
+        $0.register(FavoriteCollectionViewCell.self,
+                    forCellWithReuseIdentifier: FavoriteCollectionViewCell.identifier)
     }
     
     override func viewDidLoad() {
@@ -93,16 +94,19 @@ class FavoriteViewController: BaseViewController {
 
 extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return repository.fetchAllItem().count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCollectionViewCell.identifier, for: indexPath) as! FavoriteCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: FavoriteCollectionViewCell.identifier,
+            for: indexPath) as! FavoriteCollectionViewCell
         
         if !viewModel.outputMarketAPI.value.isEmpty {
             let item = viewModel.outputMarketAPI.value[indexPath.item]
-            
             let coinPrice = DesignSystemText.shared.priceCalculator(item.currentPrice)
             
             cell.name.text = item.name
@@ -118,14 +122,9 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
                 cell.percentage.textColor = DesignSystemColor.blue.color
                 cell.percentageBox.backgroundColor = DesignSystemColor.sky.color
             }
-            
-            return cell
         }
         
-        return UICollectionViewCell()
-        
-//        let item = viewModel.outputCoinPriceAPI.value[indexPath.item]
-
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -134,11 +133,5 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         let vc = ChartViewController()
         vc.data = item
         self.navigationController?.pushViewController(vc, animated: true)
-
-//        if repository.readItemName(id: data.id).first?.id == data.id {
-//            self.rightFavoriteButton.image = .btnStarFill.withRenderingMode(.alwaysOriginal)
-//        } else{
-//            self.rightFavoriteButton.image = .btnStar.withRenderingMode(.alwaysOriginal)
-//        }
     }
 }

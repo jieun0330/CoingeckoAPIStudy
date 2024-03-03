@@ -8,17 +8,14 @@
 import UIKit
 import Then
 import SnapKit
-import DGCharts
 import RealmSwift
 import Kingfisher
 import Toast
 
-class ChartViewController: BaseViewController {
-
-    var data: Market!
+final class ChartViewController: BaseViewController {
     
     let repository = RepositoryRealm()
-    let viewModel = ViewModel()
+    var data: Market!
     
     lazy var rightFavoriteButton = UIBarButtonItem(image: .btnStarFill.withRenderingMode(.alwaysOriginal),
                                                    style: .plain,
@@ -27,8 +24,8 @@ class ChartViewController: BaseViewController {
         
     }
     
-    let icon = UIImageView().then {
-        $0.image = UIImage(systemName: "circle")
+    let icon = UIImageView().then { _ in
+        
     }
     
     var name = UILabel().then {
@@ -40,7 +37,6 @@ class ChartViewController: BaseViewController {
     }
     
     let percentage = UILabel().then {
-        $0.text = "+3.22%"
         $0.textColor = DesignSystemColor.red.color
         $0.font = DesignSystemFont.allPercentageBold.font
     }
@@ -53,21 +49,15 @@ class ChartViewController: BaseViewController {
     
     lazy var collectionView = UICollectionView(
         frame: .zero, collectionViewLayout: ChartViewController.configureCollectionViewLayout()).then {
-        $0.delegate = self
-        $0.dataSource = self
-        $0.register(ChartPriceCollectionViewCell.self, forCellWithReuseIdentifier: ChartPriceCollectionViewCell.identifier)
-    }
+            $0.delegate = self
+            $0.dataSource = self
+            $0.register(ChartPriceCollectionViewCell.self,
+                        forCellWithReuseIdentifier: ChartPriceCollectionViewCell.identifier)
+        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        repository.fetchAllItem()
-        
-//        print("data", data)
-        
-//        viewModel.outputCoinPriceAPI.bind { data in
-//            self.coinPriceAPIResult = data
-//        }
     }
     
     override func configureHierarchy() {
@@ -118,9 +108,9 @@ class ChartViewController: BaseViewController {
         navigationItem.title = ""
         navigationItem.rightBarButtonItem = rightFavoriteButton
         
-
         icon.kf.setImage(with: URL(string: data.image))
         name.text = data.name
+        percentage.text = DesignSystemText.shared.percentageCalculator(number: data.priceChangePercentage24H)
         
         let coinPrice = DesignSystemText.shared.priceCalculator(data.currentPrice)
         price.text = coinPrice
@@ -130,31 +120,11 @@ class ChartViewController: BaseViewController {
         } else {
             price.textColor = DesignSystemColor.blue.color
         }
-        
-        percentage.text = DesignSystemText.shared.percentageCalculator(number: data.priceChangePercentage24H)
-        
-//        if data.name == "USDC" {
-//            rightFavoriteButton.image = .btnStarFill
-//        } else {
-//            rightFavoriteButton.image = .btnStar
-//        }
-    
-        
     }
-        
+    
     @objc func rightFavoriteButtonClicked(_ sender: UIButton) {
         
-        
-        
         let readRealmModel = CoinRealmModel(id: data.id)
-//        print("readRealmModel", readRealmModel)
-        /* readRealmModel
-         CoinRealmModel {
-             id = bitcoin;
-         }
-         */
-        
-        
         let realmData = repository.readItemName(id: data.id)
         
         if realmData.contains(where: { data in
@@ -170,57 +140,6 @@ class ChartViewController: BaseViewController {
             rightFavoriteButton.image = .btnStarFill.withRenderingMode(.alwaysOriginal)
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-//        print("realmData", realmData)
-        /*
-         Results<CoinRealmModel> <0x1094a7ef0> (
-             [0] CoinRealmModel {
-                 id = tether;
-             }
-         )
-         */
-        
-//        if realmData.contains(where: { data in
-//            repository.deleteItem(item: readRealmModel)
-//            return true
-//        }) {
-//            self.view.makeToast("즐겨찾기에서 삭제되었습니다")
-//        }
-        
-//        repository.deleteItem(item: readRealmModel)
-
-        
-//
-//        if realmData.contains(where: { data in
-//            print("data", data)
-//            repository.deleteItem(item: readRealmModel)
-//            return true
-//        }) {
- 
-//        } else {
-//            if repository.fetchAllItem().count >= 10 {
-//                self.view.makeToast("즐겨찾기는 최대 10개까지 가능합니다")
-//            } else {
-//                repository.createFavoriteItem(saveToRealm)
-//                self.view.makeToast("즐겨찾기에 추가되었습니다")
-//                rightFavoriteButton.image = .btnStarFill
-//            }
-//        }
-        
-
     }
     
     static func configureCollectionViewLayout() -> UICollectionViewLayout {
@@ -273,18 +192,6 @@ extension ChartViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         cell.price.text = "₩\(calculatedPrice)"
         cell.priceTitle.textColor = textColor
-        
-        
-        
-        
-//        if indexPath.row == 0 {
-//            cell.price.text = "\(data.high24H)"
-//        } else if indexPath.row == 1 {
-//            cell.price.text = "\(data.low24H)"
-//        } else {
-//            cell.price.text = "\(data.ath)"
-//        }
-//        
         
         return cell
     }

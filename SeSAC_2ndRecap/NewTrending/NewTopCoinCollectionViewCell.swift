@@ -9,15 +9,14 @@ import UIKit
 import Then
 import SnapKit
 
-class NewTopCoinCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
+final class NewTopCoinCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let rankNum = UILabel().then {
-        $0.text = "1"
         $0.font = DesignSystemFont.trendingRankNum.font
     }
     
     let image = UIImageView().then { _ in
-
+        
     }
     
     let nameStackView = UIStackView().then { _ in
@@ -25,12 +24,10 @@ class NewTopCoinCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     let name = UILabel().then {
-//        $0.text = "Solana"
         $0.font = DesignSystemFont.allCoinName.font
     }
     
     let symbol = UILabel().then {
-        $0.text = "LTC"
         $0.font = DesignSystemFont.allSymbolName.font
     }
     
@@ -39,12 +36,10 @@ class NewTopCoinCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     let price = UILabel().then {
-//        $0.text = "0.4175"
         $0.font = DesignSystemFont.allPercentage.font
     }
     
     let percentage = UILabel().then {
-        $0.text = "+21.18%"
         $0.font = DesignSystemFont.allPercentage.font
     }
     
@@ -80,10 +75,8 @@ class NewTopCoinCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         
         nameStackView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
-//            $0.width.equalTo(100)
             $0.verticalEdges.equalToSuperview().inset(20)
             $0.leading.equalTo(image.snp.trailing).offset(10)
-//            $0.height.equalTo(100)
         }
         
         name.snp.makeConstraints {
@@ -111,11 +104,10 @@ class NewTopCoinCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     override func configureView() {
-//        contentView.backgroundColor = .orange
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
