@@ -16,7 +16,7 @@ class SearchViewController: BaseViewController {
     
     let viewModel = ViewModel()
     let repository = RepositoryRealm()
-    var coinInfoAPIResultList: [InfoAPI] = []
+    var coinInfoAPIResultList: [SearchAPI] = []
     var coinPriceAPIResultList: PriceAPI = []
     var coinID: String?
     
@@ -56,12 +56,12 @@ class SearchViewController: BaseViewController {
         super.viewDidLoad()
         
         // 검색결과 API 호출
-        viewModel.outputCoinInfoAPI.bind { data in
+        viewModel.outputSearchAPI.bind { data in
             self.coinInfoAPIResultList = data
             self.tableView.reloadData()
         }
         
-        viewModel.outputCoinPriceAPI.bind { data in
+        viewModel.outputMarketAPI.bind { data in
             self.coinPriceAPIResultList = data
             
             if self.coinID != nil {
@@ -113,12 +113,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // API 검색 결과 수
-        return viewModel.outputCoinInfoAPI.value.count
+        return viewModel.outputSearchAPI.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
-        let row = viewModel.outputCoinInfoAPI.value[indexPath.row]
+        let row = viewModel.outputSearchAPI.value[indexPath.row]
         
         cell.icon.kf.setImage(with: URL(string: row.large))
         cell.name.text = row.name
@@ -154,7 +154,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     @objc func favoritesButtonClicked(_ sender: UIButton) {
         
         // 즐겨찾기 버튼을 눌렀을 때 해당 셀의 id를 램 형식에 맞게 저장해주기 위한 data
-        let saveToRealm = CoinRealmModel(id: viewModel.outputCoinInfoAPI.value[sender.tag].id)
+        let saveToRealm = CoinRealmModel(id: viewModel.outputSearchAPI.value[sender.tag].id)
 //        print("saveToRealm", saveToRealm)
         /* saveToRealm
          CoinRealmModel {
@@ -163,7 +163,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
          */
         
         // 실제 Realm에 저장되어있는 data
-        let realmDatas = repository.readItemName(id: viewModel.outputCoinInfoAPI.value[sender.tag].id)
+        let realmDatas = repository.readItemName(id: viewModel.outputSearchAPI.value[sender.tag].id)
         
         if realmDatas.contains(where: { data in
             repository.deleteItem(item: data)

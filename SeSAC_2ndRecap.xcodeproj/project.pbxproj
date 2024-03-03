@@ -42,7 +42,7 @@
 		C2F4F37F2B8DC09000E65588 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F37E2B8DC09000E65588 /* BaseTableViewCell.swift */; };
 		C2F4F3822B8DC35C00E65588 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3812B8DC35C00E65588 /* APIManager.swift */; };
 		C2F4F3852B8DC37100E65588 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C2F4F3842B8DC37100E65588 /* Alamofire */; };
-		C2F4F3872B8DC42300E65588 /* SearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3862B8DC42300E65588 /* SearchAPI.swift */; };
+		C2F4F3872B8DC42300E65588 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3862B8DC42300E65588 /* Search.swift */; };
 		C2F4F38A2B8DC68700E65588 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3892B8DC68700E65588 /* Protocol.swift */; };
 		C2F4F38E2B8DDCC200E65588 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F38D2B8DDCC200E65588 /* Fonts.swift */; };
 		C2F4F3932B8DE58000E65588 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3922B8DE58000E65588 /* Observable.swift */; };
@@ -96,7 +96,7 @@
 		C2F4F37C2B8DC05700E65588 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		C2F4F37E2B8DC09000E65588 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C2F4F3812B8DC35C00E65588 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		C2F4F3862B8DC42300E65588 /* SearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPI.swift; sourceTree = "<group>"; };
+		C2F4F3862B8DC42300E65588 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		C2F4F3892B8DC68700E65588 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		C2F4F38D2B8DDCC200E65588 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		C2F4F3922B8DE58000E65588 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -251,7 +251,7 @@
 			children = (
 				C25A818D2B944189008C542D /* API.swift */,
 				C2F4F3812B8DC35C00E65588 /* APIManager.swift */,
-				C2F4F3862B8DC42300E65588 /* SearchAPI.swift */,
+				C2F4F3862B8DC42300E65588 /* Search.swift */,
 				C2F4F4072B909F9100E65588 /* MarketAPI.swift */,
 				C25A818F2B9445BF008C542D /* TrendingAPI.swift */,
 			);
@@ -400,7 +400,7 @@
 				C2F4F36B2B8DB28500E65588 /* BaseViewController.swift in Sources */,
 				C261D4E22B91C3A200501ACB /* RankCollectionViewCell.swift in Sources */,
 				C2F4F3C62B8F036400E65588 /* CoinRealmModel.swift in Sources */,
-				C2F4F3872B8DC42300E65588 /* SearchAPI.swift in Sources */,
+				C2F4F3872B8DC42300E65588 /* Search.swift in Sources */,
 				C2F4F3572B8DB0C800E65588 /* ViewController.swift in Sources */,
 				C26F1E672B93F7EF00F1BECA /* NewTopCoinTableViewCell.swift in Sources */,
 				C2F4F39A2B8EAEC200E65588 /* FavoriteViewController.swift in Sources */,

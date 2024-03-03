@@ -16,9 +16,6 @@ class FavoriteViewController: BaseViewController {
     let repository = RepositoryRealm()
     let viewModel = ViewModel()
     
-    var realmList: [CoinRealmModel] = []
-    var priceAPIResult: PriceAPI = []
-    
     lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser,
                                                  style: .plain,
                                                  target: self,
@@ -40,7 +37,7 @@ class FavoriteViewController: BaseViewController {
         super.viewDidLoad()
         
         viewModel.idList()
-        viewModel.outputCoinPriceAPI.bind { data in
+        viewModel.outputMarketAPI.bind { data in
             self.collectionView.reloadData()
         }
     }
@@ -103,8 +100,8 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCollectionViewCell.identifier, for: indexPath) as! FavoriteCollectionViewCell
         
-        if !viewModel.outputCoinPriceAPI.value.isEmpty {
-            let item = viewModel.outputCoinPriceAPI.value[indexPath.item]
+        if !viewModel.outputMarketAPI.value.isEmpty {
+            let item = viewModel.outputMarketAPI.value[indexPath.item]
             
             let coinPrice = DesignSystemText.shared.priceCalculator(item.currentPrice)
             
@@ -132,7 +129,7 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = viewModel.outputCoinPriceAPI.value[indexPath.item]
+        let item = viewModel.outputMarketAPI.value[indexPath.item]
         
         let vc = ChartViewController()
         vc.data = item

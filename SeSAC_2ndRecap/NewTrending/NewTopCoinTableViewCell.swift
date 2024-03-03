@@ -11,6 +11,8 @@ import SnapKit
 
 class NewTopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
     
+    let viewModel = ViewModel()
+    
     let topCoinLabel = UILabel().then {
         $0.text = "Top 15 Coin"
         $0.font = DesignSystemFont.trendingSubtitle.font
@@ -85,6 +87,14 @@ extension NewTopCoinTableViewCell: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewTopCoinCollectionViewCell.identifier, for: indexPath) as! NewTopCoinCollectionViewCell
+        
+        if !viewModel.outputTrendingAPI.value.isEmpty {
+            let trending = viewModel.outputTrendingAPI.value[indexPath.item]
+            
+            cell.name.text = trending.item.name
+        }
+        
+
         
 //        cell.backgroundColor = .orange
         

@@ -25,7 +25,7 @@ class NewTopCoinCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     let name = UILabel().then {
-        $0.text = "Solana"
+//        $0.text = "Solana"
         $0.font = DesignSystemFont.allCoinName.font
     }
     

@@ -109,8 +109,8 @@ extension NewMyFavoriteTableViewCell: UICollectionViewDelegate, UICollectionView
         
         
         
-        if !viewModel.outputCoinPriceAPI.value.isEmpty {
-            let item = viewModel.outputCoinPriceAPI.value[indexPath.item]
+        if !viewModel.outputMarketAPI.value.isEmpty {
+            let item = viewModel.outputMarketAPI.value[indexPath.item]
             
             
             cell.name.text = item.name

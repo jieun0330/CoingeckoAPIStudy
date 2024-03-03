@@ -74,7 +74,7 @@ final class TrendingViewController: BaseViewController {
         
         viewModel.inputViewTrigger.value = idList
         
-        viewModel.outputCoinPriceAPI.bind { data in
+        viewModel.outputMarketAPI.bind { data in
             self.favoriteCollectionView.reloadData()
         }
     }
@@ -191,8 +191,8 @@ extension TrendingViewController: UICollectionViewDelegate, UICollectionViewData
             cell.layer.cornerRadius = 15
             cell.layer.masksToBounds = true
             
-            if !viewModel.outputCoinPriceAPI.value.isEmpty {
-                let item = viewModel.outputCoinPriceAPI.value[indexPath.item]
+            if !viewModel.outputMarketAPI.value.isEmpty {
+                let item = viewModel.outputMarketAPI.value[indexPath.item]
                 cell.name.text = item.name
             }
             return cell

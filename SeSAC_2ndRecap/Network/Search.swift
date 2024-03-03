@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct SearchAPI: Decodable {
-    var coins: [InfoAPI]
+struct Search: Decodable {
+    var coins: [SearchAPI]
 }
 
-struct InfoAPI: Decodable {
+struct SearchAPI: Decodable {
     var id, name, symbol, thumb, large: String
 }
