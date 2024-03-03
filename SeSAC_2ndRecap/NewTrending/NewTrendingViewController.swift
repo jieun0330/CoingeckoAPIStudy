@@ -14,6 +14,7 @@ class NewTrendingViewController: BaseViewController {
     let repository = RepositoryRealm()
     var realmList: [CoinRealmModel] = []
     let viewModel = ViewModel()
+    var priceAPIResult: PriceAPI = []
 
     lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser.withRenderingMode(.alwaysOriginal),
                                                  style: .plain,
@@ -51,9 +52,10 @@ class NewTrendingViewController: BaseViewController {
         
 
             
-            viewModel.outputCoinPriceAPI.bind { data in
-                    self.tableView.reloadData()
-        }
+        viewModel.outputCoinPriceAPI.bind { data in
+                self.tableView.reloadData()
+            self.priceAPIResult = data
+    }
 
         
 
@@ -125,8 +127,10 @@ extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource 
             
             let cell = tableView.dequeueReusableCell(withIdentifier: NewMyFavoriteTableViewCell.identifier, for: indexPath) as! NewMyFavoriteTableViewCell
             
-//            cell.
+            cell.viewModel.outputCoinPriceAPI.value = priceAPIResult
             
+//            cell.
+//            cell.
             
             return cell
         } else if indexPath.row == 1 {

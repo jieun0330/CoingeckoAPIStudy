@@ -11,10 +11,14 @@ import SnapKit
 import DGCharts
 import RealmSwift
 import Kingfisher
+import Toast
 
 class ChartViewController: BaseViewController {
 
     var data: Price!
+    
+    let repository = RepositoryRealm()
+    let viewModel = ViewModel()
     
     lazy var rightFavoriteButton = UIBarButtonItem(image: .btnStar,
                                                    style: .plain,
@@ -56,6 +60,7 @@ class ChartViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
 //        viewModel.outputCoinPriceAPI.bind { data in
 //            self.coinPriceAPIResult = data
@@ -125,25 +130,32 @@ class ChartViewController: BaseViewController {
         
         percentage.text = DesignSystemText.shared.percentageCalculator(number: data.priceChangePercentage24H)
         
+
+
     
         
     }
         
     @objc func rightFavoriteButtonClicked(_ sender: UIButton) {
         
-        //        let saveToRealm = CoinRealmModel(id: coinPriceAPIResult[sender.tag].id)
-        //        let realmDatas = repository.readItemName(id: coinPriceAPIResult[sender.tag].name)
-        //
-        //        if realmDatas.contains(where: { data in
-        //            repository.deleteItem(item: data)
-        //            return true
-        //        }) {
-        //            print("중복")
-        //            self.view.makeToast("즐겨찾기에서 삭제되었습니다")
-        //        } else {
-        //            repository.createFavoriteItem(saveToRealm)
-        //            self.view.makeToast("즐겨찾기에 추가되었습니다")
-        //        }
+        let saveToRealm = CoinRealmModel(id: data.id)
+        let realmData = repository.readItemName(id: data.id)
+        
+        if realmData.contains(where: { data in
+            repository.deleteItem(item: data)
+            return true
+        }) {
+            self.view.makeToast("즐겨찾기에서 삭제되었습니다")
+        } else {
+            if repository.fetchAllItem().count >= 10 {
+                self.view.makeToast("즐겨찾기는 최대 10개까지 가능합니다")
+            } else {
+                repository.createFavoriteItem(saveToRealm)
+                self.view.makeToast("즐겨찾기에 추가되었습니다")
+            }
+        }
+        
+
     }
     
     static func configureCollectionViewLayout() -> UICollectionViewLayout {
@@ -196,6 +208,8 @@ extension ChartViewController: UICollectionViewDelegate, UICollectionViewDataSou
         
         cell.price.text = "₩\(calculatedPrice)"
         cell.priceTitle.textColor = textColor
+        
+        
         
         
 //        if indexPath.row == 0 {

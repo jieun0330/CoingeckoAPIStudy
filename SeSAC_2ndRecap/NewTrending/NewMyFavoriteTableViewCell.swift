@@ -14,6 +14,7 @@ class NewMyFavoriteTableViewCell: BaseTableViewCell, ReusableProtocol {
     let repository = RepositoryRealm()
     let viewModel = ViewModel()
     var realmList: [CoinRealmModel] = []
+    let priceAPIResult: PriceAPI = []
 
     
     let myFavorite = UILabel().then {
@@ -37,6 +38,9 @@ class NewMyFavoriteTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        
+        
     }
     
     override func configureHierarchy() {
@@ -101,11 +105,12 @@ extension NewMyFavoriteTableViewCell: UICollectionViewDelegate, UICollectionView
         cell.backgroundColor = DesignSystemColor.lightGray.color
         cell.layer.cornerRadius = 15
         cell.layer.masksToBounds = true
-//        cell.name
-//        cell.name
+        
         
         if !viewModel.outputCoinPriceAPI.value.isEmpty {
             let item = viewModel.outputCoinPriceAPI.value[indexPath.item]
+            
+            
             cell.name.text = item.name
             cell.icon.kf.setImage(with: URL(string: item.image))
             cell.symbol.text = item.symbol
