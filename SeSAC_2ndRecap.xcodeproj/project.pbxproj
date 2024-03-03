@@ -15,7 +15,7 @@
 		C261D4E92B92F58700501ACB /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4E82B92F58700501ACB /* SettingViewController.swift */; };
 		C261D4EB2B93077B00501ACB /* CellEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4EA2B93077B00501ACB /* CellEnum.swift */; };
 		C26F1E5F2B93F12300F1BECA /* NewTrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E5E2B93F12300F1BECA /* NewTrendingViewController.swift */; };
-		C26F1E612B93F18200F1BECA /* NewTrendingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E602B93F18200F1BECA /* NewTrendingTableViewCell.swift */; };
+		C26F1E612B93F18200F1BECA /* NewMyFavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E602B93F18200F1BECA /* NewMyFavoriteTableViewCell.swift */; };
 		C26F1E652B93F3BD00F1BECA /* NewMyFavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E642B93F3BD00F1BECA /* NewMyFavoriteCollectionViewCell.swift */; };
 		C26F1E672B93F7EF00F1BECA /* NewTopCoinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E662B93F7EF00F1BECA /* NewTopCoinTableViewCell.swift */; };
 		C26F1E692B93F98A00F1BECA /* NewTopCoinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E682B93F98A00F1BECA /* NewTopCoinCollectionViewCell.swift */; };
@@ -66,7 +66,7 @@
 		C261D4E82B92F58700501ACB /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		C261D4EA2B93077B00501ACB /* CellEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellEnum.swift; sourceTree = "<group>"; };
 		C26F1E5E2B93F12300F1BECA /* NewTrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrendingViewController.swift; sourceTree = "<group>"; };
-		C26F1E602B93F18200F1BECA /* NewTrendingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrendingTableViewCell.swift; sourceTree = "<group>"; };
+		C26F1E602B93F18200F1BECA /* NewMyFavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMyFavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		C26F1E642B93F3BD00F1BECA /* NewMyFavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMyFavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		C26F1E662B93F7EF00F1BECA /* NewTopCoinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTopCoinTableViewCell.swift; sourceTree = "<group>"; };
 		C26F1E682B93F98A00F1BECA /* NewTopCoinCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTopCoinCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				C26F1E5E2B93F12300F1BECA /* NewTrendingViewController.swift */,
-				C26F1E602B93F18200F1BECA /* NewTrendingTableViewCell.swift */,
+				C26F1E602B93F18200F1BECA /* NewMyFavoriteTableViewCell.swift */,
 				C26F1E642B93F3BD00F1BECA /* NewMyFavoriteCollectionViewCell.swift */,
 				C26F1E662B93F7EF00F1BECA /* NewTopCoinTableViewCell.swift */,
 				C26F1E682B93F98A00F1BECA /* NewTopCoinCollectionViewCell.swift */,
@@ -380,7 +380,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2F4F37F2B8DC09000E65588 /* BaseTableViewCell.swift in Sources */,
-				C26F1E612B93F18200F1BECA /* NewTrendingTableViewCell.swift in Sources */,
+				C26F1E612B93F18200F1BECA /* NewMyFavoriteTableViewCell.swift in Sources */,
 				C26F1E692B93F98A00F1BECA /* NewTopCoinCollectionViewCell.swift in Sources */,
 				C2F4F36B2B8DB28500E65588 /* BaseViewController.swift in Sources */,
 				C261D4E22B91C3A200501ACB /* RankCollectionViewCell.swift in Sources */,

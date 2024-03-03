@@ -11,6 +11,11 @@ import SnapKit
 
 class NewTrendingViewController: BaseViewController {
     
+    let repository = RepositoryRealm()
+    var realmList: [CoinRealmModel] = []
+    let viewModel = ViewModel()
+
+    
     let mainTitle = UILabel().then {
         $0.text = "Crypto Coin"
         $0.font = DesignSystemFont.allMainTitle.font
@@ -19,13 +24,15 @@ class NewTrendingViewController: BaseViewController {
     lazy var tableView = UITableView().then {
         $0.delegate = self
         $0.dataSource = self
-        $0.register(NewTrendingTableViewCell.self, forCellReuseIdentifier: NewTrendingTableViewCell.identifier)
+        $0.register(NewMyFavoriteTableViewCell.self, forCellReuseIdentifier: NewMyFavoriteTableViewCell.identifier)
         $0.register(NewTopCoinTableViewCell.self, forCellReuseIdentifier: NewTopCoinTableViewCell.identifier)
 //        $0.backgroundColor = .orange
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
 
     }
     
@@ -80,7 +87,7 @@ extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource 
         
         if indexPath.row == 0 {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: NewTrendingTableViewCell.identifier, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: NewMyFavoriteTableViewCell.identifier, for: indexPath)
             
             return cell
         } else {

@@ -9,16 +9,19 @@ import UIKit
 import Then
 import SnapKit
 
-class NewTrendingTableViewCell: BaseTableViewCell, ReusableProtocol {
+class NewMyFavoriteTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let repository = RepositoryRealm()
+    let viewModel = ViewModel()
+    var realmList: [CoinRealmModel] = []
+
     
     let myFavorite = UILabel().then {
         $0.text = "My Favorite"
         $0.font = DesignSystemFont.trendingSubtitle.font
     }
     
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: NewTrendingTableViewCell.configureCollectionViewLayout()).then {
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: NewMyFavoriteTableViewCell.configureCollectionViewLayout()).then {
         
         $0.delegate = self
         $0.dataSource = self
@@ -58,6 +61,22 @@ class NewTrendingTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     override func configureView() {
         contentView.backgroundColor = DesignSystemColor.white.color
+        
+        realmList = repository.fetchAllItem()
+        
+        var idList = ""
+        
+        for list in realmList {
+            idList.append(list.id + ",")
+        }
+
+        viewModel.inputViewTrigger.value = idList
+        
+//        viewModel.outputCoinPriceAPI.bind { data in
+//            self.favoriteCollectionView.reloadData()
+//        }
+        
+        
     }
     
     required init?(coder: NSCoder) {
@@ -80,17 +99,26 @@ class NewTrendingTableViewCell: BaseTableViewCell, ReusableProtocol {
 }
 
 
-extension NewTrendingTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension NewMyFavoriteTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return repository.fetchAllItem().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewMyFavoriteCollectionViewCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewMyFavoriteCollectionViewCell.identifier, for: indexPath) as! NewMyFavoriteCollectionViewCell
         
         cell.backgroundColor = DesignSystemColor.lightGray.color
         cell.layer.cornerRadius = 15
         cell.layer.masksToBounds = true
+//        cell.name
+        
+        if !viewModel.outputCoinPriceAPI.value.isEmpty {
+            let item = viewModel.outputCoinPriceAPI.value[indexPath.item]
+            cell.name.text = item.name
+
+        
+//            cell. .text = item.name
+        }
         
         return cell
     }
