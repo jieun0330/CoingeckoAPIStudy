@@ -172,11 +172,39 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             print("중복")
             self.view.makeToast("즐겨찾기에서 삭제되었습니다")
         } else {
-            tableView.reloadData()
-            // repository에 저장하기
-            repository.createFavoriteItem(saveToRealm)
-            // toast 메세지 띄워주기
-            self.view.makeToast("즐겨찾기에 추가되었습니다")
+            
+            
+            if repository.fetchAllItem().count >= 10 {
+                self.view.makeToast("즐겨찾기는 최대 10개까지 가능합니다")
+            } else {
+                tableView.reloadData()
+                // repository에 저장하기
+                repository.createFavoriteItem(saveToRealm)
+                // toast 메세지 띄워주기
+                self.view.makeToast("즐겨찾기에 추가되었습니다")
+            }
+
+
+            
+
+            
+            /*
+             레포에 포함되어 있으면 -> 삭제
+             
+             레포에 포함안되어 있으면 -> 생성
+                + 레포가 10개가 넘으면 -> 토스트
+            
+             if 레포 not contain data || {
+             
+                if
+             레포 생성
+             } else 레포 contain data{
+             레포 삭제
+             }
+             
+            */
+            
+            
         }
     }
 }
