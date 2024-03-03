@@ -23,7 +23,7 @@ enum CoinAPI {
         case .market(let query):
             return URL(string: "\(baseURL)coins/markets?vs_currency=krw&ids=\(query)")!
         case .trending:
-            return URL(string: "\(baseURL)search/trending")
+            return URL(string: "\(baseURL)search/trending")!
         }
     }
 }

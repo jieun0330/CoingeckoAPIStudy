@@ -15,7 +15,7 @@ class NewTrendingViewController: BaseViewController {
     var realmList: [CoinRealmModel] = []
     let viewModel = ViewModel()
     var priceAPIResult: PriceAPI = []
-
+    
     lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser.withRenderingMode(.alwaysOriginal),
                                                  style: .plain,
                                                  target: self,
@@ -25,7 +25,7 @@ class NewTrendingViewController: BaseViewController {
         $0.text = "Crypto Coin"
         $0.font = DesignSystemFont.allMainTitle.font
     }
-
+    
     lazy var tableView = UITableView().then {
         $0.delegate = self
         $0.dataSource = self
@@ -33,33 +33,22 @@ class NewTrendingViewController: BaseViewController {
         $0.register(NewTopCoinTableViewCell.self, forCellReuseIdentifier: NewTopCoinTableViewCell.identifier)
         $0.register(NewNTFTableViewCell.self, forCellReuseIdentifier: NewNTFTableViewCell.identifier)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        realmList = repository.fetchAllItem()
-        
-        var idList = ""
-        
-        for list in realmList {
-            idList.append(list.id + ",")
-        }
-
-        viewModel.inputViewTrigger.value = idList
-
+        viewModel.idList()
         viewModel.outputCoinPriceAPI.bind { data in
-            
-           
-                self.tableView.reloadData()
+            self.tableView.reloadData()
             self.priceAPIResult = data
-    }
+        }
         
         
-
         
-
         
-
+        
+        
+        
     }
     
     
@@ -83,13 +72,12 @@ class NewTrendingViewController: BaseViewController {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(30)
         }
-
+        
         tableView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.top.equalTo(mainTitle.snp.bottom).offset(10)
             $0.bottom.equalToSuperview()
         }
-
     }
     
     override func configureView() {
@@ -101,7 +89,7 @@ class NewTrendingViewController: BaseViewController {
     @objc func profileTabBarItemClicked() {
         
     }
-
+    
 }
 
 extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource {
@@ -122,7 +110,7 @@ extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-
+        
         
         if indexPath.row == 0 {
             
@@ -130,8 +118,8 @@ extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource 
             
             cell.viewModel.outputCoinPriceAPI.value = priceAPIResult
             
-//            cell.
-//            cell.
+            //            cell.
+            //            cell.
             
             return cell
         } else if indexPath.row == 1 {
@@ -146,7 +134,7 @@ extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource 
             return cell
         }
         
-
+        
     }
     
     

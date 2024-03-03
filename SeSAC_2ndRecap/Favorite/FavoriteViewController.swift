@@ -39,29 +39,9 @@ class FavoriteViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        realmList = repository.fetchAllItem()
-        //        print("realmList", realmList)
-        /*
-         realmList [CoinRealmModel {
-         id = whitebit;
-         }, CoinRealmModel {
-         id = whisperbot;
-         }, CoinRealmModel {
-         id = whiteheart;
-         }]
-         */
-        
-        var searchID = ""
-        
-        for list in realmList {
-            searchID.append(list.id + ",")
-        }
-        
-        viewModel.inputViewTrigger.value = searchID
-        
+        viewModel.idList()
         viewModel.outputCoinPriceAPI.bind { data in
             self.collectionView.reloadData()
-//            self.priceAPIResult = data
         }
     }
     
