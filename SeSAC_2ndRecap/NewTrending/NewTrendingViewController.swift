@@ -20,7 +20,8 @@ class NewTrendingViewController: BaseViewController {
         $0.delegate = self
         $0.dataSource = self
         $0.register(NewTrendingTableViewCell.self, forCellReuseIdentifier: NewTrendingTableViewCell.identifier)
-        $0.backgroundColor = .orange
+        $0.register(NewTopCoinTableViewCell.self, forCellReuseIdentifier: NewTopCoinTableViewCell.identifier)
+//        $0.backgroundColor = .orange
     }
 
     override func viewDidLoad() {
@@ -60,7 +61,13 @@ class NewTrendingViewController: BaseViewController {
 extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        
+        if indexPath.row == 0 {
+            return 220
+        } else {
+            return 350
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,14 +76,20 @@ extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+
+        
         if indexPath.row == 0 {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: NewTrendingTableViewCell.identifier, for: indexPath)
             
             return cell
+        } else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: NewTopCoinTableViewCell.identifier, for: indexPath)
+            
+            return cell
         }
         
-        return UITableViewCell()
 
     }
     

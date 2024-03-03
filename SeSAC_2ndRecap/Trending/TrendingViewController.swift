@@ -200,7 +200,7 @@ extension TrendingViewController: UICollectionViewDelegate, UICollectionViewData
         } else {
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: TopCoinCollectionViewCell.identifier, for: indexPath)
-            cell.backgroundColor = .orange
+//            cell.backgroundColor = .orange
             
             return cell
         }
