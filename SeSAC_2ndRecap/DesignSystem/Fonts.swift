@@ -31,7 +31,7 @@ extension DesignSystemFont {
         case .allPriceBold:
             return .boldSystemFont(ofSize: 18)
         case .allPrice:
-            return .boldSystemFont(ofSize: 17)
+            return .systemFont(ofSize: 17)
         case .allPercentageBold:
             return .boldSystemFont(ofSize: 13)
         case .allPercentage:

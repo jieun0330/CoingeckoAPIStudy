@@ -16,7 +16,6 @@ class ChartPriceCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     let price = UILabel().then {
-        $0.text = "$69,234,243"
         $0.font = DesignSystemFont.allPrice.font
         $0.textColor = DesignSystemColor.gray.color
     }
