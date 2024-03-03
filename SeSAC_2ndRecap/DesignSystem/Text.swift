@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DesignSystemText {
+final class DesignSystemText {
     
     static var shared = DesignSystemText()
     
@@ -30,5 +30,5 @@ class DesignSystemText {
         } else {
             return "+\(percentage)%"
         }
-    }    
+    }
 }

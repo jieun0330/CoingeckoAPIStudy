@@ -107,6 +107,8 @@ extension NewMyFavoriteTableViewCell: UICollectionViewDelegate, UICollectionView
         cell.layer.masksToBounds = true
         
         
+        
+        
         if !viewModel.outputCoinPriceAPI.value.isEmpty {
             let item = viewModel.outputCoinPriceAPI.value[indexPath.item]
             
@@ -114,7 +116,10 @@ extension NewMyFavoriteTableViewCell: UICollectionViewDelegate, UICollectionView
             cell.name.text = item.name
             cell.icon.kf.setImage(with: URL(string: item.image))
             cell.symbol.text = item.symbol
-
+            let price = DesignSystemText.shared.priceCalculator(item.currentPrice)
+            cell.price.text = "₩\(price)"
+            let percentage = DesignSystemText.shared.percentageCalculator(number: item.priceChangePercentage24H)
+            cell.percentage.text = percentage
         
         }
         

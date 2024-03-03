@@ -49,19 +49,23 @@ class NewTrendingViewController: BaseViewController {
         }
 
         viewModel.inputViewTrigger.value = idList
-        
 
-            
         viewModel.outputCoinPriceAPI.bind { data in
+            
+           
                 self.tableView.reloadData()
             self.priceAPIResult = data
     }
+        
+        
 
         
 
         
 
     }
+    
+    
     
     // 즐겨찾기 저장 누르고 다시 왔을 때
     override func viewWillAppear(_ animated: Bool) {

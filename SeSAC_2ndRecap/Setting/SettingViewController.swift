@@ -7,12 +7,11 @@
 
 import UIKit
 
-class SettingViewController: UIViewController {
+final class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = DesignSystemColor.white.color
-        
     }
 }

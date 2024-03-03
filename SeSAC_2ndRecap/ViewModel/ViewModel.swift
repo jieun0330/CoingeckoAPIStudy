@@ -16,7 +16,6 @@ final class ViewModel {
     
     var outputCoinPriceAPI: Observable<PriceAPI> = Observable([])
     var outputCoinInfoAPI: Observable<[InfoAPI]> = Observable([])
-//    var outputSearchTextColor: Observable("")
     
     init() {
         inputViewTrigger.bind { value in
@@ -31,11 +30,5 @@ final class ViewModel {
                 self.outputCoinInfoAPI.value = data.coins
             }, query: value)
         }
-        
-//        func searchTextColor() {
-//            
-//        }
-        
-        
     }
 }
