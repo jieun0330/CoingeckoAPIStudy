@@ -15,6 +15,11 @@ class NewTrendingViewController: BaseViewController {
     var realmList: [CoinRealmModel] = []
     let viewModel = ViewModel()
 
+    lazy var profileTabBarItem = UIBarButtonItem(image: .tabUser.withRenderingMode(.alwaysOriginal),
+                                                 style: .plain,
+                                                 target: self,
+                                                 action: #selector(profileTabBarItemClicked))
+    
     
     let mainTitle = UILabel().then {
         $0.text = "Crypto Coin"
@@ -60,6 +65,11 @@ class NewTrendingViewController: BaseViewController {
     
     override func configureView() {
         view.backgroundColor = DesignSystemColor.white.color
+        navigationItem.rightBarButtonItem = profileTabBarItem
+        
+    }
+    
+    @objc func profileTabBarItemClicked() {
         
     }
 
