@@ -171,22 +171,29 @@ extension ChartViewController: UICollectionViewDelegate, UICollectionViewDataSou
         cell.priceTitle.text = collectionViewCellName.allCases[indexPath.row].cellName
         
         var price: Double
+        var textColor: UIColor
         
         switch indexPath.row {
         case 0:
             price = data.high24H
+            textColor = DesignSystemColor.red.color
         case 1:
             price = data.low24H
+            textColor = DesignSystemColor.blue.color
         case 2:
             price = data.ath
+            textColor = DesignSystemColor.red.color
         case 3:
             price = data.atl
+            textColor = DesignSystemColor.blue.color
             
         default:
             price = 0
+            textColor = .black
         }
         
         cell.price.text = "\(price)"
+        cell.priceTitle.textColor = textColor
         
         
 //        if indexPath.row == 0 {

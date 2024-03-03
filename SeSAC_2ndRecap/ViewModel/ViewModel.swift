@@ -16,15 +16,11 @@ final class ViewModel {
     
     var outputCoinPriceAPI: Observable<PriceAPI> = Observable([])
     var outputCoinInfoAPI: Observable<[InfoAPI]> = Observable([])
+//    var outputSearchTextColor: Observable("")
     
     init() {
-        // 2. inputViewTrigger.bind
         inputViewTrigger.bind { value in
-            // 3. fetch
             APIManager.shared.fetchCoinPriceAPI(completionHandler: { data in
-                // 4. outputCoinPriceAPI 세팅
-                // 13. value == 신디코인
-                // 14. data == 신디코인 데이터
                 self.outputCoinPriceAPI.value = data
             }, query: value)
         }
@@ -35,5 +31,11 @@ final class ViewModel {
                 self.outputCoinInfoAPI.value = data.coins
             }, query: value)
         }
+        
+//        func searchTextColor() {
+//            
+//        }
+        
+        
     }
 }

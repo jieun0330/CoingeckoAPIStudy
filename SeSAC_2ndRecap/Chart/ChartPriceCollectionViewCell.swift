@@ -12,7 +12,7 @@ import SnapKit
 class ChartPriceCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let priceTitle = UILabel().then {
-        $0.font = DesignSystemFont.allPercentageBold.font
+        $0.font = DesignSystemFont.allPriceBold.font
     }
     
     let price = UILabel().then {

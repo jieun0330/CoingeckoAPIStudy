@@ -138,11 +138,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.favorites.addTarget(self, action: #selector(favoritesButtonClicked), for: .touchUpInside)
         
-        
-        if cell.name.text == row.name {
-            cell.name.textColor = DesignSystemColor.purple.color
-        }
-        
+
         
         return cell
             }
