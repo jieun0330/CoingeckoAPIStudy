@@ -91,6 +91,7 @@ extension NewTopCoinTableViewCell: UICollectionViewDelegate, UICollectionViewDat
         if !viewModel.outputTrendingAPI.value.isEmpty {
             let trending = viewModel.outputTrendingAPI.value[indexPath.item].item
             
+            cell.rankNum.text = "\(indexPath.item+1)"
             cell.name.text = trending.name
             cell.image.kf.setImage(with: URL(string: trending.small))
             cell.price.text = trending.data.price
@@ -98,6 +99,9 @@ extension NewTopCoinTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             let krwKey: [String: Double] = trending.data.priceChangePercentage24H
             let percentage = DesignSystemText.shared.percentageCalculator(number: krwKey["krw"]!)
             cell.percentage.text = percentage
+ 
+            
+            
 
             
 //            var dic2 : [String : Int] = ["zedd":30, "swift":40,"iOS":50]
