@@ -61,7 +61,7 @@ class FavoriteViewController: BaseViewController {
         
         viewModel.outputCoinPriceAPI.bind { data in
             self.collectionView.reloadData()
-            self.priceAPIResult = data
+//            self.priceAPIResult = data
         }
     }
     
@@ -123,25 +123,32 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCollectionViewCell.identifier, for: indexPath) as! FavoriteCollectionViewCell
         
-
-        let item = priceAPIResult[indexPath.item]
-        let coinPrice = DesignSystemText.shared.priceCalculator(item.currentPrice)
-        
-        cell.name.text = item.name
-        cell.icon.kf.setImage(with: URL(string: item.image))
-        cell.symbol.text = item.symbol
-        cell.price.text = "₩\(coinPrice)"
-        cell.percentage.text = DesignSystemText.shared.percentageCalculator(number: item.priceChangePercentage24H)
-        
-        if item.priceChangePercentage24H < 0 {
-            cell.percentage.textColor = DesignSystemColor.red.color
-            cell.percentageBox.backgroundColor = DesignSystemColor.pink.color
-        } else {
-            cell.percentage.textColor = DesignSystemColor.blue.color
-            cell.percentageBox.backgroundColor = DesignSystemColor.sky.color
+        if !viewModel.outputCoinPriceAPI.value.isEmpty {
+            let item = viewModel.outputCoinPriceAPI.value[indexPath.item]
+            
+            let coinPrice = DesignSystemText.shared.priceCalculator(item.currentPrice)
+            
+            cell.name.text = item.name
+            cell.icon.kf.setImage(with: URL(string: item.image))
+            cell.symbol.text = item.symbol
+            cell.price.text = "₩\(coinPrice)"
+            cell.percentage.text = DesignSystemText.shared.percentageCalculator(number: item.priceChangePercentage24H)
+            
+            if item.priceChangePercentage24H < 0 {
+                cell.percentage.textColor = DesignSystemColor.red.color
+                cell.percentageBox.backgroundColor = DesignSystemColor.pink.color
+            } else {
+                cell.percentage.textColor = DesignSystemColor.blue.color
+                cell.percentageBox.backgroundColor = DesignSystemColor.sky.color
+            }
+            
+            return cell
         }
         
-        return cell
+        return UICollectionViewCell()
+        
+//        let item = viewModel.outputCoinPriceAPI.value[indexPath.item]
+
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

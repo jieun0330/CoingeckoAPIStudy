@@ -20,7 +20,7 @@ class ChartViewController: BaseViewController {
     let repository = RepositoryRealm()
     let viewModel = ViewModel()
     
-    lazy var rightFavoriteButton = UIBarButtonItem(image: .btnStar,
+    lazy var rightFavoriteButton = UIBarButtonItem(image: .btnStarFill,
                                                    style: .plain,
                                                    target: self,
                                                    action: #selector(rightFavoriteButtonClicked)).then { _ in
@@ -61,6 +61,9 @@ class ChartViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        repository.fetchAllItem()
+        
+//        print("data", data)
         
 //        viewModel.outputCoinPriceAPI.bind { data in
 //            self.coinPriceAPIResult = data
@@ -130,30 +133,58 @@ class ChartViewController: BaseViewController {
         
         percentage.text = DesignSystemText.shared.percentageCalculator(number: data.priceChangePercentage24H)
         
-
-
+//        if data.name == "USDC" {
+//            rightFavoriteButton.image = .btnStarFill
+//        } else {
+//            rightFavoriteButton.image = .btnStar
+//        }
     
         
     }
         
     @objc func rightFavoriteButtonClicked(_ sender: UIButton) {
         
-        let saveToRealm = CoinRealmModel(id: data.id)
-        let realmData = repository.readItemName(id: data.id)
         
-        if realmData.contains(where: { data in
-            repository.deleteItem(item: data)
-            return true
-        }) {
+        
+        let readRealmModel = CoinRealmModel(id: data.id)
+        print("readRealmModel", readRealmModel)
+        /* readRealmModel
+         CoinRealmModel {
+             id = bitcoin;
+         }
+         */
+        
+        
+        let realmData = repository.readItemName(id: readRealmModel.id)
+        print("realmData", realmData)
+        /*
+         Results<CoinRealmModel> <0x1094a7ef0> (
+             [0] CoinRealmModel {
+                 id = tether;
+             }
+         )
+         */
+        
+        repository.deleteItem(item: readRealmModel)
+
+        
+//
+//        if realmData.contains(where: { data in
+//            print("data", data)
+//            repository.deleteItem(item: readRealmModel)
+//            return true
+//        }) {
             self.view.makeToast("즐겨찾기에서 삭제되었습니다")
-        } else {
-            if repository.fetchAllItem().count >= 10 {
-                self.view.makeToast("즐겨찾기는 최대 10개까지 가능합니다")
-            } else {
-                repository.createFavoriteItem(saveToRealm)
-                self.view.makeToast("즐겨찾기에 추가되었습니다")
-            }
-        }
+            rightFavoriteButton.image = .btnStar
+//        } else {
+//            if repository.fetchAllItem().count >= 10 {
+//                self.view.makeToast("즐겨찾기는 최대 10개까지 가능합니다")
+//            } else {
+//                repository.createFavoriteItem(saveToRealm)
+//                self.view.makeToast("즐겨찾기에 추가되었습니다")
+//                rightFavoriteButton.image = .btnStarFill
+//            }
+//        }
         
 
     }
