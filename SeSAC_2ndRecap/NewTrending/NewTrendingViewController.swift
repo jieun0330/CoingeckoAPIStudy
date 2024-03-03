@@ -31,13 +31,33 @@ class NewTrendingViewController: BaseViewController {
         $0.dataSource = self
         $0.register(NewMyFavoriteTableViewCell.self, forCellReuseIdentifier: NewMyFavoriteTableViewCell.identifier)
         $0.register(NewTopCoinTableViewCell.self, forCellReuseIdentifier: NewTopCoinTableViewCell.identifier)
+        $0.register(NewNTFTableViewCell.self, forCellReuseIdentifier: NewNTFTableViewCell.identifier)
+
 //        $0.backgroundColor = .orange
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        realmList = repository.fetchAllItem()
+        
+        var idList = ""
+        
+        for list in realmList {
+            idList.append(list.id + ",")
+        }
 
+        viewModel.inputViewTrigger.value = idList
+        
+
+            
+            viewModel.outputCoinPriceAPI.bind { data in
+                    self.tableView.reloadData()
+        }
+
+        
+
+        
 
     }
     
@@ -97,12 +117,20 @@ extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource 
         
         if indexPath.row == 0 {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: NewMyFavoriteTableViewCell.identifier, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: NewMyFavoriteTableViewCell.identifier, for: indexPath) as! NewMyFavoriteTableViewCell
+            
+//            cell.
+            
+            
+            return cell
+        } else if indexPath.row == 1 {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: NewTopCoinTableViewCell.identifier, for: indexPath) as! NewTopCoinTableViewCell
             
             return cell
         } else {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: NewTopCoinTableViewCell.identifier, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: NewNTFTableViewCell.identifier, for: indexPath) as! NewNTFTableViewCell
             
             return cell
         }

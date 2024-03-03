@@ -1,5 +1,5 @@
 //
-//  NewTopCoinTableViewCell.swift
+//  NewNTFTableViewCell.swift
 //  SeSAC_2ndRecap
 //
 //  Created by 박지은 on 3/3/24.
@@ -9,18 +9,18 @@ import UIKit
 import Then
 import SnapKit
 
-class NewTopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
+class NewNTFTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    let topCoinLabel = UILabel().then {
-        $0.text = "Top 15 Coin"
+    let topNFTLabel = UILabel().then {
+        $0.text = "Top 7 NFT"
         $0.font = DesignSystemFont.trendingSubtitle.font
     }
     
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: NewTopCoinTableViewCell.configureCollectionViewLayout()).then {
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: NewNTFTableViewCell.configureCollectionViewLayout()).then {
         
         $0.delegate = self
         $0.dataSource = self
-        $0.register(NewTopCoinCollectionViewCell.self, forCellWithReuseIdentifier: NewTopCoinCollectionViewCell.identifier)
+        $0.register(NewNFTCollectionViewCell.self, forCellWithReuseIdentifier: NewNFTCollectionViewCell.identifier)
 //        $0.backgroundColor = .purple
 
     }
@@ -30,20 +30,20 @@ class NewTopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     override func configureHierarchy() {
-        [topCoinLabel, collectionView].forEach {
+        [topNFTLabel, collectionView].forEach {
             contentView.addSubview($0)
         }
     }
     
     override func configureConstraints() {
-        topCoinLabel.snp.makeConstraints {
+        topNFTLabel.snp.makeConstraints {
             $0.leading.top.equalToSuperview().inset(10)
             $0.width.equalTo(100)
         }
         
         collectionView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview()
-            $0.top.equalTo(topCoinLabel.snp.bottom).offset(10)
+            $0.top.equalTo(topNFTLabel.snp.bottom).offset(10)
             $0.bottom.equalToSuperview()
             $0.height.equalTo(280)
         }
@@ -51,10 +51,6 @@ class NewTopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     override func configureView() {
         contentView.backgroundColor = DesignSystemColor.white.color
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     static func configureCollectionViewLayout() -> UICollectionViewLayout{
@@ -71,20 +67,23 @@ class NewTopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
         return layout
     }
     
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }
 
-
-
-extension NewTopCoinTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension NewNTFTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
 //    height
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewTopCoinCollectionViewCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewNFTCollectionViewCell.identifier, for: indexPath)
         
 //        cell.backgroundColor = .orange
         
