@@ -128,9 +128,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         // Realm에 api 결과가 속해있으면
         if repository.readItemName(id: row.id).first?.id == row.id {
             // ⭐️ 표시
-            cell.favorites.setImage(.btnStarFill, for: .normal)
+            cell.favorites.setImage(DesignSystemImage.starFill.image, for: .normal)
         } else {
-            cell.favorites.setImage(.btnStar, for: .normal)
+            cell.favorites.setImage(DesignSystemImage.star.image, for: .normal)
         }
         
         cell.favorites.addTarget(self, action: #selector(favoritesButtonClicked), for: .touchUpInside)

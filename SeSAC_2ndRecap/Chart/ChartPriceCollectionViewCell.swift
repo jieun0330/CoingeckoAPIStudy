@@ -40,10 +40,6 @@ final class ChartPriceCollectionViewCell: BaseCollectionViewCell, ReusableProtoc
         }
     }
     
-    //    override func configureView() {
-    //        <#code#>
-    //    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

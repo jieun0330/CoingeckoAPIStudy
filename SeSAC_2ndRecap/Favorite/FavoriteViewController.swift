@@ -115,6 +115,13 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
             cell.price.text = "₩\(coinPrice)"
             cell.percentage.text = DesignSystemText.shared.percentageCalculator(number: item.priceChangePercentage24H)
             
+            
+//            viewModel.priceTextColor(indexPath: indexPath.item)
+//            viewModel.outputPriceTextColor.bind { value in
+//                cell.percentage.textColor = value ? DesignSystemColor.red.color : DesignSystemColor.blue.color
+//                cell.percentageBox.backgroundColor = value ? DesignSystemColor.pink.color : DesignSystemColor.sky.color
+//            }
+
             if item.priceChangePercentage24H < 0 {
                 cell.percentage.textColor = DesignSystemColor.red.color
                 cell.percentageBox.backgroundColor = DesignSystemColor.pink.color

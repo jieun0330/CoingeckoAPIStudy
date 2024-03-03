@@ -17,7 +17,7 @@ final class DesignSystemText {
     
     func priceCalculator(_ number: Double) -> String {
         priceFormatter.numberStyle = .decimal
-        let result = priceFormatter.string(from: number as NSNumber)
+        let result = priceFormatter.string(from: trunc(number) as NSNumber)
         return result ?? "0"
     }
     

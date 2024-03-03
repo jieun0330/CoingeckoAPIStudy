@@ -43,12 +43,6 @@ extension DesignSystemImage {
             return .btnStar.withRenderingMode(.alwaysOriginal)
         case .starFill:
             return .btnStarFill.withRenderingMode(.alwaysOriginal)
-
-
-            
-
-
-
         }
     }
 }

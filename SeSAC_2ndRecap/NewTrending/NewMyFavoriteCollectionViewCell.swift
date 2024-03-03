@@ -101,11 +101,7 @@ final class NewMyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusablePro
             $0.leading.bottom.equalToSuperview()
         }
     }
-    
-//    override func configureView() {
-//        <#code#>
-//    }
-//    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

@@ -115,12 +115,6 @@ final class ChartViewController: BaseViewController {
         
         let coinPrice = DesignSystemText.shared.priceCalculator(data.currentPrice)
         price.text = "₩\(coinPrice)"
-        
-        //        if data.priceChangePercentage24H < 0 {
-        //            price.textColor = DesignSystemColor.red.color
-        //        } else {
-        //            price.textColor = DesignSystemColor.blue.color
-        //        }
     }
     
     @objc func rightFavoriteButtonClicked(_ sender: UIButton) {

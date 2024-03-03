@@ -87,6 +87,7 @@ final class ViewModel {
         }
     }
     
+    // ChartView
     func collectionViewCellPrice(indexPath: Int, data: Market) {
         var price: Double
         var textColor: Bool?
@@ -114,5 +115,14 @@ final class ViewModel {
         
         outputPrice.value = calculatedPrice
         outputPriceTextColor.value = textColor!
+    }
+    
+    // FavoriteView
+    func priceTextColor(indexPath: Int) {
+        if outputMarketAPI.value[indexPath].priceChangePercentage24H < 0 {
+            outputPriceTextColor.value = false
+        } else {
+            outputPriceTextColor.value = true
+        }
     }
 }
