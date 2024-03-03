@@ -147,29 +147,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     @objc func favoritesButtonClicked(_ sender: UIButton) {
         
-        // 즐겨찾기 버튼을 눌렀을 때 해당 셀의 id를 램 형식에 맞게 저장해주기 위한 data
-        let saveToRealm = CoinRealmModel(id: viewModel.outputSearchAPI.value[sender.tag].id)
-        // 실제 Realm에 저장되어있는 data
-        let realmDatas = repository.readItemName(id: viewModel.outputSearchAPI.value[sender.tag].id)
+        viewModel.favoriteButtonClick(id: viewModel.outputSearchAPI.value[sender.tag].id)
         
-        if realmDatas.contains(where: { data in
-            repository.deleteItem(item: data)
-            return true
-        }) {
-            tableView.reloadData()
-            print("중복")
-            self.view.makeToast("즐겨찾기에서 삭제되었습니다")
-        } else {
-            if repository.fetchAllItem().count >= 10 {
-                self.view.makeToast("즐겨찾기는 최대 10개까지 가능합니다")
-            } else {
-                tableView.reloadData()
-                // repository에 저장하기
-                repository.createFavoriteItem(saveToRealm)
-                // toast 메세지 띄워주기
-                self.view.makeToast("즐겨찾기에 추가되었습니다")
+        viewModel.outputToastMessage = { [weak self] message in
+            DispatchQueue.main.async {
+                self?.view.makeToast(message)
             }
         }
+        tableView.reloadData()
     }
 }
 
