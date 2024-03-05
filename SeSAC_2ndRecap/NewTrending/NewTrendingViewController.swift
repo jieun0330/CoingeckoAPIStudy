@@ -49,10 +49,12 @@ final class NewTrendingViewController: BaseViewController {
         
         viewModel.outputTrendingCoinAPI.bind { data in
             self.topCoinAPIResult = data
+            self.tableView.reloadData()
         }
         
         viewModel.outputTrendingNFTAPI.bind { data in
             self.topNFTAPIResult = data
+            self.tableView.reloadData()
         }
     }
     
@@ -116,6 +118,7 @@ extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource 
                                                      for: indexPath) as! NewMyFavoriteTableViewCell
             
             cell.viewModel.outputMarketAPI.value = priceAPIResult
+            cell.collectionView.reloadData()
             
             return cell
             
@@ -125,7 +128,7 @@ extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource 
                                                      for: indexPath) as! NewTopCoinTableViewCell
             
             cell.viewModel.outputTrendingCoinAPI.value = topCoinAPIResult
-            
+            cell.collectionView.reloadData()
             return cell
         } else {
             
@@ -133,7 +136,7 @@ extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource 
                                                      for: indexPath) as! NewNTFTableViewCell
             
             cell.viewModel.outputTrendingNFTAPI.value = topNFTAPIResult
-            
+            cell.collectionView.reloadData()
             return cell
         }
     }

@@ -119,7 +119,6 @@ final class ChartViewController: BaseViewController {
     
     @objc func rightFavoriteButtonClicked(_ sender: UIButton) {
         
-        
         let readRealmModel = CoinRealmModel(id: data.id)
         let realmData = repository.readItemName(id: data.id)
         

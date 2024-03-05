@@ -106,4 +106,9 @@ extension NewMyFavoriteTableViewCell: UICollectionViewDelegate, UICollectionView
         }
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let item = viewModel.outputMarketAPI.value[indexPath.item]
+//        let vc = ChartViewController()
+//        vc.data = item
+    }
 }
