@@ -26,7 +26,7 @@ final class FavoriteViewController: BaseViewController {
         $0.font = DesignSystemFont.allMainTitle.font
     }
     
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: FavoriteViewController.configureCollectionViewLayout()).then {
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout()).then {
         $0.backgroundColor = DesignSystemColor.white.color
         $0.delegate = self
         $0.dataSource = self
@@ -75,7 +75,7 @@ final class FavoriteViewController: BaseViewController {
         navigationItem.rightBarButtonItem = profileTabBarItem
     }
     
-    static func configureCollectionViewLayout() -> UICollectionViewLayout {
+    private func configureCollectionViewLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
         let cellWidth = UIScreen.main.bounds.width - (spacing * 3)

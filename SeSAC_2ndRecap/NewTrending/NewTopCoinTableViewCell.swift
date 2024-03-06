@@ -18,7 +18,7 @@ final class NewTopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
         $0.font = DesignSystemFont.trendingSubtitle.font
     }
     
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: NewTopCoinTableViewCell.configureCollectionViewLayout()).then {
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout()).then {
         $0.delegate = self
         $0.dataSource = self
         $0.register(NewTopCoinCollectionViewCell.self,
@@ -57,7 +57,7 @@ final class NewTopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    static func configureCollectionViewLayout() -> UICollectionViewLayout {
+    private func configureCollectionViewLayout() -> UICollectionViewFlowLayout {
         
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10

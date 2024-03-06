@@ -18,7 +18,7 @@ final class NewNTFTableViewCell: BaseTableViewCell, ReusableProtocol {
         $0.font = DesignSystemFont.trendingSubtitle.font
     }
     
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: NewNTFTableViewCell.configureCollectionViewLayout()).then {
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout()).then {
         $0.delegate = self
         $0.dataSource = self
         $0.register(NewNFTCollectionViewCell.self,
@@ -53,7 +53,7 @@ final class NewNTFTableViewCell: BaseTableViewCell, ReusableProtocol {
         contentView.backgroundColor = DesignSystemColor.white.color
     }
     
-    static func configureCollectionViewLayout() -> UICollectionViewLayout {
+    private func configureCollectionViewLayout() -> UICollectionViewFlowLayout {
         
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10

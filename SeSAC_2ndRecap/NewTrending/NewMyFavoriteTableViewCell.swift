@@ -19,7 +19,7 @@ final class NewMyFavoriteTableViewCell: BaseTableViewCell, ReusableProtocol {
         $0.font = DesignSystemFont.trendingSubtitle.font
     }
     
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: NewMyFavoriteTableViewCell.configureCollectionViewLayout()).then {
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout()).then {
         
         $0.delegate = self
         $0.dataSource = self
@@ -60,7 +60,7 @@ final class NewMyFavoriteTableViewCell: BaseTableViewCell, ReusableProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    static func configureCollectionViewLayout() -> UICollectionViewLayout {
+    private func configureCollectionViewLayout() -> UICollectionViewFlowLayout {
         
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10

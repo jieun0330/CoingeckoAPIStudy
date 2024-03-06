@@ -49,7 +49,7 @@ final class ChartViewController: BaseViewController {
     }
     
     lazy var collectionView = UICollectionView(
-        frame: .zero, collectionViewLayout: ChartViewController.configureCollectionViewLayout()).then {
+        frame: .zero, collectionViewLayout: configureCollectionViewLayout()).then {
             $0.delegate = self
             $0.dataSource = self
             $0.register(ChartPriceCollectionViewCell.self,
@@ -136,7 +136,7 @@ final class ChartViewController: BaseViewController {
         
     }
     
-    static func configureCollectionViewLayout() -> UICollectionViewLayout {
+    private func configureCollectionViewLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
         let cellWidth = UIScreen.main.bounds.width - (spacing * 3)
