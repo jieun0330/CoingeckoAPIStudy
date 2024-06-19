@@ -119,6 +119,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C25A6FD12C20604D00E63CB1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C26F1E602B93F18200F1BECA /* NewMyFavoriteTableViewCell.swift */,
+				C26F1E642B93F3BD00F1BECA /* NewMyFavoriteCollectionViewCell.swift */,
+				C26F1E662B93F7EF00F1BECA /* NewTopCoinTableViewCell.swift */,
+				C26F1E682B93F98A00F1BECA /* NewTopCoinCollectionViewCell.swift */,
+				C26F1E6A2B94076F00F1BECA /* NewNTFTableViewCell.swift */,
+				C26F1E6C2B94080800F1BECA /* NewNFTCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C25A6FD22C2061C800E63CB1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		C261D4E72B92F57700501ACB /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,18 +147,14 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		C26F1E5B2B93F10200F1BECA /* NewTrending */ = {
+		C26F1E5B2B93F10200F1BECA /* TrendingScene */ = {
 			isa = PBXGroup;
 			children = (
 				C26F1E5E2B93F12300F1BECA /* NewTrendingViewController.swift */,
-				C26F1E602B93F18200F1BECA /* NewMyFavoriteTableViewCell.swift */,
-				C26F1E642B93F3BD00F1BECA /* NewMyFavoriteCollectionViewCell.swift */,
-				C26F1E662B93F7EF00F1BECA /* NewTopCoinTableViewCell.swift */,
-				C26F1E682B93F98A00F1BECA /* NewTopCoinCollectionViewCell.swift */,
-				C26F1E6A2B94076F00F1BECA /* NewNTFTableViewCell.swift */,
-				C26F1E6C2B94080800F1BECA /* NewNFTCollectionViewCell.swift */,
+				C25A6FD22C2061C800E63CB1 /* ViewModel */,
+				C25A6FD12C20604D00E63CB1 /* Cell */,
 			);
-			path = NewTrending;
+			path = TrendingScene;
 			sourceTree = "<group>";
 		};
 		C276CF842B932696004ED09F /* ViewModel */ = {
@@ -147,6 +163,14 @@
 				C276CF872B932787004ED09F /* ViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C2E8544F2C0D70FD00D8E643 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C26F1E5B2B93F10200F1BECA /* TrendingScene */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		C2F4F3462B8DB0C800E65588 = {
@@ -168,10 +192,10 @@
 		C2F4F3512B8DB0C800E65588 /* SeSAC_2ndRecap */ = {
 			isa = PBXGroup;
 			children = (
+				C2E8544F2C0D70FD00D8E643 /* Presentation */,
 				C276CF842B932696004ED09F /* ViewModel */,
 				C261D4E72B92F57700501ACB /* Setting */,
 				C2F4F36F2B8DB59000E65588 /* DesignSystem */,
-				C26F1E5B2B93F10200F1BECA /* NewTrending */,
 				C2F4F3CB2B8F2CE000E65588 /* Chart */,
 				C2F4F3C42B8F035400E65588 /* Realm */,
 				C2F4F3982B8EAEB100E65588 /* Favorite */,
@@ -562,6 +586,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -591,6 +616,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

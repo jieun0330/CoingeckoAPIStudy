@@ -52,13 +52,13 @@ final class ViewModel {
     func callRequest(value: String) {
         APIManager.shared.fetchMarketAPI(api: .market(query: value),
                                          completionHandler: { data in
+//            print("4", data.count)
             self.outputMarketAPI.value = data
         })
     }
     
     func idList() {
         let realmList = repository.fetchAllItem()
-        
         var idList = ""
         
         for list in realmList {
@@ -110,7 +110,6 @@ final class ViewModel {
             price = 0
             textColor = true
         }
-        
         let calculatedPrice = DesignSystemText.shared.priceCalculator(price)
         
         outputPrice.value = calculatedPrice

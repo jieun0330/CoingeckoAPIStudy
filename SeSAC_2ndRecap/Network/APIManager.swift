@@ -21,10 +21,9 @@ final class APIManager {
             .responseDecodable(of: Search.self) { response in
                 switch response.result {
                 case .success(let success):
-                    print(success)
                     completionHandler(success)
-                case .failure(let failure):
-                    print(failure)
+                case .failure(_):
+                    print("failure")
                 }
             }
     }
@@ -36,10 +35,9 @@ final class APIManager {
             .responseDecodable(of: [Market].self) { response in
                 switch response.result {
                 case .success(let success):
-                    print(success)
                     completionHandler(success)
-                case .failure(let failure):
-                    print(failure)
+                case .failure(_):
+                    print("failure")
                 }
             }
     }
@@ -48,12 +46,12 @@ final class APIManager {
         AF
             .request(api.endpoint)
             .responseDecodable(of: Trending.self) { response in
+                print("1", response)
                 switch response.result {
                 case .success(let success):
-                    print(success)
                     completionHandler(success)
-                case .failure(let failure):
-                    print(failure)
+                case .failure(_):
+                    print("failure")
                 }
             }
     }

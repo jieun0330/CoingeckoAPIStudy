@@ -11,7 +11,7 @@ import SnapKit
 
 final class NewTrendingViewController: BaseViewController {
     
-    let viewModel = ViewModel()
+    private let viewModel = ViewModel()
     var priceAPIResult: PriceAPI = []
     var topCoinAPIResult: [Coin] = []
     var topNFTAPIResult: [Nft] = []
@@ -51,7 +51,7 @@ final class NewTrendingViewController: BaseViewController {
             self.topCoinAPIResult = data
             self.tableView.reloadData()
         }
-        
+    
         viewModel.outputTrendingNFTAPI.bind { data in
             self.topNFTAPIResult = data
             self.tableView.reloadData()
@@ -75,7 +75,7 @@ final class NewTrendingViewController: BaseViewController {
         mainTitle.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(30)
+            $0.height.equalTo(35)
         }
         
         tableView.snp.makeConstraints {

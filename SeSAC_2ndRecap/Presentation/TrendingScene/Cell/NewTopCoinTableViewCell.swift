@@ -94,7 +94,7 @@ extension NewTopCoinTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             cell.rankNum.text = "\(indexPath.item+1)"
             cell.name.text = trending.name
             cell.image.kf.setImage(with: URL(string: trending.small))
-            cell.price.text = trending.data.price
+//            cell.price.text = trending.data.price
             cell.symbol.text = trending.symbol
             
             let krwKey: [String: Double] = trending.data.priceChangePercentage24H
