@@ -15,13 +15,9 @@ final class NewTopCoinCollectionViewCell: BaseCollectionViewCell, ReusableProtoc
         $0.font = DesignSystemFont.trendingRankNum.font
     }
     
-    let image = UIImageView().then { _ in
-        
-    }
+    let image = UIImageView()
     
-    let nameStackView = UIStackView().then { _ in
-        
-    }
+    let nameStackView = UIStackView()
     
     let name = UILabel().then {
         $0.font = DesignSystemFont.allCoinName.font
@@ -31,12 +27,10 @@ final class NewTopCoinCollectionViewCell: BaseCollectionViewCell, ReusableProtoc
         $0.font = DesignSystemFont.allSymbolName.font
     }
     
-    let pricestackView = UIStackView().then { _ in
-        
-    }
+    let pricestackView = UIStackView()
     
     let price = UILabel().then {
-        $0.font = DesignSystemFont.allPercentage.font
+        $0.font = DesignSystemFont.allPercentageBold.font
     }
     
     let percentage = UILabel().then {
@@ -101,10 +95,6 @@ final class NewTopCoinCollectionViewCell: BaseCollectionViewCell, ReusableProtoc
         percentage.snp.makeConstraints {
             $0.bottom.trailing.equalToSuperview()
         }
-    }
-    
-    override func configureView() {
-        
     }
     
     required init?(coder: NSCoder) {

@@ -43,9 +43,9 @@ final class NewTopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
         
         collectionView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview()
-            $0.top.equalTo(topCoinLabel.snp.bottom).offset(10)
+            $0.top.equalTo(topCoinLabel.snp.bottom)
             $0.bottom.equalToSuperview()
-            $0.height.equalTo(280)
+            $0.height.equalTo(250)
         }
     }
     
@@ -60,9 +60,9 @@ final class NewTopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
     private func configureCollectionViewLayout() -> UICollectionViewFlowLayout {
         
         let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 10
+        let spacing: CGFloat = 5
         let cellWidth = UIScreen.main.bounds.width - (spacing * 2)
-        layout.itemSize = CGSize(width: cellWidth / 1.3, height: cellWidth / 4.8)
+        layout.itemSize = CGSize(width: cellWidth / 1.3, height: cellWidth / 5.3)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         layout.scrollDirection = .horizontal
@@ -94,9 +94,9 @@ extension NewTopCoinTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             cell.rankNum.text = "\(indexPath.item+1)"
             cell.name.text = trending.name
             cell.image.kf.setImage(with: URL(string: trending.small))
-//            cell.price.text = trending.data.price
+            cell.price.text = "$" + String(format: "%.5f", trending.data.price)
             cell.symbol.text = trending.symbol
-            
+
             let krwKey: [String: Double] = trending.data.priceChangePercentage24H
             let percentage = DesignSystemText.shared.percentageCalculator(number: krwKey["krw"]!)
             cell.percentage.text = percentage

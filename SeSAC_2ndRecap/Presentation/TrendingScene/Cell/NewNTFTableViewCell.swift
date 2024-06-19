@@ -45,7 +45,7 @@ final class NewNTFTableViewCell: BaseTableViewCell, ReusableProtocol {
             $0.horizontalEdges.equalToSuperview()
             $0.top.equalTo(topNFTLabel.snp.bottom).offset(10)
             $0.bottom.equalToSuperview()
-            $0.height.equalTo(280)
+            $0.height.equalTo(250)
         }
     }
     
@@ -56,9 +56,9 @@ final class NewNTFTableViewCell: BaseTableViewCell, ReusableProtocol {
     private func configureCollectionViewLayout() -> UICollectionViewFlowLayout {
         
         let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 10
+        let spacing: CGFloat = 5
         let cellWidth = UIScreen.main.bounds.width - (spacing * 2)
-        layout.itemSize = CGSize(width: cellWidth / 1.3, height: cellWidth / 4.8)
+        layout.itemSize = CGSize(width: cellWidth / 1.3, height: cellWidth / 5.3)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         layout.scrollDirection = .horizontal

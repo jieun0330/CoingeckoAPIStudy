@@ -79,7 +79,7 @@ final class NewTrendingViewController: BaseViewController {
         }
         
         tableView.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.horizontalEdges.equalToSuperview()
             $0.top.equalTo(mainTitle.snp.bottom).offset(10)
             $0.bottom.equalToSuperview()
         }
@@ -102,7 +102,7 @@ extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource 
         if indexPath.row == 0 {
             return 220
         } else {
-            return 350
+            return 300
         }
     }
     
@@ -129,6 +129,7 @@ extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource 
             
             cell.viewModel.outputTrendingCoinAPI.value = topCoinAPIResult
             cell.collectionView.reloadData()
+            
             return cell
         } else {
             

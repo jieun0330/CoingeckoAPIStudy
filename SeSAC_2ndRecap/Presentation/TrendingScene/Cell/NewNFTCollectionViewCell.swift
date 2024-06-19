@@ -15,13 +15,9 @@ final class NewNFTCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         $0.font = DesignSystemFont.trendingRankNum.font
     }
     
-    let image = UIImageView().then { _ in
-        
-    }
+    let image = UIImageView()
     
-    let nameStackView = UIStackView().then { _ in
-        
-    }
+    let nameStackView = UIStackView()
     
     let name = UILabel().then {
         $0.font = DesignSystemFont.allCoinName.font
@@ -31,12 +27,10 @@ final class NewNFTCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         $0.font = DesignSystemFont.allSymbolName.font
     }
     
-    let pricestackView = UIStackView().then { _ in
-        
-    }
+    let pricestackView = UIStackView()
     
     let price = UILabel().then {
-        $0.font = DesignSystemFont.allPercentage.font
+        $0.font = DesignSystemFont.allPercentageBold.font
     }
     
     let percentage = UILabel().then {
@@ -77,10 +71,11 @@ final class NewNFTCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
             $0.centerY.equalToSuperview()
             $0.verticalEdges.equalToSuperview().inset(20)
             $0.leading.equalTo(image.snp.trailing).offset(10)
+            $0.width.equalTo(150)
         }
         
         name.snp.makeConstraints {
-            $0.leading.top.equalToSuperview()
+            $0.leading.top.trailing.equalToSuperview()
         }
         
         symbol.snp.makeConstraints {
@@ -101,10 +96,6 @@ final class NewNFTCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         percentage.snp.makeConstraints {
             $0.bottom.trailing.equalToSuperview()
         }
-    }
-    
-    override func configureView() {
-        
     }
     
     required init?(coder: NSCoder) {
