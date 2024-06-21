@@ -119,6 +119,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C2489E912C23133C005AA2C4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C2F4F39D2B8EB2DD00E65588 /* FavoriteCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		C25A6FD12C20604D00E63CB1 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				C26F1E5B2B93F10200F1BECA /* TrendingScene */,
+				C2F4F3982B8EAEB100E65588 /* FavoriteScene */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -198,7 +207,6 @@
 				C2F4F36F2B8DB59000E65588 /* DesignSystem */,
 				C2F4F3CB2B8F2CE000E65588 /* Chart */,
 				C2F4F3C42B8F035400E65588 /* Realm */,
-				C2F4F3982B8EAEB100E65588 /* Favorite */,
 				C2F4F3912B8DE57900E65588 /* Observable */,
 				C2F4F3882B8DC68200E65588 /* Protocol */,
 				C2F4F3802B8DC34D00E65588 /* Network */,
@@ -272,13 +280,13 @@
 			path = Observable;
 			sourceTree = "<group>";
 		};
-		C2F4F3982B8EAEB100E65588 /* Favorite */ = {
+		C2F4F3982B8EAEB100E65588 /* FavoriteScene */ = {
 			isa = PBXGroup;
 			children = (
 				C2F4F3992B8EAEC200E65588 /* FavoriteViewController.swift */,
-				C2F4F39D2B8EB2DD00E65588 /* FavoriteCollectionViewCell.swift */,
+				C2489E912C23133C005AA2C4 /* Cell */,
 			);
-			path = Favorite;
+			path = FavoriteScene;
 			sourceTree = "<group>";
 		};
 		C2F4F3C42B8F035400E65588 /* Realm */ = {

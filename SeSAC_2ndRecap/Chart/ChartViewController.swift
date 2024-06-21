@@ -11,6 +11,7 @@ import SnapKit
 import RealmSwift
 import Kingfisher
 import Toast
+import DGCharts
 
 final class ChartViewController: BaseViewController {
     
@@ -25,9 +26,7 @@ final class ChartViewController: BaseViewController {
         
     }
     
-    let icon = UIImageView().then { _ in
-        
-    }
+    let icon = UIImageView()
     
     var name = UILabel().then {
         $0.font = DesignSystemFont.allMainTitle.font
@@ -56,13 +55,19 @@ final class ChartViewController: BaseViewController {
                         forCellWithReuseIdentifier: ChartPriceCollectionViewCell.identifier)
         }
     
+    let chartView = {
+        let view = LineChartView()
+        view.backgroundColor = .yellow
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
     override func configureHierarchy() {
-        [icon, name, price, percentage, today, collectionView].forEach {
+        [icon, name, price, percentage, today, collectionView, chartView].forEach {
             view.addSubview($0)
         }
     }
@@ -101,6 +106,12 @@ final class ChartViewController: BaseViewController {
             $0.top.equalTo(percentage.snp.bottom).offset(30)
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
             $0.height.equalTo(150)
+        }
+        
+        chartView.snp.makeConstraints {
+            $0.top.equalTo(collectionView.snp.bottom)
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
@@ -146,6 +157,10 @@ final class ChartViewController: BaseViewController {
         layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
         
         return layout
+    }
+    
+    private func setData(view: LineChartView, data: [Double]) {
+        
     }
 }
 
