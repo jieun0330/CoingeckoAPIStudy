@@ -62,7 +62,8 @@ final class ChartViewController: BaseViewController {
     
     let update = {
         let update = UILabel()
-        update.text = "test"
+        update.font = DesignSystemFont.allPercentageBold.font
+        update.textColor = DesignSystemColor.gray.color
         return update
     }()
     
@@ -119,11 +120,11 @@ final class ChartViewController: BaseViewController {
             $0.bottom.equalTo(update.snp.top)
         }
         
-//        update.snp.makeConstraints {
-//            $0.top.equalTo(chartView.snp.bottom)
-//            $0.trailing.equalTo(chartView.snp.trailing).inset(10)
-//            $0.bottom.equalTo(view.safeAreaLayoutGuide)
-//        }
+        update.snp.makeConstraints {
+            $0.top.equalTo(chartView.snp.bottom)
+            $0.trailing.equalTo(chartView.snp.trailing).inset(10)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
     }
     
     override func configureView() {
@@ -139,6 +140,10 @@ final class ChartViewController: BaseViewController {
         price.text = "₩\(coinPrice)"
         
         setData(view: chartView, data: self.data.sparkline.price)
+        
+        let updatedDate = DateFormatManager.shared.formattedDate(input: data.lastUpdated)
+        update.text = updatedDate
+        
     }
     
     @objc func rightFavoriteButtonClicked(_ sender: UIButton) {
