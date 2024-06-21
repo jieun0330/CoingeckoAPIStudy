@@ -57,8 +57,13 @@ final class ChartViewController: BaseViewController {
     
     let chartView = {
         let view = LineChartView()
-        view.backgroundColor = .yellow
         return view
+    }()
+    
+    let update = {
+        let update = UILabel()
+        update.text = "test"
+        return update
     }()
     
     override func viewDidLoad() {
@@ -67,7 +72,7 @@ final class ChartViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        [icon, name, price, percentage, today, collectionView, chartView].forEach {
+        [icon, name, price, percentage, today, collectionView, chartView, update].forEach {
             view.addSubview($0)
         }
     }
@@ -110,9 +115,15 @@ final class ChartViewController: BaseViewController {
         
         chartView.snp.makeConstraints {
             $0.top.equalTo(collectionView.snp.bottom)
-            $0.horizontalEdges.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalToSuperview().inset(-10)
+            $0.bottom.equalTo(update.snp.top)
         }
+        
+//        update.snp.makeConstraints {
+//            $0.top.equalTo(chartView.snp.bottom)
+//            $0.trailing.equalTo(chartView.snp.trailing).inset(10)
+//            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+//        }
     }
     
     override func configureView() {
@@ -126,6 +137,8 @@ final class ChartViewController: BaseViewController {
         
         let coinPrice = DesignSystemText.shared.priceCalculator(data.currentPrice)
         price.text = "₩\(coinPrice)"
+        
+        setData(view: chartView, data: self.data.sparkline.price)
     }
     
     @objc func rightFavoriteButtonClicked(_ sender: UIButton) {
@@ -160,7 +173,35 @@ final class ChartViewController: BaseViewController {
     }
     
     private func setData(view: LineChartView, data: [Double]) {
+        //graph에 보여줄 data array
+        var lineChartEntry = [ChartDataEntry]()
         
+        // chart data array에 데이터 추가
+        for i in 0..<data.count {
+            let value = ChartDataEntry(x: Double(i), y: data[i])
+            lineChartEntry.append(value)
+        }
+        
+        let gradientColors = [DesignSystemColor.white.color.cgColor, DesignSystemColor.purple.color.cgColor]
+        let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)!
+        
+        let line1 = LineChartDataSet(entries: lineChartEntry)
+        line1.fillAlpha = 1
+        line1.fill = LinearGradientFill(gradient: gradient, angle: 90)
+        line1.mode = .cubicBezier
+        line1.lineWidth = 2
+        line1.setColor(DesignSystemColor.purple.color)
+        line1.drawFilledEnabled = true
+        line1.drawCirclesEnabled = false
+        line1.drawVerticalHighlightIndicatorEnabled = false
+        line1.drawHorizontalHighlightIndicatorEnabled = false
+        
+        view.data = LineChartData(dataSet: line1)
+        view.doubleTapToZoomEnabled = false
+        view.xAxis.enabled = false
+        view.leftAxis.enabled = false
+        view.rightAxis.enabled = false
+        view.legend.enabled = false
     }
 }
 

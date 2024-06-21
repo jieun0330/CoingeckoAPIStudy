@@ -46,7 +46,6 @@ final class APIManager {
         AF
             .request(api.endpoint)
             .responseDecodable(of: Trending.self) { response in
-                print("1", response)
                 switch response.result {
                 case .success(let success):
                     completionHandler(success)

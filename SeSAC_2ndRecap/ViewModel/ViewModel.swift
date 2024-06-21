@@ -50,9 +50,8 @@ final class ViewModel {
     }
     
     func callRequest(value: String) {
-        APIManager.shared.fetchMarketAPI(api: .market(query: [value]),
+        APIManager.shared.fetchMarketAPI(api: .market(query: value),
                                          completionHandler: { data in
-//            print("4", data.count)
             self.outputMarketAPI.value = data
         })
     }
@@ -118,7 +117,7 @@ final class ViewModel {
     
     // FavoriteView
     func priceTextColor(indexPath: Int) {
-        if outputMarketAPI.value[indexPath].priceChangePercentage24H ?? 0 < 0 {
+        if outputMarketAPI.value[indexPath].priceChangePercentage24H < 0 {
             outputPriceTextColor.value = false
         } else {
             outputPriceTextColor.value = true

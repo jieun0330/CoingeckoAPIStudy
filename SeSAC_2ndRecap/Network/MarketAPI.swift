@@ -19,6 +19,7 @@ struct Market: Decodable {
     let atlDate: String
     let roi: Roi?
     let lastUpdated: String
+    let sparkline: Sparkline
     
     enum CodingKeys: String, CodingKey {
         case id, symbol, name, image
@@ -32,6 +33,7 @@ struct Market: Decodable {
         case atlDate = "atl_date"
         case roi
         case lastUpdated = "last_updated"
+        case sparkline = "sparkline_in_7d"
     }
 }
 
@@ -45,6 +47,10 @@ enum Currency: String, Decodable {
     case btc = "btc"
     case eth = "eth"
     case usd = "usd"
+}
+
+struct Sparkline: Decodable {
+    let price: [Double]
 }
 
 typealias PriceAPI = [Market]

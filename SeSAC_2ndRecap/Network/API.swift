@@ -10,34 +10,21 @@ import Alamofire
 
 enum CoinAPI {
     case search(query: String)
-    case market(query: [String])
+    case market(query: String)
     case trending
     
     var baseURL: String {
         return "https://api.coingecko.com/api/v3/"
     }
     
-    var endpoint: String {
+    var endpoint: URL {
         switch self {
         case .search(let query):
-            return baseURL + "search"
+            return URL(string: "\(baseURL)search?query=\(query)")!
         case .market(let query):
-            return baseURL + "coins/markets"
+            return URL(string: "\(baseURL)coins/markets?vs_currency=krw&ids=\(query)&sparkline=true")!
         case .trending:
-            return baseURL + "search/trending"
-        }
-    }
-    
-    var parameters: Parameters {
-        switch self {
-        case .search(let query):
-            return ["query": query]
-        case .market(let query):
-            return ["vs_currency": "krw",
-                    "ids": query.joined(separator: ","),
-                    "sparkline": "true"]
-        case .trending:
-            return ["": ""]
+            return URL(string: "\(baseURL)search/trending")!
         }
     }
 }
