@@ -14,13 +14,13 @@
 		C261D4E62B920E6900501ACB /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4E52B920E6900501ACB /* Text.swift */; };
 		C261D4E92B92F58700501ACB /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4E82B92F58700501ACB /* SettingViewController.swift */; };
 		C261D4EB2B93077B00501ACB /* CellEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261D4EA2B93077B00501ACB /* CellEnum.swift */; };
-		C26F1E5F2B93F12300F1BECA /* NewTrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E5E2B93F12300F1BECA /* NewTrendingViewController.swift */; };
-		C26F1E612B93F18200F1BECA /* NewMyFavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E602B93F18200F1BECA /* NewMyFavoriteTableViewCell.swift */; };
-		C26F1E652B93F3BD00F1BECA /* NewMyFavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E642B93F3BD00F1BECA /* NewMyFavoriteCollectionViewCell.swift */; };
-		C26F1E672B93F7EF00F1BECA /* NewTopCoinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E662B93F7EF00F1BECA /* NewTopCoinTableViewCell.swift */; };
-		C26F1E692B93F98A00F1BECA /* NewTopCoinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E682B93F98A00F1BECA /* NewTopCoinCollectionViewCell.swift */; };
-		C26F1E6B2B94076F00F1BECA /* NewNTFTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E6A2B94076F00F1BECA /* NewNTFTableViewCell.swift */; };
-		C26F1E6D2B94080800F1BECA /* NewNFTCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E6C2B94080800F1BECA /* NewNFTCollectionViewCell.swift */; };
+		C26F1E5F2B93F12300F1BECA /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E5E2B93F12300F1BECA /* TrendingViewController.swift */; };
+		C26F1E612B93F18200F1BECA /* MyFavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E602B93F18200F1BECA /* MyFavoriteTableViewCell.swift */; };
+		C26F1E652B93F3BD00F1BECA /* MyFavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E642B93F3BD00F1BECA /* MyFavoriteCollectionViewCell.swift */; };
+		C26F1E672B93F7EF00F1BECA /* TopCoinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E662B93F7EF00F1BECA /* TopCoinTableViewCell.swift */; };
+		C26F1E692B93F98A00F1BECA /* TopCoinCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E682B93F98A00F1BECA /* TopCoinCollectionViewCell.swift */; };
+		C26F1E6B2B94076F00F1BECA /* NTFTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E6A2B94076F00F1BECA /* NTFTableViewCell.swift */; };
+		C26F1E6D2B94080800F1BECA /* NFTCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F1E6C2B94080800F1BECA /* NFTCollectionViewCell.swift */; };
 		C276CF882B932787004ED09F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C276CF872B932787004ED09F /* ViewModel.swift */; };
 		C2F4F3532B8DB0C800E65588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3522B8DB0C800E65588 /* AppDelegate.swift */; };
 		C2F4F3552B8DB0C800E65588 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F4F3542B8DB0C800E65588 /* SceneDelegate.swift */; };
@@ -65,13 +65,13 @@
 		C261D4E52B920E6900501ACB /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		C261D4E82B92F58700501ACB /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		C261D4EA2B93077B00501ACB /* CellEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellEnum.swift; sourceTree = "<group>"; };
-		C26F1E5E2B93F12300F1BECA /* NewTrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTrendingViewController.swift; sourceTree = "<group>"; };
-		C26F1E602B93F18200F1BECA /* NewMyFavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMyFavoriteTableViewCell.swift; sourceTree = "<group>"; };
-		C26F1E642B93F3BD00F1BECA /* NewMyFavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMyFavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
-		C26F1E662B93F7EF00F1BECA /* NewTopCoinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTopCoinTableViewCell.swift; sourceTree = "<group>"; };
-		C26F1E682B93F98A00F1BECA /* NewTopCoinCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTopCoinCollectionViewCell.swift; sourceTree = "<group>"; };
-		C26F1E6A2B94076F00F1BECA /* NewNTFTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNTFTableViewCell.swift; sourceTree = "<group>"; };
-		C26F1E6C2B94080800F1BECA /* NewNFTCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNFTCollectionViewCell.swift; sourceTree = "<group>"; };
+		C26F1E5E2B93F12300F1BECA /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
+		C26F1E602B93F18200F1BECA /* MyFavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		C26F1E642B93F3BD00F1BECA /* MyFavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
+		C26F1E662B93F7EF00F1BECA /* TopCoinTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCoinTableViewCell.swift; sourceTree = "<group>"; };
+		C26F1E682B93F98A00F1BECA /* TopCoinCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCoinCollectionViewCell.swift; sourceTree = "<group>"; };
+		C26F1E6A2B94076F00F1BECA /* NTFTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NTFTableViewCell.swift; sourceTree = "<group>"; };
+		C26F1E6C2B94080800F1BECA /* NFTCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTCollectionViewCell.swift; sourceTree = "<group>"; };
 		C276CF872B932787004ED09F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		C2F4F34F2B8DB0C800E65588 /* SeSAC_2ndRecap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_2ndRecap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F4F3522B8DB0C800E65588 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,12 +149,12 @@
 		C25A6FD12C20604D00E63CB1 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				C26F1E602B93F18200F1BECA /* NewMyFavoriteTableViewCell.swift */,
-				C26F1E642B93F3BD00F1BECA /* NewMyFavoriteCollectionViewCell.swift */,
-				C26F1E662B93F7EF00F1BECA /* NewTopCoinTableViewCell.swift */,
-				C26F1E682B93F98A00F1BECA /* NewTopCoinCollectionViewCell.swift */,
-				C26F1E6A2B94076F00F1BECA /* NewNTFTableViewCell.swift */,
-				C26F1E6C2B94080800F1BECA /* NewNFTCollectionViewCell.swift */,
+				C26F1E602B93F18200F1BECA /* MyFavoriteTableViewCell.swift */,
+				C26F1E642B93F3BD00F1BECA /* MyFavoriteCollectionViewCell.swift */,
+				C26F1E662B93F7EF00F1BECA /* TopCoinTableViewCell.swift */,
+				C26F1E682B93F98A00F1BECA /* TopCoinCollectionViewCell.swift */,
+				C26F1E6A2B94076F00F1BECA /* NTFTableViewCell.swift */,
+				C26F1E6C2B94080800F1BECA /* NFTCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -177,7 +177,7 @@
 		C26F1E5B2B93F10200F1BECA /* TrendingScene */ = {
 			isa = PBXGroup;
 			children = (
-				C26F1E5E2B93F12300F1BECA /* NewTrendingViewController.swift */,
+				C26F1E5E2B93F12300F1BECA /* TrendingViewController.swift */,
 				C25A6FD22C2061C800E63CB1 /* ViewModel */,
 				C25A6FD12C20604D00E63CB1 /* Cell */,
 			);
@@ -195,8 +195,8 @@
 		C2E8544F2C0D70FD00D8E643 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				C2F4F3CB2B8F2CE000E65588 /* ChartScene */,
 				C26F1E5B2B93F10200F1BECA /* TrendingScene */,
+				C2F4F3CB2B8F2CE000E65588 /* ChartScene */,
 				C2F4F3982B8EAEB100E65588 /* FavoriteScene */,
 			);
 			path = Presentation;
@@ -420,15 +420,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2F4F37F2B8DC09000E65588 /* BaseTableViewCell.swift in Sources */,
-				C26F1E612B93F18200F1BECA /* NewMyFavoriteTableViewCell.swift in Sources */,
-				C26F1E692B93F98A00F1BECA /* NewTopCoinCollectionViewCell.swift in Sources */,
+				C26F1E612B93F18200F1BECA /* MyFavoriteTableViewCell.swift in Sources */,
+				C26F1E692B93F98A00F1BECA /* TopCoinCollectionViewCell.swift in Sources */,
 				C2F4F36B2B8DB28500E65588 /* BaseViewController.swift in Sources */,
 				C2F4F3C62B8F036400E65588 /* CoinRealmModel.swift in Sources */,
 				C2489E982C255EBD005AA2C4 /* DateFormatManager.swift in Sources */,
 				C2F4F3872B8DC42300E65588 /* Search.swift in Sources */,
-				C26F1E672B93F7EF00F1BECA /* NewTopCoinTableViewCell.swift in Sources */,
+				C26F1E672B93F7EF00F1BECA /* TopCoinTableViewCell.swift in Sources */,
 				C2F4F39A2B8EAEC200E65588 /* FavoriteViewController.swift in Sources */,
-				C26F1E6D2B94080800F1BECA /* NewNFTCollectionViewCell.swift in Sources */,
+				C26F1E6D2B94080800F1BECA /* NFTCollectionViewCell.swift in Sources */,
 				C2F4F3CF2B8F3D7600E65588 /* ChartPriceCollectionViewCell.swift in Sources */,
 				C2F4F3822B8DC35C00E65588 /* APIManager.swift in Sources */,
 				C22EB77C2B94A7BA00570F48 /* Image.swift in Sources */,
@@ -436,17 +436,17 @@
 				C261D4E62B920E6900501ACB /* Text.swift in Sources */,
 				C25A81902B9445BF008C542D /* TrendingAPI.swift in Sources */,
 				C2F4F4082B909F9100E65588 /* MarketAPI.swift in Sources */,
-				C26F1E6B2B94076F00F1BECA /* NewNTFTableViewCell.swift in Sources */,
+				C26F1E6B2B94076F00F1BECA /* NTFTableViewCell.swift in Sources */,
 				C2F4F39E2B8EB2DD00E65588 /* FavoriteCollectionViewCell.swift in Sources */,
 				C2F4F3532B8DB0C800E65588 /* AppDelegate.swift in Sources */,
-				C26F1E652B93F3BD00F1BECA /* NewMyFavoriteCollectionViewCell.swift in Sources */,
+				C26F1E652B93F3BD00F1BECA /* MyFavoriteCollectionViewCell.swift in Sources */,
 				C2F4F38A2B8DC68700E65588 /* Protocol.swift in Sources */,
 				C2F4F3C82B8F06FD00E65588 /* RepositoryRealm.swift in Sources */,
 				C2F4F3A02B8EB2EA00E65588 /* BaseCollectionViewCell.swift in Sources */,
 				C2F4F3682B8DB27400E65588 /* SearchViewController.swift in Sources */,
 				C276CF882B932787004ED09F /* ViewModel.swift in Sources */,
 				C2F4F38E2B8DDCC200E65588 /* Fonts.swift in Sources */,
-				C26F1E5F2B93F12300F1BECA /* NewTrendingViewController.swift in Sources */,
+				C26F1E5F2B93F12300F1BECA /* TrendingViewController.swift in Sources */,
 				C2F4F3932B8DE58000E65588 /* Observable.swift in Sources */,
 				C261D4E92B92F58700501ACB /* SettingViewController.swift in Sources */,
 				C2F4F3552B8DB0C800E65588 /* SceneDelegate.swift in Sources */,

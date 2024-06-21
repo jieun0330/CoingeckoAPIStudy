@@ -9,7 +9,7 @@ import UIKit
 import Then
 import SnapKit
 
-final class NewTrendingViewController: BaseViewController {
+final class TrendingViewController: BaseViewController {
     
     private let viewModel = ViewModel()
     var priceAPIResult: PriceAPI = []
@@ -29,12 +29,12 @@ final class NewTrendingViewController: BaseViewController {
     lazy var tableView = UITableView().then {
         $0.delegate = self
         $0.dataSource = self
-        $0.register(NewMyFavoriteTableViewCell.self,
-                    forCellReuseIdentifier: NewMyFavoriteTableViewCell.identifier)
-        $0.register(NewTopCoinTableViewCell.self,
-                    forCellReuseIdentifier: NewTopCoinTableViewCell.identifier)
-        $0.register(NewNTFTableViewCell.self,
-                    forCellReuseIdentifier: NewNTFTableViewCell.identifier)
+        $0.register(MyFavoriteTableViewCell.self,
+                    forCellReuseIdentifier: MyFavoriteTableViewCell.identifier)
+        $0.register(TopCoinTableViewCell.self,
+                    forCellReuseIdentifier: TopCoinTableViewCell.identifier)
+        $0.register(NTFTableViewCell.self,
+                    forCellReuseIdentifier: NTFTableViewCell.identifier)
     }
     
     override func viewDidLoad() {
@@ -74,7 +74,7 @@ final class NewTrendingViewController: BaseViewController {
         
         mainTitle.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.leading.equalToSuperview().inset(10)
             $0.height.equalTo(35)
         }
         
@@ -95,7 +95,7 @@ final class NewTrendingViewController: BaseViewController {
     }
 }
 
-extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource {
+extension TrendingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -114,8 +114,8 @@ extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource 
         
         if indexPath.row == 0 {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: NewMyFavoriteTableViewCell.identifier,
-                                                     for: indexPath) as! NewMyFavoriteTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: MyFavoriteTableViewCell.identifier,
+                                                     for: indexPath) as! MyFavoriteTableViewCell
             
             cell.viewModel.outputMarketAPI.value = priceAPIResult
             cell.collectionView.reloadData()
@@ -124,8 +124,8 @@ extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource 
             
         } else if indexPath.row == 1 {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: NewTopCoinTableViewCell.identifier,
-                                                     for: indexPath) as! NewTopCoinTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: TopCoinTableViewCell.identifier,
+                                                     for: indexPath) as! TopCoinTableViewCell
             
             cell.viewModel.outputTrendingCoinAPI.value = topCoinAPIResult
             cell.collectionView.reloadData()
@@ -133,8 +133,8 @@ extension NewTrendingViewController: UITableViewDelegate, UITableViewDataSource 
             return cell
         } else {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: NewNTFTableViewCell.identifier,
-                                                     for: indexPath) as! NewNTFTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: NTFTableViewCell.identifier,
+                                                     for: indexPath) as! NTFTableViewCell
             
             cell.viewModel.outputTrendingNFTAPI.value = topNFTAPIResult
             cell.collectionView.reloadData()

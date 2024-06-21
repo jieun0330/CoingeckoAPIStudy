@@ -9,11 +9,9 @@ import UIKit
 import Then
 import SnapKit
 
-final class NewMyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
+final class MyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
-    let icon = UIImageView().then { _ in
-        
-    }
+    let icon = UIImageView()
     
     let namestackView = UIStackView().then {
         $0.axis = .vertical

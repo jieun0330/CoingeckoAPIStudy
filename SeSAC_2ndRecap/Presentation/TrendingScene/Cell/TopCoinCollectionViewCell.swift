@@ -9,7 +9,7 @@ import UIKit
 import Then
 import SnapKit
 
-final class NewTopCoinCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
+final class TopCoinCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let rankNum = UILabel().then {
         $0.font = DesignSystemFont.trendingRankNum.font

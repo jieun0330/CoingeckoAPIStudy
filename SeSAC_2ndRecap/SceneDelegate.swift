@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarController.tabBar.backgroundColor = DesignSystemColor.white.color
         tabBarController.tabBar.isTranslucent = false
         
-        let trendingView = UINavigationController(rootViewController: NewTrendingViewController())
+        let trendingView = UINavigationController(rootViewController: TrendingViewController())
         let searchView = UINavigationController(rootViewController: SearchViewController())
         let favoritesView = UINavigationController(rootViewController: FavoriteViewController())
         let settingView = UINavigationController(rootViewController: SettingViewController())

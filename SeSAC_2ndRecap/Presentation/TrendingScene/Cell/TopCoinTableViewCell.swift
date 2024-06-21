@@ -9,7 +9,7 @@ import UIKit
 import Then
 import SnapKit
 
-final class NewTopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
+final class TopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let viewModel = ViewModel()
     
@@ -21,8 +21,8 @@ final class NewTopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout()).then {
         $0.delegate = self
         $0.dataSource = self
-        $0.register(NewTopCoinCollectionViewCell.self,
-                    forCellWithReuseIdentifier: NewTopCoinCollectionViewCell.identifier)
+        $0.register(TopCoinCollectionViewCell.self,
+                    forCellWithReuseIdentifier: TopCoinCollectionViewCell.identifier)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -75,7 +75,7 @@ final class NewTopCoinTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
 }
 
-extension NewTopCoinTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension TopCoinTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
@@ -85,8 +85,8 @@ extension NewTopCoinTableViewCell: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: NewTopCoinCollectionViewCell.identifier,
-            for: indexPath) as! NewTopCoinCollectionViewCell
+            withReuseIdentifier: TopCoinCollectionViewCell.identifier,
+            for: indexPath) as! TopCoinCollectionViewCell
         
         if !viewModel.outputTrendingCoinAPI.value.isEmpty {
             let trending = viewModel.outputTrendingCoinAPI.value[indexPath.item].item

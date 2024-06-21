@@ -162,7 +162,6 @@ final class ChartViewController: BaseViewController {
             self.view.makeToast("즐겨찾기에 추가되었습니다")
             rightFavoriteButton.image = DesignSystemImage.starFill.image
         }
-        
     }
     
     private func configureCollectionViewLayout() -> UICollectionViewFlowLayout {
