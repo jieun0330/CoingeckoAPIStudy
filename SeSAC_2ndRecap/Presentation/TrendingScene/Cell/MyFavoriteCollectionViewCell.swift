@@ -86,9 +86,10 @@ final class MyFavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtoc
         }
         
         priceStackView.snp.makeConstraints {
+            $0.top.equalTo(namestackView.snp.bottom).offset(40)
             $0.horizontalEdges.equalTo(contentView).inset(10)
-            $0.bottom.equalTo(contentView).inset(10)
-            $0.height.equalTo(50)
+//            $0.bottom.equalTo(contentView).inset(10)
+            $0.height.equalTo(40)
         }
         
         price.snp.makeConstraints {

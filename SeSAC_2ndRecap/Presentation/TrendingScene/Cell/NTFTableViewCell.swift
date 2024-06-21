@@ -98,6 +98,7 @@ extension NTFTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource
             cell.symbol.text = trending.symbol
             let percentage = DesignSystemText.shared.percentageCalculator(number: Double(trending.data.floorPriceInUsd24HPercentageChange)!)
             cell.percentage.text = percentage
+            cell.percentage.textColor = PercentageManager.shared.percentageColor(Double(trending.data.floorPriceInUsd24HPercentageChange)!)
         }
         return cell
     }

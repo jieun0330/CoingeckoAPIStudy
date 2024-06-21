@@ -65,7 +65,7 @@ final class MyFavoriteTableViewCell: BaseTableViewCell, ReusableProtocol {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
         let cellWidth = UIScreen.main.bounds.width - (spacing * 1.5)
-        layout.itemSize = CGSize(width: cellWidth / 2, height: cellWidth / 2.5)
+        layout.itemSize = CGSize(width: cellWidth / 2, height: cellWidth / 2.7)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         layout.scrollDirection = .horizontal
@@ -79,6 +79,7 @@ final class MyFavoriteTableViewCell: BaseTableViewCell, ReusableProtocol {
 }
 
 extension MyFavoriteTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         return repository.fetchAllItem().count
@@ -103,9 +104,11 @@ extension MyFavoriteTableViewCell: UICollectionViewDelegate, UICollectionViewDat
             cell.price.text = "₩\(price)"
             let percentage = DesignSystemText.shared.percentageCalculator(number: item.priceChangePercentage24H)
             cell.percentage.text = percentage
+            cell.percentage.textColor = PercentageManager.shared.percentageColor(item.priceChangePercentage24H)
         }
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        let item = viewModel.outputMarketAPI.value[indexPath.item]
 //        let vc = ChartViewController()

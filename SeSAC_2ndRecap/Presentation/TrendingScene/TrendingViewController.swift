@@ -35,6 +35,7 @@ final class TrendingViewController: BaseViewController {
                     forCellReuseIdentifier: TopCoinTableViewCell.identifier)
         $0.register(NTFTableViewCell.self,
                     forCellReuseIdentifier: NTFTableViewCell.identifier)
+        $0.separatorStyle = .none
     }
     
     override func viewDidLoad() {

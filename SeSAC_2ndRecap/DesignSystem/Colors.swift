@@ -55,3 +55,16 @@ extension UIColor {
                   blue: CGFloat(blue) / 255.0, alpha: 1.0)
     }
 }
+
+final class PercentageManager {
+    static let shared = PercentageManager()
+    private init() { }
+    
+    func percentageColor(_ percentage: Double) -> UIColor {
+        if percentage < 0 {
+            return DesignSystemColor.blue.color
+        } else {
+            return DesignSystemColor.red.color
+        }
+    }
+}

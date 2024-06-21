@@ -195,6 +195,7 @@
 		C2E8544F2C0D70FD00D8E643 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C2F4F3662B8DB25E00E65588 /* SearchScene */,
 				C26F1E5B2B93F10200F1BECA /* TrendingScene */,
 				C2F4F3CB2B8F2CE000E65588 /* ChartScene */,
 				C2F4F3982B8EAEB100E65588 /* FavoriteScene */,
@@ -231,7 +232,6 @@
 				C2F4F3882B8DC68200E65588 /* Protocol */,
 				C2F4F3802B8DC34D00E65588 /* Network */,
 				C2F4F3692B8DB27F00E65588 /* Base */,
-				C2F4F3662B8DB25E00E65588 /* Search */,
 				C2F4F3522B8DB0C800E65588 /* AppDelegate.swift */,
 				C2F4F3542B8DB0C800E65588 /* SceneDelegate.swift */,
 				C2F4F3582B8DB0C800E65588 /* Main.storyboard */,
@@ -242,13 +242,13 @@
 			path = SeSAC_2ndRecap;
 			sourceTree = "<group>";
 		};
-		C2F4F3662B8DB25E00E65588 /* Search */ = {
+		C2F4F3662B8DB25E00E65588 /* SearchScene */ = {
 			isa = PBXGroup;
 			children = (
 				C2F4F3672B8DB27400E65588 /* SearchViewController.swift */,
 				C2F4F37C2B8DC05700E65588 /* SearchTableViewCell.swift */,
 			);
-			path = Search;
+			path = SearchScene;
 			sourceTree = "<group>";
 		};
 		C2F4F3692B8DB27F00E65588 /* Base */ = {

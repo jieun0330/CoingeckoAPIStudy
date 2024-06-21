@@ -97,9 +97,9 @@ extension TopCoinTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
             cell.price.text = "$" + String(format: "%.5f", trending.data.price)
             cell.symbol.text = trending.symbol
 
-            let krwKey: [String: Double] = trending.data.priceChangePercentage24H
-            let percentage = DesignSystemText.shared.percentageCalculator(number: krwKey["krw"]!)
+            let percentage = DesignSystemText.shared.percentageCalculator(number: trending.data.priceChangePercentage24H.krw)
             cell.percentage.text = percentage
+            cell.percentage.textColor = PercentageManager.shared.percentageColor(trending.data.priceChangePercentage24H.krw)
         }
         return cell
     }

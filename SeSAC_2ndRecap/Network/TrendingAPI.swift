@@ -72,7 +72,7 @@ struct Item: Decodable {
 struct ItemData: Decodable {
     let price: Double
     let priceBtc: String
-    let priceChangePercentage24H: [String: Double]
+    let priceChangePercentage24H: PriceChangePercentage
     let marketCap, marketCapBtc, totalVolume, totalVolumeBtc: String
     let sparkline: String
     let content: Content?
@@ -123,4 +123,8 @@ struct NftData: Decodable {
         case h24AverageSalePrice = "h24_average_sale_price"
         case sparkline, content
     }
+}
+
+struct PriceChangePercentage: Decodable {
+    let krw: Double
 }
