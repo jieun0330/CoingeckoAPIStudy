@@ -11,9 +11,7 @@ import SnapKit
 
 final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    let icon = UIImageView().then { _ in
-        
-    }
+    let icon = UIImageView()
     
     let stackView = UIStackView().then {
         $0.axis = .vertical
@@ -59,7 +57,7 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         stackView.snp.makeConstraints {
             $0.leading.equalTo(icon.snp.trailing).offset(15)
             $0.trailing.equalTo(favorites.snp.leading).offset(-15)
-            $0.verticalEdges.equalToSuperview().inset(10)
+            $0.verticalEdges.equalToSuperview().inset(15)
         }
         
         name.snp.makeConstraints {
@@ -81,9 +79,7 @@ final class SearchTableViewCell: BaseTableViewCell, ReusableProtocol {
         contentView.backgroundColor = DesignSystemColor.white.color
     }
     
-    @objc func favoritesButtonClicked() {
-        
-    }
+    @objc func favoritesButtonClicked() { }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

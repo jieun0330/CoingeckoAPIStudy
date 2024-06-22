@@ -146,6 +146,14 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		C2489E992C259AAE005AA2C4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C2F4F37C2B8DC05700E65588 /* SearchTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		C25A6FD12C20604D00E63CB1 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,8 +203,8 @@
 		C2E8544F2C0D70FD00D8E643 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				C2F4F3662B8DB25E00E65588 /* SearchScene */,
 				C26F1E5B2B93F10200F1BECA /* TrendingScene */,
+				C2F4F3662B8DB25E00E65588 /* SearchScene */,
 				C2F4F3CB2B8F2CE000E65588 /* ChartScene */,
 				C2F4F3982B8EAEB100E65588 /* FavoriteScene */,
 			);
@@ -246,7 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				C2F4F3672B8DB27400E65588 /* SearchViewController.swift */,
-				C2F4F37C2B8DC05700E65588 /* SearchTableViewCell.swift */,
+				C2489E992C259AAE005AA2C4 /* Cell */,
 			);
 			path = SearchScene;
 			sourceTree = "<group>";

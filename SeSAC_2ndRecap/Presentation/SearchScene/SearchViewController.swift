@@ -104,8 +104,17 @@ final class SearchViewController: BaseViewController {
         navigationItem.rightBarButtonItem = profileTabBarItem
     }
     
-    @objc func profileTabBarItemClicked() {
+    @objc func profileTabBarItemClicked() { }
+    
+    private func searchedText(_ inputText: String, pointText: String?) -> NSAttributedString {
+        let lowercasedInputText = inputText.lowercased()
+        let lowercasedPointText = pointText?.lowercased() ?? ""
+        let attributedString = NSMutableAttributedString(string: inputText)
+        attributedString.addAttribute(.foregroundColor,
+                                      value: DesignSystemColor.purple.color,
+                                      range: (lowercasedInputText as NSString).range(of: lowercasedPointText))
         
+        return attributedString
     }
 }
 
@@ -117,11 +126,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier,
+                                                 for: indexPath) as! SearchTableViewCell
         let row = viewModel.outputSearchAPI.value[indexPath.row]
         
         cell.icon.kf.setImage(with: URL(string: row.large))
         cell.name.text = row.name
+        cell.name.attributedText = searchedText(row.name, pointText: searchBar.text)
         cell.symbol.text = row.symbol
         cell.favorites.tag = indexPath.row
         
@@ -133,7 +144,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             cell.favorites.setImage(DesignSystemImage.star.image, for: .normal)
         }
         
-        cell.favorites.addTarget(self, action: #selector(favoritesButtonClicked), for: .touchUpInside)
+        cell.favorites.addTarget(self,
+                                 action: #selector(favoritesButtonClicked),
+                                 for: .touchUpInside)
         
         return cell
     }
@@ -173,8 +186,10 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartPriceCollectionViewCell.identifier, for: indexPath) as! ChartPriceCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChartPriceCollectionViewCell.identifier,
+                                                      for: indexPath) as! ChartPriceCollectionViewCell
         
         return cell
     }
