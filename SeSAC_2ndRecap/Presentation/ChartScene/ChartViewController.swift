@@ -122,7 +122,7 @@ final class ChartViewController: BaseViewController {
         
         update.snp.makeConstraints {
             $0.top.equalTo(chartView.snp.bottom)
-            $0.trailing.equalTo(chartView.snp.trailing).inset(10)
+            $0.trailing.equalTo(chartView.snp.trailing).inset(20)
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }

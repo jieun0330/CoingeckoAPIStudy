@@ -37,6 +37,8 @@ final class FavoriteViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.backButtonTitle = ""
+        
         viewModel.idList()
         viewModel.outputMarketAPI.bind { data in
             self.collectionView.reloadData()
