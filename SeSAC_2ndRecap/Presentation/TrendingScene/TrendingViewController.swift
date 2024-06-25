@@ -91,9 +91,7 @@ final class TrendingViewController: BaseViewController {
         navigationItem.rightBarButtonItem = profileTabBarItem
     }
     
-    @objc func profileTabBarItemClicked() {
-        
-    }
+    @objc func profileTabBarItemClicked() { }
 }
 
 extension TrendingViewController: UITableViewDelegate, UITableViewDataSource {
