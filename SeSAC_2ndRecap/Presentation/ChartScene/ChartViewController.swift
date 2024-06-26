@@ -228,7 +228,6 @@ extension ChartViewController: UICollectionViewDelegate, UICollectionViewDataSou
         viewModel.outputPriceTextColor.bind { value in
             cell.priceTitle.textColor = value ? DesignSystemColor.blue.color : DesignSystemColor.red.color
         }
-        
         return cell
     }
 }

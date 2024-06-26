@@ -10,9 +10,14 @@ import Then
 
 final class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
-    let icon = UIImageView().then { _ in
-        
-    }
+    private let backView = {
+        let backView = UIView()
+        backView.backgroundColor = .white
+        backView.layer.cornerRadius = 10
+        return backView
+    }()
+    
+    let icon = UIImageView()
     
     let namestackView = UIStackView().then {
         $0.axis = .vertical
@@ -54,8 +59,13 @@ final class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol
     }
     
     override func configureHierarchy() {
-        [icon, namestackView, priceStackView].forEach {
+        
+        [backView].forEach {
             contentView.addSubview($0)
+        }
+        
+        [icon, namestackView, priceStackView].forEach {
+            backView.addSubview($0)
         }
         
         [name, symbol].forEach {
@@ -72,6 +82,11 @@ final class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol
     }
     
     override func configureConstraints() {
+        
+        backView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
         icon.snp.makeConstraints {
             $0.leading.top.equalToSuperview().offset(10)
             $0.size.equalTo(35)
@@ -114,19 +129,11 @@ final class FavoriteCollectionViewCell: BaseCollectionViewCell, ReusableProtocol
     }
     
     override func configureView() {
-        // cell shadow + cornerRadis 같이 주는 방법 https://roniruny.tistory.com/184
-        contentView.backgroundColor = DesignSystemColor.white.color
-        contentView.layer.cornerRadius = 15
-        contentView.layer.borderColor = UIColor.lightGray.cgColor
-        contentView.layer.borderWidth = 1
-        //        contentView.layer.shadowColor = DesignSystemColor.black.color.cgColor
-        //        layer.shadowOpacity = 0.1
-        //        layer.shadowRadius = 2
-        //        layer.shadowOffset = CGSize(width: 0, height: 5)
-        //        layer.shadowPath = UIBezierPath(roundedRect: self.bounds,
-        //                                        byRoundingCorners: .allCorners,
-        //                                        cornerRadii: CGSize(width: 8, height: 8)).cgPath
-        //        layer.masksToBounds = false
+        layer.masksToBounds = false
+        layer.shadowOpacity = 0.8
+        layer.shadowOffset = .init(width: 0, height: 0)
+        layer.shadowColor = DesignSystemColor.lightGray.color.cgColor
+        layer.shadowRadius = 5
     }
     
     required init?(coder: NSCoder) {

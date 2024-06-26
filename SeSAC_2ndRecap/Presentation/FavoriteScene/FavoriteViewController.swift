@@ -27,7 +27,7 @@ final class FavoriteViewController: BaseViewController {
     }
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout()).then {
-        $0.backgroundColor = DesignSystemColor.white.color
+        $0.backgroundColor = .white
         $0.delegate = self
         $0.dataSource = self
         $0.register(FavoriteCollectionViewCell.self,
@@ -85,7 +85,7 @@ final class FavoriteViewController: BaseViewController {
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: 0, bottom: 0, right: spacing)
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: 0, right: spacing)
         return layout
     }
     

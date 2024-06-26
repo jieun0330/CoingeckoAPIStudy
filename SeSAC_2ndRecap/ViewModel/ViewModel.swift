@@ -107,7 +107,7 @@ final class ViewModel {
             
         default:
             price = 0
-            textColor = true
+            textColor = false
         }
         let calculatedPrice = DesignSystemText.shared.priceCalculator(price)
         
