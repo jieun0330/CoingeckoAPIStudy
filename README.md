@@ -24,11 +24,6 @@
 
 <br/>
 
-## ⚙️ 앱 개발 환경
-- 최소 버전: iOS 17.4
-- iPhone SE ~ iPhone 15 Pro Max 기기 대응
-
-<br/>
 
 ## 🛠️ 사용기술 및 라이브러리
 `UIKit(Code Base)` `SnapKit` `MVVM` `Custom Observable` `DGCharts` `Then` `Realm` `Alamofire` `FlowLayout` `Singleton` `BaseViewController` `access control` `Coinecko API`
