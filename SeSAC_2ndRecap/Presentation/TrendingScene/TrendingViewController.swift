@@ -41,6 +41,12 @@ final class TrendingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
+    }
+    
+    // 즐겨찾기 저장 누르고 다시 왔을 때
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.idList()
         
         viewModel.outputMarketAPI.bind { data in
@@ -57,11 +63,7 @@ final class TrendingViewController: BaseViewController {
             self.topNFTAPIResult = data
             self.tableView.reloadData()
         }
-    }
-    
-    // 즐겨찾기 저장 누르고 다시 왔을 때
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         tableView.reloadData()
     }
     
