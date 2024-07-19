@@ -14,6 +14,9 @@ final class APIManager {
     
     static let shared = APIManager()
     
+    // 실시간 업데이트
+    private var isUpdate = false
+    
     func fetchSearchAPI(api: CoinAPI, completionHandler: @escaping (Search) -> Void) {
         
         AF
@@ -36,22 +39,40 @@ final class APIManager {
                 switch response.result {
                 case .success(let success):
                     completionHandler(success)
-                case .failure(_):
-                    print("failure")
+                case .failure(let failure):
+                    print(failure)
+                    print("market failure")
                 }
             }
     }
     
-    func fetchTrendingAPI(api: CoinAPI, completionHandler: @escaping (Trending) -> Void) {
+    func fetchTrendingAPI(api: CoinAPI, interval: TimeInterval, completionHandler: @escaping (Trending) -> Void) {
         AF
             .request(api.endpoint)
             .responseDecodable(of: Trending.self) { response in
                 switch response.result {
                 case .success(let success):
                     completionHandler(success)
-                case .failure(_):
-                    print("failure")
+                case .failure(let failure):
+                    print(failure)
+                    print("trending failure")
+                }
+                
+                if self.isUpdate {
+                    DispatchQueue.global().asyncAfter(deadline: .now() + interval) { [weak self] in
+                        self?.fetchTrendingAPI(api: api, interval: interval, completionHandler: completionHandler)
+                    }
                 }
             }
+    }
+    
+    func startUpdate(api: CoinAPI, interval: TimeInterval, completionHanlder: @escaping (Trending) -> Void ) {
+        isUpdate = true
+        
+        fetchTrendingAPI(api: api, interval: interval, completionHandler: completionHanlder)
+    }
+    
+    func stopUpdate() {
+        isUpdate = false
     }
 }
