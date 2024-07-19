@@ -25,6 +25,9 @@ final class ViewModel {
     var outputPrice = Observable("")
     var outputPriceTextColor = Observable(false)
     
+    // 실시간 업데이트
+    private var isUpdate = false
+    
     init() {
         
         // 검색했을 때
@@ -42,10 +45,12 @@ final class ViewModel {
         }
         
         inputTopCoinTrigger.bind { _ in
-            APIManager.shared.fetchTrendingAPI(api: .trending) { data in
-                self.outputTrendingCoinAPI.value = data.coins
-                self.outputTrendingNFTAPI.value = data.nfts
-            }
+            self.startUpdate()
+//            APIManager.shared.fetchTrendingAPI(api: .trending, interval: 5.0) { data in
+//                
+//                self.outputTrendingCoinAPI.value = data.coins
+//                self.outputTrendingNFTAPI.value = data.nfts
+//            }
         }
     }
     
@@ -122,5 +127,20 @@ final class ViewModel {
         } else {
             outputPriceTextColor.value = true
         }
+    }
+    
+    func startUpdate() {
+        isUpdate = true
+        
+        APIManager.shared.startUpdate(api: .trending, interval: 5.0) { [weak self] data in
+            self?.outputTrendingNFTAPI.value = data.nfts
+            self?.outputTrendingCoinAPI.value = data.coins
+        }
+    }
+    
+    func stopUpdate() {
+        isUpdate = false
+        
+        APIManager.shared.stopUpdate()
     }
 }
